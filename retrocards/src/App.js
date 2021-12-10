@@ -3,6 +3,8 @@ import './App.css';
 import Login from './Pages/Login';
 import CreateKudoCards from './Pages/CreateKudoCards';
 import CreateSprint from './Pages/CreateSprint';
+import CadastroRetrospectiva from './Pages/CadastroRetrospectiva'
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       <CreateKudoCards/>
       <hr />
       <CreateSprint/>
+      <CadastroRetrospectiva/>
     </div>
   );
 }
