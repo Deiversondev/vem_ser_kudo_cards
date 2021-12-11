@@ -13,8 +13,8 @@ function Login() {
         localStorage.setItem('token',data)
         api.defaults.headers.common['Authorization'] = data;
         console.log(data)
-        // window.location.href = '/'
-        // setAuth(true)
+        window.location.href = '/initialpage'
+        setAuth(true)
     }
 
     const formik = useFormik({
