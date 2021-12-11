@@ -24,8 +24,8 @@ function CadastroKudoBox() {
           <form onSubmit={formik.handleSubmit}>
               
               <div>
-                  <label htmlFor="titulo">Título</label>
-                  <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
+                  <label htmlFor="tituloKudoBox">Título</label>
+                  <input type="text" name="tituloKudoBox" id="tituloKudoBox" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloKudoBox} />
               </div>
 
               <div >

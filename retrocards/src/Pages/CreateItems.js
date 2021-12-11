@@ -39,8 +39,8 @@ function CreateItems() {
                 </div>
 
                 <div>
-                    <label htmlFor="titulo">Título</label>
-                    <input type="text" name="titulo" id="titulo" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.titulo} />
+                    <label htmlFor="tituloItem">Título</label>
+                    <input type="text" name="tituloItem" id="tituloItem" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.tituloItem} />
                 </div>
 
                 <div >

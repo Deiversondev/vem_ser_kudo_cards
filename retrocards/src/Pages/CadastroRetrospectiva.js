@@ -24,8 +24,8 @@ function CadastroRetrospectiva() {
           <form onSubmit={formik.handleSubmit}>
               
               <div>
-                  <label htmlFor="titulo">Título</label>
-                  <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
+                  <label htmlFor="tituloRetrospectiva">Título</label>
+                  <input type="text" name="tituloRetrospectiva" id="tituloRetrospectiva" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloRetrospectiva} />
               </div>
 
               <div >

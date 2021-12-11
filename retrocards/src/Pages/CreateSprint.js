@@ -22,8 +22,8 @@ function CreateSprint() {
             <form onSubmit={formik.handleSubmit}>
                 
                 <div>
-                    <label htmlFor="titulo">Título</label>
-                    <input type="text" name="titulo" id="titulo" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.titulo} />
+                    <label htmlFor="tituloSprint">Título</label>
+                    <input type="text" name="tituloSprint" id="tituloSprint" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.tituloSprint} />
                 </div>
 
                 <div >
