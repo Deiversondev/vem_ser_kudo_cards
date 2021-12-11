@@ -26,7 +26,7 @@ function CreateKudoCards() {
                 
                 <div>
                     <label htmlFor="tituloKudoCard">Título</label>
-                    <input type="text" name="tituloKudoCard" id="tituloKudoCard" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.tituloKudoCard} />
+                    <input type="text" name="tituloKudoCard" id="tituloKudoCard" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloKudoCard} />
                 </div>
 
                 <div >
