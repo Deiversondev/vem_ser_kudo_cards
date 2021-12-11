@@ -19,8 +19,8 @@ function Login() {
 
     const formik = useFormik({
         initialValues:{
-            usuario:'',
-            senha:''
+            usuario:'facilitador',
+            senha:'123'
         }, onSubmit:async (values) =>{
            handleLogin(values)
             console.log(values)
