@@ -2,7 +2,7 @@ import { useFormik} from 'formik'
 import axios from 'axios'
 
 
-function CadastroKudoBox() {
+function CreateKudoBox() {
 
   const formik = useFormik({
       initialValues:{
@@ -42,4 +42,4 @@ function CadastroKudoBox() {
   )
 }
 
-export default CadastroKudoBox;
+export default CreateKudoBox;

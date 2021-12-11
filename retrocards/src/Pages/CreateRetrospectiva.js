@@ -2,7 +2,7 @@ import { useFormik} from 'formik'
 import axios from 'axios'
 
 
-function CadastroRetrospectiva() {
+function CreateRetrospectiva() {
 
   const formik = useFormik({
       initialValues:{
@@ -42,4 +42,4 @@ function CadastroRetrospectiva() {
   )
 }
 
-export default CadastroRetrospectiva;
+export default CreateRetrospectiva;
