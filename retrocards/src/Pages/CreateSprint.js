@@ -1,7 +1,16 @@
 import { useFormik} from 'formik'
-import axios from 'axios'
-
+import api from '../api'
 function CreateSprint() {
+
+    const createSprint = async (values) => {
+        const {data} =  await api.post('/sprint',values)
+        console.log(data)
+    }
+    const getSprint =async () =>{
+        const {data} =  await api.get('/sprint/listar-sprint')
+        console.log(data)
+        console.log('test')
+    }
     
     const formik = useFormik({
         initialValues:{
@@ -9,10 +18,8 @@ function CreateSprint() {
             dataInicio:'',
             dataConclusao:'',
         }, onSubmit:async (values) =>{
-        //    const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
             console.log(values)
-            // console.log(data)
-
+            createSprint(values)
             formik.resetForm()
         }
     })
@@ -43,9 +50,11 @@ function CreateSprint() {
 
                 <div>
                     <button type="submit">Salvar</button>
+                    
                 </div>
 
             </form>
+            <button onClick={getSprint} type="submit">Get</button>
         </div>
     )
 }
