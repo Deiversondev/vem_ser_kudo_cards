@@ -1,15 +1,20 @@
 import { useFormik} from 'formik';
+import { useContext } from 'react';
 import api from '../api';
+import { AuthContext } from '../context/AuthContext';
 
 
 function Login() {
-
+    
+    const {auth, setAuth} = useContext(AuthContext)
 
     const handleLogin = async (values) => {
         const {data} =  await api.post('/auth',values)
         localStorage.setItem('token',data)
         api.defaults.headers.common['Authorization'] = data;
         console.log(data)
+        // window.location.href = '/'
+        // setAuth(true)
     }
 
     const formik = useFormik({
