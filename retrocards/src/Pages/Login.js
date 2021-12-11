@@ -1,17 +1,25 @@
-import { useFormik} from 'formik'
-import axios from 'axios'
+import { useFormik} from 'formik';
+import api from '../api';
 
 
 function Login() {
+
+
+    const handleLogin = async (values) => {
+        const {data} =  await api.post('/auth',values)
+        localStorage.setItem('token',data)
+        api.defaults.headers.common['Authorization'] = data;
+        console.log(data)
+    }
 
     const formik = useFormik({
         initialValues:{
             usuario:'',
             senha:''
         }, onSubmit:async (values) =>{
-           const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
+           handleLogin(values)
             console.log(values)
-            console.log(data)
+          
 
             formik.resetForm()
         }
