@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { ListContext } from "../context/ListContext";
 import api from "../api";
 import CardRetrospectiva from "../components/cardRetrospectiva/CardRetrospectiva";
 
 function Sprint (){
+
+  const{listRetrospectivas, setListRetrospectivas} = useContext(ListContext)
 
   useEffect(()=>{
 
     getRetrospectiva()
 
   },[])
-
-  const[listRetrospectivas, setListRetrospectivas] = useState([]) 
 
   const getRetrospectiva= async() =>{
 

@@ -4,7 +4,7 @@ import { ListContext } from "../../context/ListContext"
 
 
 function CardRetrospectiva (){
-  // const{listSprints} = useContext(ListContext)
+  const{listRetrospectivas} = useContext(ListContext)
   return (
     <div>
       <ul>
