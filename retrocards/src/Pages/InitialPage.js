@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
+import { ListContext } from "../context/ListContext"
 import api from "../api"
+import CardSprint from "../components/cardSprint/CardSprint"
 
 function InitialPage (){
 
-  const[listSprints, setListSprints] = useState([])
+  const{setListSprints} = useContext(ListContext)
   
   useEffect(()=>{
     getSprint()
@@ -13,7 +15,7 @@ function InitialPage (){
     const {data} =  await api.get('/sprint/listar-sprint')
     setListSprints(data)
   }
-  console.log(listSprints)
+
   const irPagNovaSprint = () => {
     window.location.href='/createsprint'
   }
@@ -22,18 +24,7 @@ function InitialPage (){
     <div>
       <h1>Página Inicial</h1>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
-
-      <ul>
-        {listSprints.map((sprint, idSprint)=>(
-          <div>
-            <li key={idSprint}>
-              {sprint.idSprint}
-              {sprint.titulo}
-              {sprint.dataConclusao}
-            </li>
-          </div>
-        ))}
-      </ul>
+      <CardSprint/>
     </div>
   )
 }
