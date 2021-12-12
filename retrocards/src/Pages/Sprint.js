@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api";
+import CardRetrospectiva from "../components/cardRetrospectiva/CardRetrospectiva";
 
 function Sprint (){
 
@@ -24,19 +25,9 @@ function Sprint (){
   return(
     <div>
       <h1>Página Sprint</h1>
-      <ul>
-        {listRetrospectivas.map(retrospectiva => (
-          <li>
-          {retrospectiva.idRetrospectiva}
-          {retrospectiva.idTitulo}
-          {retrospectiva.dataReuniao}
-          {retrospectiva.tipoStatus}
-          {/*Faltam os Itens da retrospectiva na API*/}
-          <button>Iniciar/concluir</button>
-        </li>
-        ))}
-      </ul>
+      <CardRetrospectiva/>
     </div>
+    
   )
 }
 
