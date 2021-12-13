@@ -16,9 +16,12 @@ function CardSprint (){
     
   }
 
-  let idTest = localStorage.getItem('idSprint')
-
-
+  const setSprintId = (id) => {
+    localStorage.setItem('idSprint',id)
+    window.location.href = '/sprint'
+  } 
+  
+  
   return (
     <div>
       <ul>
@@ -28,9 +31,7 @@ function CardSprint (){
               {sprint.idSprint}
               {sprint.titulo}
               {sprint.dataConclusao}
-              <button onClick={() => setIdSprint(sprint.idSprint)}>set</button>
-              <button onClick={() => console.log(idTest)}>print</button>
-              <button onClick={() => getMeeting(idTest)}>Get Meeting</button>
+              <button onClick={() => setSprintId(sprint.idSprint)}>Go to String</button>
             </li>
           </div>
         ))}
