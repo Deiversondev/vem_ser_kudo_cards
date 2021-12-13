@@ -1,21 +1,34 @@
 import { useFormik} from 'formik'
 import axios from 'axios'
+import api from '../api'
+
 
 
 function CreateRetrospectiva() {
 
+    const addRetrospectiva = async (values) =>{
+        const id = localStorage.getItem('idSprint')
+       const {data} = await api.post(`/retrospectiva?id=${id}`,values)
+        console.log(data)
+    
+      }
+
   const formik = useFormik({
       initialValues:{
-          titulo:'',
-          dataReuniao:''
+          idTitulo:'',
+          dataReuniao:'',
+          descricao:''
       }, onSubmit:async (values) =>{
-          //const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
+         addRetrospectiva(values)
           console.log(values)
-          // console.log(data)
+          
 
           formik.resetForm()
       }
   })
+
+
+
 
   return (
       <div>
@@ -24,8 +37,13 @@ function CreateRetrospectiva() {
           <form onSubmit={formik.handleSubmit}>
               
               <div>
-                  <label htmlFor="tituloRetrospectiva">Título</label>
-                  <input type="text" name="tituloRetrospectiva" id="tituloRetrospectiva" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloRetrospectiva} />
+                  <label htmlFor="idTitulo">Título</label>
+                  <input type="text" name="idTitulo" id="idTitulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.idTitulo} />
+              </div>
+
+              <div>
+                  <label htmlFor="descricao">Título</label>
+                  <input type="text" name="descricao" id="descricao" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.descricao} />
               </div>
 
               <div >

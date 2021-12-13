@@ -5,12 +5,20 @@ import api from "../../api";
 
 function CardSprint (){
   const{listSprints} = useContext(ListContext)
-  const {idSprint,setIdSprint} = useContext(AuthContext)
+  const {idSprint} = useContext(AuthContext)
 
   async function getMeeting(id){
     const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${id}`)
     console.log(data)
   }
+
+  const setIdSprint = (id) =>{
+ localStorage.setItem('idSprint' , id)
+ window.location.href = '/createretrospectiva'
+    
+  }
+
+  let idTest = localStorage.getItem('idSprint')
 
 
   return (
@@ -23,8 +31,8 @@ function CardSprint (){
               {sprint.titulo}
               {sprint.dataConclusao}
               <button onClick={() => setIdSprint(sprint.idSprint)}>set</button>
-              <button onClick={() => console.log(idSprint)}>print</button>
-              <button onClick={() => getMeeting(idSprint)}>Get Meeting</button>
+              <button onClick={() => console.log(idTest)}>print</button>
+              <button onClick={() => getMeeting(idTest)}>Get Meeting</button>
             </li>
           </div>
         ))}
