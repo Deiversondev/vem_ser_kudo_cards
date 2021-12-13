@@ -19,7 +19,8 @@ function CreateSprint() {
             dataConclusao:'',
         }, onSubmit:async (values) =>{
             console.log(values)
-            createSprint(values)
+            await createSprint(values)
+            
             formik.resetForm()
         }
     })
@@ -34,8 +35,8 @@ function CreateSprint() {
             <form onSubmit={formik.handleSubmit}>
                 
                 <div>
-                    <label htmlFor="tituloSprint">Título</label>
-                    <input type="text" name="tituloSprint" id="tituloSprint" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.tituloSprint} />
+                    <label htmlFor="titulo">Título</label>
+                    <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
                 </div>
 
                 <div >
@@ -59,4 +60,4 @@ function CreateSprint() {
     )
 }
 
-export default CreateSprint
+export default CreateSprint;

@@ -22,7 +22,7 @@ function Login() {
             usuario:'facilitador',
             senha:'123'
         }, onSubmit:async (values) =>{
-           handleLogin(values)
+           await handleLogin(values)
             console.log(values)
           
 
@@ -33,7 +33,7 @@ function Login() {
     return (
         <div>
 
-<h1>Login</h1>
+            <h1>Login</h1>
 
             <form onSubmit={formik.handleSubmit}>
                 
