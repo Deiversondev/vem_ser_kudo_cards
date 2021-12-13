@@ -16,6 +16,11 @@ function InitialPage (){
     setListSprints(data)
   }
 
+  async function getSprintID(){
+    const {data} = await api.get(`https://retrocardsdbc.herokuapp.com/retrospectiva/id-sprint?idSprint=20`)
+    console.log(data)
+  }
+
   const irPagNovaSprint = () => {
     window.location.href='/createsprint'
   }
@@ -24,6 +29,7 @@ function InitialPage (){
     <div>
       <h1>Página Inicial</h1>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
+      <button type="button" onClick={()=> getSprintID()} >gett</button>
       <CardSprint/>
     </div>
   )

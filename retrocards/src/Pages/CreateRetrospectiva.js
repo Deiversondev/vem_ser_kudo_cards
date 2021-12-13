@@ -8,12 +8,12 @@ function CreateRetrospectiva() {
 
     const addRetrospectiva = async (values) =>{
         const id = localStorage.getItem('idSprint')
-       const {data} = await api.post(`/retrospectiva?id=${id}`,values)
+        const {data} = await api.post(`/retrospectiva?id=${id}`,values)
         console.log(data)
     
       }
 
-  const formik = useFormik({
+    const formik = useFormik({
       initialValues:{
           tituloRetrospectiva:'',
           dataReuniao:'',
