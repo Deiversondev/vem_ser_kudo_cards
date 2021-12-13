@@ -13,8 +13,8 @@ function CardSprint (){
   }
 
   const setIdSprint = (id) =>{
- localStorage.setItem('idSprint' , id)
- window.location.href = '/createretrospectiva'
+  localStorage.setItem('idSprint' , id)
+  window.location.href = '/createretrospectiva'
     
   }
 

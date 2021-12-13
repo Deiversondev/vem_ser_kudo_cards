@@ -13,6 +13,10 @@ function Sprint (){
 
   },[])
 
+  const irPagNovaKudoBox = () => {
+    window.location.href='/createkudobox';
+  }
+
   const getRetrospectiva= async() =>{
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -26,6 +30,7 @@ function Sprint (){
   return(
     <div>
       <h1>Página Sprint</h1>
+      <button type="button" onClick={()=> irPagNovaKudoBox()} >Criar nova Kudo Box</button>
       <CardRetrospectiva/>
     </div>
     

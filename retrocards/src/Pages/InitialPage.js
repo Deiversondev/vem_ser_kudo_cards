@@ -22,7 +22,7 @@ function InitialPage (){
   }
 
   const irPagNovaSprint = () => {
-    window.location.href='/createsprint'
+    window.location.href='/createsprint';
   }
 
   return(
