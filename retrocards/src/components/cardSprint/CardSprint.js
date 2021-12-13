@@ -12,6 +12,11 @@ function CardSprint (){
      window.location.href = `http://localhost:3000/sprint?id=${id}`
   
   }
+
+  const setSprintId = (id) => {
+    localStorage.setItem('idSprint',id)
+    window.location.href = '/sprint'
+  } 
   
   
   return (
@@ -23,7 +28,7 @@ function CardSprint (){
               {sprint.idSprint}
               {sprint.titulo}
               {sprint.dataConclusao}
-              <button onClick={() => goToString(sprint.idSprint)}>Go to String</button>
+              <button onClick={() => setSprintId(sprint.idSprint)}>Go to String</button>
             </li>
           </div>
         ))}

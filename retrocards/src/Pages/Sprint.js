@@ -15,12 +15,13 @@ function Sprint (){
 
   const getRetrospectiva= async() =>{
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const id = urlParams.get('id');
+    const idSprint = localStorage.getItem('idSprint')
 
-    const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${id}`)
+    const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${idSprint}`)
     setListRetrospectivas(data)
-    console.log(listRetrospectivas)
+    console.log(data)
   }
   
   return(
