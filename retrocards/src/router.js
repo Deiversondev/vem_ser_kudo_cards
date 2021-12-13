@@ -13,6 +13,7 @@ import CreateKudoBox from './Pages/CreateKudoBox';
 import CreateItems from './Pages/CreateItems';
 import Login from './Pages/Login';
 import InitialPage from './Pages/InitialPage';
+import SprintsPage from './Pages/SprintsPage';
 
 
 function Routers (){
@@ -27,6 +28,7 @@ function Routers (){
     <Route path='/createkudocards' element={<CreateKudoCards/>}/>
     <Route path='/createkudobox' element={<CreateKudoBox/>}/>
     <Route path='/createitems' element={<CreateItems/>}/>
+    <Route path='/sprintList' element={<SprintsPage/>}/>
     </Routes>
   </BrowserRouter>    
 

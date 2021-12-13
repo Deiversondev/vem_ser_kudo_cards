@@ -9,6 +9,7 @@ function AuthProvider ({children}) {
   const [auth, setAuth] = useState(false)
   const [loading, setLoading] = useState(true)
   const [idSprint, setIdSprint] = useState(0)
+  const [restrospectivas,setRetrospectivas] = useState([])
   useEffect(()=>{
     const token = localStorage.getItem('token');
     if (token) {
@@ -30,7 +31,7 @@ function AuthProvider ({children}) {
    return(<h1>Loading...</h1>)
   }
   return(
-    <AuthContext.Provider value={{auth, setAuth, handleLogout, idSprint,setIdSprint}}>
+    <AuthContext.Provider value={{auth, setAuth, handleLogout, idSprint,setIdSprint,restrospectivas,setRetrospectivas}}>
       {children}
     </AuthContext.Provider>
   );

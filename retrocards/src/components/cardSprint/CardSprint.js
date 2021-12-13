@@ -32,7 +32,6 @@ function CardSprint (){
               {sprint.dataConclusao}
               <button onClick={() => setIdSprint(sprint.idSprint)}>set</button>
               <button onClick={() => console.log(idTest)}>print</button>
-              <button onClick={() => getMeeting(idTest)}>Get Meeting</button>
             </li>
           </div>
         ))}
