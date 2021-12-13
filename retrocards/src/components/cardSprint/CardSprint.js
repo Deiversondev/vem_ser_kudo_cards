@@ -5,16 +5,16 @@ import api from "../../api";
 function CardSprint (){
   const{listSprints} = useContext(ListContext)
 
-  async function getMeeting(id){
-    const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${id}`)
-    console.log(data)
-  }
+//   async function getMeeting(id){
+//     const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${id}`)
+//     console.log(data)
+//   }
 
-  const setIdSprint = (id) =>{
- localStorage.setItem('idSprint' , id)
- window.location.href = '/createretrospectiva'
+//   const setIdSprint = (id) =>{
+//  localStorage.setItem('idSprint' , id)
+//  window.location.href = '/createretrospectiva'
     
-  }
+//   }
 
   const setSprintId = (id) => {
     localStorage.setItem('idSprint',id)
