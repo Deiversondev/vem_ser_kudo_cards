@@ -1,21 +1,32 @@
-import { useFormik} from 'formik'
-import axios from 'axios'
+import { useFormik} from 'formik';
+import api from '../api';
+
 
 
 function CreateRetrospectiva() {
 
-  const formik = useFormik({
+    const addRetrospectiva = async (values) =>{
+        const id = localStorage.getItem('idSprint')
+        const {data} = await api.post(`/retrospectiva?id=${id}`,values)
+        console.log(data)
+    
+      }
+
+    const formik = useFormik({
       initialValues:{
-          titulo:'',
-          dataReuniao:''
+          tituloRetrospectiva:'',
+          dataReuniao:'',
       }, onSubmit:async (values) =>{
-          //const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
+         addRetrospectiva(values)
           console.log(values)
-          // console.log(data)
+          
 
           formik.resetForm()
       }
   })
+
+
+
 
   return (
       <div>

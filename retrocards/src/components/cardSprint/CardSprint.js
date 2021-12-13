@@ -1,19 +1,26 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
-// import {AuthContext} from '../../context/AuthContext'
+import {AuthContext} from '../../context/AuthContext'
 import api from "../../api";
 
 function CardSprint (){
   const{listSprints} = useContext(ListContext)
-  // const {idSprint,setIdSprint} = useContext(AuthContext)
+  const {idSprint} = useContext(AuthContext)
 
-   const goToString= (id) =>{
-    
-     window.location.href = `http://localhost:3000/sprint?id=${id}`
-  
+  async function getMeeting(id){
+    const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${id}`)
+    console.log(data)
   }
-  
-  
+
+  const setIdSprint = (id) =>{
+ localStorage.setItem('idSprint' , id)
+ window.location.href = '/createretrospectiva'
+    
+  }
+
+  let idTest = localStorage.getItem('idSprint')
+
+
   return (
     <div>
       <ul>
@@ -23,7 +30,9 @@ function CardSprint (){
               {sprint.idSprint}
               {sprint.titulo}
               {sprint.dataConclusao}
-              <button onClick={() => goToString(sprint.idSprint)}>Go to String</button>
+              <button onClick={() => setIdSprint(sprint.idSprint)}>set</button>
+              <button onClick={() => console.log(idTest)}>print</button>
+              <button onClick={() => getMeeting(idTest)}>Get Meeting</button>
             </li>
           </div>
         ))}
