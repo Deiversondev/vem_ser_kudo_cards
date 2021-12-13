@@ -1,11 +1,9 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
-// import {AuthContext} from '../../context/AuthContext'
 import api from "../../api";
 
 function CardSprint (){
   const{listSprints} = useContext(ListContext)
-  // const {idSprint,setIdSprint} = useContext(AuthContext)
 
    const goToString= (id) =>{
     
