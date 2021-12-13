@@ -15,9 +15,8 @@ function CreateRetrospectiva() {
 
   const formik = useFormik({
       initialValues:{
-          idTitulo:'',
+          tituloRetrospectiva:'',
           dataReuniao:'',
-          descricao:''
       }, onSubmit:async (values) =>{
          addRetrospectiva(values)
           console.log(values)
@@ -37,13 +36,8 @@ function CreateRetrospectiva() {
           <form onSubmit={formik.handleSubmit}>
               
               <div>
-                  <label htmlFor="idTitulo">Título</label>
-                  <input type="text" name="idTitulo" id="idTitulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.idTitulo} />
-              </div>
-
-              <div>
-                  <label htmlFor="descricao">Título</label>
-                  <input type="text" name="descricao" id="descricao" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.descricao} />
+                  <label htmlFor="tituloRetrospectiva">Título</label>
+                  <input type="text" name="tituloRetrospectiva" id="tituloRetrospectiva" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloRetrospectiva} />
               </div>
 
               <div >
