@@ -13,9 +13,16 @@ function Sprint (){
 
   },[])
 
-  const irPagNovaKudoBox = () => {
-    window.location.href='/createkudobox';
-  }
+  
+  const setIdKudoBox = () => {
+
+    const idSprint = localStorage.getItem('idSprint')
+
+    localStorage.setItem('idSprint',idSprint)
+    window.location.href = '/createkudobox'
+  } 
+ 
+
 
   const getRetrospectiva= async() =>{
 
@@ -31,7 +38,7 @@ function Sprint (){
   return(
     <div>
       <h1>Página Sprint</h1>
-      <button type="button" onClick={()=> irPagNovaKudoBox()} >Criar nova Kudo Box</button>
+      <button type="button" onClick={()=> setIdKudoBox()} >Criar nova Kudo Box</button>
       <CardRetrospectiva/>
     </div>
     

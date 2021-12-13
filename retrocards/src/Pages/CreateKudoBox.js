@@ -1,22 +1,28 @@
 import { useFormik} from 'formik'
-import axios from 'axios'
+import { useEffect } from 'react'
+import api from '../api'
+
 
 
 function CreateKudoBox() {
 
-  const setSprintId = (id) => {
-    localStorage.setItem('idSprint',id)
-    window.location.href = '/sprint'
-  } 
+  const idSprint = localStorage.getItem('idSprint') 
+
+  const createKudobox = async (values) => {
+   
+    const {data} =  await api.post(`/kudobox?id=${idSprint}`,values)
+    console.log(data)
+  }
 
   const formik = useFormik({
     initialValues:{
       titulo:'',
-      dataLeitura:''
+      dataLeitura:'',
+      statusKudoBoxEntity:'EM_ANDAMENTO'
+
     }, onSubmit:async (values) =>{
-      //const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
       console.log(values)
-      // console.log(data)
+      await createKudobox(values)
 
       formik.resetForm()
     }
@@ -29,8 +35,8 @@ function CreateKudoBox() {
       <form onSubmit={formik.handleSubmit}>
           
         <div>
-          <label htmlFor="tituloKudoBox">Título</label>
-          <input type="text" name="tituloKudoBox" id="tituloKudoBox" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloKudoBox} />
+          <label htmlFor="titulo">Título</label>
+          <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
         </div>
 
         <div >
