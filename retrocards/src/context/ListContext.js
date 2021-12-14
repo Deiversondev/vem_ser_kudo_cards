@@ -18,6 +18,8 @@ function ListProvider ({children}) {
       setListRetrospectivas,
       listKudoBoxes, 
       setListKudoBoxes,
+      listItems,
+      setListItems
     }}>
 
       {children}
