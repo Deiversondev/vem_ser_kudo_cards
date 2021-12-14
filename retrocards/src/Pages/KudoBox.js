@@ -19,6 +19,7 @@ function KudoBox (){
     
     window.location.href = '/createkudocards'
   }
+
   const getKudoCards= async() =>{
 
     const idKudoBox = localStorage.getItem('idKudoBox')
@@ -27,6 +28,7 @@ function KudoBox (){
     setListKudoCards(data)
     console.log(data)
   }
+
   
   return(
     <div>
