@@ -13,7 +13,9 @@ function Retrospectiva() {
 
 
     const getRetro = async() => {
-        const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=20`)
+        const idRetro = localStorage.getItem('IdRetrospectiva')
+        const {data} = await api.get(`/retrospectiva/id-retro?idRetro=${idRetro}`)
+        console.log('Esse console log é referente a retrospectiva')
         console.log(data)
         // setListItems(data)
     } 
@@ -21,12 +23,16 @@ function Retrospectiva() {
         window.location.href = '/createitems'
     }
 
+   const deleteItem = async (id) => {
+    await api.delete(`/item/${id}`)
+   }
+
     const getMeeting = async () =>{
         const idRetro = localStorage.getItem('IdRetrospectiva')
         const {data} = await api.get(`/retrospectiva/id-retro?idRetro=${idRetro}`)
         console.log('Esse console log é referente a retrospectiva')
         setRetrospectiva(data)
-        console.log(data)
+        
     }
     return (
         <div>
@@ -37,12 +43,19 @@ function Retrospectiva() {
                     retrospectiva.map(retro => (
                         <div>
                             <p>ID da retrospectiva: {retro.idRetrospectiva}</p>
+                            <p><strong>STATUS: </strong>{retro.statusRetrospectivaEntity}</p>
+                            {/* <button onClick={startRetro}>Iniciar</button> */}
                             <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
                             {
-                                retro.itemDeRetrospectivaDTO.map(item => (
+                                retro.itemDeRetrospectivaDTO.map((item ,index)=> (
                                     <div>
-                                        <hr />
-                                        <p><strong>Titulo do card:</strong>{item.titulo}</p>
+                                        <h2>Item Número: {index + 1}</h2>
+                                        
+                                        <p><strong>Titulo do Item:</strong>{item.titulo}</p>
+                                        <p><strong>ID do Item: {item.idItemRetrospectiva}</strong></p>
+                                        <p><strong>Tipo: </strong> {item.tipo}</p>
+                                        <p><strong>Descrição: </strong>{item.descricao}</p>
+                                       <button style={{backgroundColor:'red',color:'white'}}onClick={() => deleteItem(item.idItemRetrospectiva)}>Deletar</button>
                                         <hr />
                                     </div>
                                 ))
@@ -54,9 +67,7 @@ function Retrospectiva() {
               
             }
             <button onClick={goToCreateItems}>Create Items</button>
-            {/* <button onClick={getRetro}>Get it Baaaabe</button>
-            <button onClick={() => console.log(retrospectiva)}>List</button> */}
-            <button onClick={() => getMeeting()}>Meeting</button>
+            <button onClick={() => getRetro()}>Meeting</button>
         </div>
     )
 }
