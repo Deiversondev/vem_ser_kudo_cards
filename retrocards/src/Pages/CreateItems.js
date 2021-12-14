@@ -1,11 +1,11 @@
 import { useFormik} from 'formik'
 import api from "../api"
-import axios from 'axios'
+
 
 
 function CreateItems() {
     const idRetrospectiva = localStorage.getItem('IdRetrospectiva')
-    const cItems = async (id,values) => {
+    const crItems = async (id,values) => {
         const {data} = await api.post(`/item?id=${id}`,values)
         console.log(data)
     }
@@ -20,7 +20,7 @@ function CreateItems() {
         //    const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
             console.log(values)
             // console.log(data)
-            cItems(idRetrospectiva,values)
+            crItems(idRetrospectiva,values)
             formik.resetForm()
         }
     })

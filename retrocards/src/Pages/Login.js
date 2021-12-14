@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 
 function Login() {
     
-    const {auth, setAuth} = useContext(AuthContext)
+    const { setAuth} = useContext(AuthContext)
 
     const handleLogin = async (values) => {
         const {data} =  await api.post('/auth',values)
