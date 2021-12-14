@@ -14,7 +14,7 @@ function Retrospectiva() {
 
     const getRetro = async() => {
         const idRetro = localStorage.getItem('IdRetrospectiva')
-        const {data} = await api.get(`/retrospectiva/id-retro?idRetro=${idRetro}`)
+        const {data} = await api.get(`/retrospectiva/listar-por-id-retro?idRetro=${idRetro}`)
         console.log('Esse console log é referente a retrospectiva')
         console.log(data)
         // setListItems(data)
@@ -29,7 +29,7 @@ function Retrospectiva() {
 
     const getMeeting = async () =>{
         const idRetro = localStorage.getItem('IdRetrospectiva')
-        const {data} = await api.get(`/retrospectiva/id-retro?idRetro=${idRetro}`)
+        const {data} = await api.get(`/retrospectiva/listar-por-id-retro?idRetro=${idRetro}`)
         console.log('Esse console log é referente a retrospectiva')
         setRetrospectiva(data)
         
