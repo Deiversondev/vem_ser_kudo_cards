@@ -16,10 +16,14 @@ function Retrospectiva() {
         const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=20`)
         console.log(data)
         // setListItems(data)
+    } 
+    const goToCreateItems = () =>{
+        window.location.href = '/createitems'
     }
+
     const getMeeting = async () =>{
         const idRetro = localStorage.getItem('IdRetrospectiva')
-        const {data} = await api.get(`/retrospectiva/{idRetrospectiva}?idTitulo=${idRetro}`)
+        const {data} = await api.get(`/retrospectiva/id-retro?idRetro=${idRetro}`)
         console.log('Esse console log é referente a retrospectiva')
         setRetrospectiva(data)
         console.log(data)
@@ -28,14 +32,28 @@ function Retrospectiva() {
         <div>
             <h1>Retrospectiva</h1>
             {
-                
-                    <div>
-                       <span>ID número: {retrospectiva.idRetrospectiva}</span>
-                        <h3>Título da retrospectiva: {retrospectiva.tituloRetrospectiva}</h3>
-                        <h5>Data da reunião: {retrospectiva.dataReuniao}</h5>
-                    </div>
+
+                retrospectiva && (
+                    retrospectiva.map(retro => (
+                        <div>
+                            <p>ID da retrospectiva: {retro.idRetrospectiva}</p>
+                            <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
+                            {
+                                retro.itemDeRetrospectivaDTO.map(item => (
+                                    <div>
+                                        <hr />
+                                        <p><strong>Titulo do card:</strong>{item.titulo}</p>
+                                        <hr />
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    ))
+                )
+                    
               
             }
+            <button onClick={goToCreateItems}>Create Items</button>
             {/* <button onClick={getRetro}>Get it Baaaabe</button>
             <button onClick={() => console.log(retrospectiva)}>List</button> */}
             <button onClick={() => getMeeting()}>Meeting</button>

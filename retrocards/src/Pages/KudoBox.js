@@ -12,7 +12,7 @@ function KudoBox (){
     const idSprint = localStorage.getItem('idSprint')
 
     const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
-    setListKudoCards(data)
+    // setListKudoCards(data)
     console.log(data)
   }
   

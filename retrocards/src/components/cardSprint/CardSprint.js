@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
-import api from "../../api";
+
 
 function CardSprint (){
   const{listSprints} = useContext(ListContext)
