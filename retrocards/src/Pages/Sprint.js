@@ -35,6 +35,7 @@ function Sprint (){
 
     const {data} = await api.get(`/retrospectiva/listar-por-id-sprint?idSprint=${idSprint}`)
     
+  
     setListRetrospectivas(data)
     console.log(data)
   }
