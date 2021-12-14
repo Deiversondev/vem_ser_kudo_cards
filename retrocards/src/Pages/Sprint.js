@@ -33,7 +33,8 @@ function Sprint (){
 
     const idSprint = localStorage.getItem('idSprint')
 
-    const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=${idSprint}`)
+    const {data} = await api.get(`/retrospectiva/listar-por-id-sprint?idSprint=${idSprint}`)
+    
     setListRetrospectivas(data)
     console.log(data)
   }
