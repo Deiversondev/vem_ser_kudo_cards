@@ -9,7 +9,7 @@ function CardKudoBox (){
   
   const goToKudoBox = (idKudoBox)=> {
     localStorage.setItem('idKudoBox', idKudoBox)
-    // window.location.href('/')
+    window.location.href='/kudobox'
   }
 
   return (

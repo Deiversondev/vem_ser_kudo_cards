@@ -11,7 +11,7 @@ function CardRetrospectiva (){
         {listRetrospectivas.map(retrospectiva => (
           <li>
           {retrospectiva.idRetrospectiva}
-          {retrospectiva.idTitulo}
+          {retrospectiva.tituloRetrospectiva}
           {retrospectiva.dataReuniao}
           {retrospectiva.tipoStatus}
           {/*Faltam os Itens da retrospectiva na API*/}
