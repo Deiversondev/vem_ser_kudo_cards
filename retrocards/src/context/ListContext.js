@@ -8,6 +8,7 @@ function ListProvider ({children}) {
   const[listSprints, setListSprints] = useState([])
   const[listRetrospectivas, setListRetrospectivas] = useState([]) 
   const [listItems,setListItems] = useState([])
+  const [retrospectiva,setRetrospectiva] = useState([])
   const[listKudoBoxes, setListKudoBoxes] = useState([]) 
 
   return(
@@ -19,7 +20,9 @@ function ListProvider ({children}) {
       listKudoBoxes, 
       setListKudoBoxes,
       listItems,
-      setListItems
+      setListItems,
+      retrospectiva,
+      setRetrospectiva
     }}>
 
       {children}

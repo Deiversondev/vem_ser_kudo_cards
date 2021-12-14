@@ -5,10 +5,14 @@ import { ListContext } from "../../context/ListContext"
 
 function CardRetrospectiva (){
   const{listRetrospectivas} = useContext(ListContext)
+  const{setRetrospectiva} = useContext(ListContext)
+
   const getIdRetrospectiva = (id) => {
     localStorage.setItem('IdRetrospectiva',id)
-    window.location.href = '/createitems'
+    window.location.href = '/retrospectiva'
 }
+
+
   return (
     <div>
       <ul>

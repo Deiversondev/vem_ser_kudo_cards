@@ -1,38 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import api from '../api'
 import { useContext } from "react";
 import { ListContext } from "../context/ListContext"
 
 function Retrospectiva() {
 
-    const{listItems,setListItems} = useContext(ListContext)
+    const{retrospectiva,setRetrospectiva} = useContext(ListContext)
+
+    useEffect(() =>{
+        getMeeting()
+    },[])
 
 
     const getRetro = async() => {
         const {data} = await api.get(`/retrospectiva/id-sprint?idSprint=20`)
         console.log(data)
-        setListItems(data)
+        // setListItems(data)
     }
     const getMeeting = async () =>{
-        const {data} = await api.get(`/retrospectiva/{idRetrospectiva}?idTitulo=62`)
+        const idRetro = localStorage.getItem('IdRetrospectiva')
+        const {data} = await api.get(`/retrospectiva/{idRetrospectiva}?idTitulo=${idRetro}`)
         console.log('Esse console log é referente a retrospectiva')
+        setRetrospectiva(data)
         console.log(data)
     }
     return (
         <div>
+            <h1>Retrospectiva</h1>
             {
-                listItems && listItems.map(item =>(
+                
                     <div>
-                       <span>ID número: {item.idRetrospectiva}</span>
-                        <h3>Título da retrospectiva: {item.tituloRetrospectiva}</h3>
-                        <h5>Data da reunião: {item.dataReuniao}</h5>
-                       
-                      
+                       <span>ID número: {retrospectiva.idRetrospectiva}</span>
+                        <h3>Título da retrospectiva: {retrospectiva.tituloRetrospectiva}</h3>
+                        <h5>Data da reunião: {retrospectiva.dataReuniao}</h5>
                     </div>
-                ))
+              
             }
-            <button onClick={getRetro}>Get it Baaaabe</button>
-            <button onClick={() => console.log(listItems)}>List</button>
+            {/* <button onClick={getRetro}>Get it Baaaabe</button>
+            <button onClick={() => console.log(retrospectiva)}>List</button> */}
             <button onClick={() => getMeeting()}>Meeting</button>
         </div>
     )
