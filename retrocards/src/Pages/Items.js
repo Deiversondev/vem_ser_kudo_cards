@@ -3,7 +3,7 @@ import api from '../api'
 import { useContext } from "react";
 import { ListContext } from "../context/ListContext"
 
-function Items() {
+function Retrospectiva() {
 
     const{listItems,setListItems} = useContext(ListContext)
 
@@ -38,4 +38,4 @@ function Items() {
     )
 }
 
-export default Items
+export default Retrospectiva
