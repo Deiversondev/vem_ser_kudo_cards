@@ -10,6 +10,8 @@ function ListProvider ({children}) {
   const [listItems,setListItems] = useState([])
   const [retrospectiva,setRetrospectiva] = useState([])
   const[listKudoBoxes, setListKudoBoxes] = useState([]) 
+  const[listKudoCards, setListKudoCards] = useState([]) 
+  const[detalheKudoCard, setDetalheKudoCard] = useState([]) 
 
   return(
     <ListContext.Provider value={{
@@ -22,7 +24,11 @@ function ListProvider ({children}) {
       listItems,
       setListItems,
       retrospectiva,
-      setRetrospectiva
+      setRetrospectiva,
+      listKudoCards, 
+      setListKudoCards,
+      detalheKudoCard, 
+      setDetalheKudoCard
     }}>
 
       {children}
