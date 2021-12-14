@@ -7,13 +7,16 @@ const ListContext = createContext({});
 function ListProvider ({children}) {
   const[listSprints, setListSprints] = useState([])
   const[listRetrospectivas, setListRetrospectivas] = useState([]) 
+  const [listItems,setListItems] = useState([])
 
   return(
     <ListContext.Provider value={{
       listSprints, 
       setListSprints, 
       listRetrospectivas, 
-      setListRetrospectivas
+      setListRetrospectivas,
+      listItems,
+      setListItems
     }}>
 
       {children}

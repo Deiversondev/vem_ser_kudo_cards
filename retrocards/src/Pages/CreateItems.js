@@ -1,8 +1,16 @@
 import { useFormik} from 'formik'
+import api from "../api"
 import axios from 'axios'
 
 
 function CreateItems() {
+    const idRetrospectiva = localStorage.getItem('IdRetrospectiva')
+    const cItems = async (id,values) => {
+        const {data} = await api.post(`/item?id=${id}`,values)
+        console.log(data)
+    }
+
+
     const formik = useFormik({
         initialValues:{
             tipo:'',
@@ -12,7 +20,7 @@ function CreateItems() {
         //    const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
             console.log(values)
             // console.log(data)
-
+            cItems(idRetrospectiva,values)
             formik.resetForm()
         }
     })
@@ -39,8 +47,8 @@ function CreateItems() {
                 </div>
 
                 <div>
-                    <label htmlFor="tituloItem">Título</label>
-                    <input type="text" name="tituloItem" id="tituloItem" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloItem} />
+                    <label htmlFor="titulo">Título</label>
+                    <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
                 </div>
 
                 <div >
