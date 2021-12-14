@@ -31,7 +31,7 @@ function AuthProvider ({children}) {
    return(<h1>Loading...</h1>)
   }
   return(
-    <AuthContext.Provider value={{auth, setAuth, handleLogout, idSprint,setIdSprint,restrospectivas,setRetrospectivas}}>
+    <AuthContext.Provider value={{auth, setAuth, handleLogout, idSprint,setIdSprint}}>
       {children}
     </AuthContext.Provider>
   );

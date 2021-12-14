@@ -29,7 +29,6 @@ function Routers (){
     <Route path='/createkudocards' element={<CreateKudoCards/>}/>
     <Route path='/createkudobox' element={<CreateKudoBox/>}/>
     <Route path='/createitems' element={<CreateItems/>}/>
-    <Route path='/sprintList' element={<SprintsPage/>}/>
     </Routes>
   </BrowserRouter>    
 
