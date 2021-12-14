@@ -5,12 +5,8 @@ import { ListContext } from "../../context/ListContext"
 
 function CardKudoBox (){
 
-  const{listKudoBoxes, setListKudoBoxes} = useContext(ListContext)
-
-  // const setSprintId = (id) => {
-  //   localStorage.setItem('idSprint',id)
-  //   window.location.href = '/sprint'
-  // } 
+  const{listKudoBoxes} = useContext(ListContext)
+  
 
   return (
     <div>
