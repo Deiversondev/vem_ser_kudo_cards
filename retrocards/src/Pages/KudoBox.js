@@ -1,7 +1,19 @@
 import api from "../api"
+import { useEffect, useContext } from "react"
+import { ListContext } from "../context/ListContext"
+import CardKudoCard from "../components/cardKudoCard/CardKudoCard"
+
 
 
 function KudoBox (){
+
+  const{setListKudoCards} = useContext(ListContext)
+
+  useEffect (()=>{
+
+    getKudoCards()
+
+  },[])
 
   const goToCreateKudoCard = ()=>{
     
@@ -9,9 +21,9 @@ function KudoBox (){
   }
   const getKudoCards= async() =>{
 
-    const idSprint = localStorage.getItem('idSprint')
+    const idKudoBox = localStorage.getItem('idKudoBox')
 
-    const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
+    const {data} = await api.get(`/kudocard/list-por-box?id=${idKudoBox}`)
     setListKudoCards(data)
     console.log(data)
   }
@@ -20,10 +32,7 @@ function KudoBox (){
     <div>
       <h1>Página KudoBox</h1>
       <button onClick={()=> goToCreateKudoCard()}>Criar novo Kudo Card </button>
-      <p>Kudo card</p>
-      <p>Kudo card</p>
-      <p>Kudo card</p>
-      <p>Kudo card</p>
+      <CardKudoCard/>
     </div>
   )
 }
