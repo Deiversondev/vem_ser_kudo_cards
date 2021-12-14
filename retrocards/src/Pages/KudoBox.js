@@ -1,8 +1,19 @@
+import api from "../api"
+
+
 function KudoBox (){
 
   const goToCreateKudoCard = ()=>{
     
     window.location.href = '/createkudocards'
+  }
+  const getKudoCards= async() =>{
+
+    const idSprint = localStorage.getItem('idSprint')
+
+    const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
+    setListKudoCards(data)
+    console.log(data)
   }
   
   return(
