@@ -1,44 +1,55 @@
 import { useFormik} from 'formik'
-import axios from 'axios'
+import { useEffect } from 'react'
+import api from '../api'
+
 
 
 function CreateKudoBox() {
 
-  const formik = useFormik({
-      initialValues:{
-          titulo:'',
-          dataLeitura:''
-      }, onSubmit:async (values) =>{
-          //const {data} =  await axios.post('https://my-application-teste.herokuapp.com/auth',values)
-          console.log(values)
-          // console.log(data)
+  const idSprint = localStorage.getItem('idSprint') 
 
-          formik.resetForm()
-      }
+  const createKudobox = async (values) => {
+   
+    const {data} =  await api.post(`/kudobox?id=${idSprint}`,values)
+    console.log(data)
+  }
+
+  const formik = useFormik({
+    initialValues:{
+      titulo:'',
+      dataLeitura:'',
+      statusKudoBoxEntity:'EM_ANDAMENTO'
+
+    }, onSubmit:async (values) =>{
+      console.log(values)
+      await createKudobox(values)
+
+      formik.resetForm()
+    }
   })
 
   return (
-      <div>
-        <h1>Criar Nova Kudo Box</h1>
-        
-          <form onSubmit={formik.handleSubmit}>
-              
-              <div>
-                  <label htmlFor="tituloKudoBox">Título</label>
-                  <input type="text" name="tituloKudoBox" id="tituloKudoBox" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloKudoBox} />
-              </div>
+    <div>
+      <h1>Criar Nova Kudo Box</h1>
+      
+      <form onSubmit={formik.handleSubmit}>
+          
+        <div>
+          <label htmlFor="titulo">Título</label>
+          <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
+        </div>
 
-              <div >
-                  <label htmlFor="dataLeitura">Data da Leitura:</label>
-                  <input type="date" name="dataLeitura" id="dataLeitura" placeholder="Digite uma Data" onChange={formik.handleChange} value={formik.values.dataLeitura} />
-              </div>
+        <div >
+          <label htmlFor="dataLeitura">Data da Leitura:</label>
+          <input type="date" name="dataLeitura" id="dataLeitura" placeholder="Digite uma Data" onChange={formik.handleChange} value={formik.values.dataLeitura} />
+        </div>
 
-              <div>
-                  <button type="submit">Salvar</button>
-              </div>
+        <div>
+          <button type="submit">Salvar</button>
+        </div>
 
-          </form>
-      </div>
+      </form>
+    </div>
   )
 }
 

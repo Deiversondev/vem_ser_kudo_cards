@@ -14,11 +14,12 @@ function CreateRetrospectiva() {
 
     const formik = useFormik({
       initialValues:{
-          tituloRetrospectiva:'',
-          dataReuniao:'',
+        tituloRetrospectiva:'',
+        dataReuniao:'',
       }, onSubmit:async (values) =>{
-         addRetrospectiva(values)
-          console.log(values)
+
+        addRetrospectiva(values)
+        console.log(values)
           
 
           formik.resetForm()

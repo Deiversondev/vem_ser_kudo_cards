@@ -20,7 +20,7 @@ function CardSprint (){
               {sprint.idSprint}
               {sprint.titulo}
               {sprint.dataConclusao}
-              <button onClick={() => setSprintId(sprint.idSprint)}>Go to String</button>
+              <button onClick={() => setSprintId(sprint.idSprint)}>Go to Sprint</button>
             </li>
           </div>
         ))}

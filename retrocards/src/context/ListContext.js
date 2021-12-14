@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-import api from "../api";
+import React, { createContext, useState } from "react";
+
 
 
 const ListContext = createContext({});
@@ -8,6 +8,7 @@ function ListProvider ({children}) {
   const[listSprints, setListSprints] = useState([])
   const[listRetrospectivas, setListRetrospectivas] = useState([]) 
   const [listItems,setListItems] = useState([])
+  const[listKudoBoxes, setListKudoBoxes] = useState([]) 
 
   return(
     <ListContext.Provider value={{
@@ -15,8 +16,8 @@ function ListProvider ({children}) {
       setListSprints, 
       listRetrospectivas, 
       setListRetrospectivas,
-      listItems,
-      setListItems
+      listKudoBoxes, 
+      setListKudoBoxes,
     }}>
 
       {children}

@@ -15,6 +15,7 @@ import Login from './Pages/Login';
 import InitialPage from './Pages/InitialPage';
 import Sprint from './Pages/Sprint';
 import Items from './Pages/Items';
+import KudoBox from './Pages/KudoBox';
 
 
 function Routers (){
@@ -26,6 +27,7 @@ function Routers (){
     <Route path='/initialpage' element={<InitialPage/>}/>
     <Route path='/createsprint' element={<CreateSprint/>}/>
     <Route path='/sprint' element={<Sprint/>}/>
+    <Route path='/kudobox' element={<KudoBox/>}/>
     <Route path='/createretrospectiva' element={<CreateRetrospectiva/>}/>
     <Route path='/createkudocards' element={<CreateKudoCards/>}/>
     <Route path='/createkudobox' element={<CreateKudoBox/>}/>

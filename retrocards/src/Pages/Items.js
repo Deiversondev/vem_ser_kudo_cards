@@ -23,12 +23,11 @@ function Items() {
             {
                 listItems && listItems.map(item =>(
                     <div>
-                        <p>{item.dataReuniao}</p>
-                       {
-                           item.itemDeRetrospectivaDTO.map(it => (
-                            <p>{it.tipo}</p>
-                           ))
-                       }
+                       <span>ID número: {item.idRetrospectiva}</span>
+                        <h3>Título da retrospectiva: {item.tituloRetrospectiva}</h3>
+                        <h5>Data da reunião: {item.dataReuniao}</h5>
+                       
+                      
                     </div>
                 ))
             }
