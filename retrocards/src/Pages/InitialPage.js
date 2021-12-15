@@ -5,7 +5,7 @@ import CardSprint from "../components/cardSprint/CardSprint"
 
 function InitialPage (){
 
-  const{setListSprints} = useContext(ListContext)
+  const{listSprints, setListSprints} = useContext(ListContext)
   
   useEffect(()=>{
     getSprint()
@@ -24,7 +24,9 @@ function InitialPage (){
     <div>
       <h1>Página Inicial</h1>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
-      <CardSprint/>
+      {listSprints.length !== 0 && <CardSprint/>}
+      {listSprints.length === 0 && <p>Não existem Sprints cadastradas</p>}
+      
     </div>
   )
 }
