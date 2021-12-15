@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import api from '../api'
 import { useContext } from "react";
 import { ListContext } from "../context/ListContext"
+import ItemCard from '../components/cardItemRetrospectiva/ItemCard';
 
 function Retrospectiva() {
 
@@ -42,26 +43,13 @@ function Retrospectiva() {
       {
 
         retrospectiva && (
-          retrospectiva.map(retro => (
-            <div>
+          retrospectiva.map((retro,index) => (
+            <div key={index}>
               <p>ID da retrospectiva: {retro.idRetrospectiva}</p>
               <p><strong>STATUS: </strong>{retro.statusRetrospectivaEntity}</p>
               {/* <button onClick={startRetro}>Iniciar</button> */}
               <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
-              {
-                retro.itemDeRetrospectivaDTO.map((item ,index)=> (
-                  <div>
-                    <h2>Item Número: {index + 1}</h2>
-                    
-                    <p><strong>Titulo do Item:</strong>{item.titulo}</p>
-                    <p><strong>ID do Item: {item.idItemRetrospectiva}</strong></p>
-                    <p><strong>Tipo: </strong> {item.tipo}</p>
-                    <p><strong>Descrição: </strong>{item.descricao}</p>
-                    <button style={{backgroundColor:'red',color:'white'}}onClick={() => deleteItem(item.idItemRetrospectiva)}>Deletar</button>
-                    <hr />
-                  </div>
-                ))
-              }
+              <ItemCard/>
             </div>
           ))
         )

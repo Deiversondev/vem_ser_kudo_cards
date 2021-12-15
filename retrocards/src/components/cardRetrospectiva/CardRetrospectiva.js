@@ -46,8 +46,8 @@ const finishRetro = async (id) => {
   return (
     <div>
       <ul>
-        {listRetrospectivas.map(retrospectiva => (
-          <li>
+        {listRetrospectivas.map((retrospectiva,index) => (
+          <li key={index}>
           {retrospectiva.idRetrospectiva}
           {retrospectiva.tituloRetrospectiva}
           {retrospectiva.dataReuniao}
