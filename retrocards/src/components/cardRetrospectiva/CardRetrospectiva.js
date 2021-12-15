@@ -36,12 +36,9 @@ const finishRetro = async (id) => {
 
   const {data} = api.put(`/retrospectiva/${id}/status?status=ENCERRADA`)
   console.log(data)
+  window.location.href ='/emails'
  
 }
-
-
-
-
 
   return (
     <div>
