@@ -6,7 +6,9 @@ import api from "../api"
 function KudoCard (){
 
   useEffect (()=>{
+
     getKudoCard()
+
   },[])
 
   const{detalheKudoCard, setDetalheKudoCard} = useContext(ListContext)
@@ -25,13 +27,15 @@ function KudoCard (){
       <h1>Página KudoCard</h1>
       <ul>
         {detalheKudoCard.map(card => (
-          <li>
-          {card.titulo}
-          {card.dataCriacao}
-          {card.de}
-          {card.para}
-          {card.descricao}
-        </li>
+          <div key={card.idKudoCard}>
+            <li>
+            {card.titulo}
+            {card.dataCriacao}
+            {card.de}
+            {card.para}
+            {card.descricao}
+            </li>
+          </div>
         ))}
       </ul>
     </div>
