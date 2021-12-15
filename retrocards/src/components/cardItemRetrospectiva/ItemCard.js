@@ -39,7 +39,7 @@ function ItemCard() {
 
     return (
         <div>
-          <h1>Retrospectiva</h1>
+          {/* <h1>Retrospectiva</h1> */}
           {
     
             retrospectiva && (
