@@ -1,40 +1,31 @@
-import { useFormik } from "formik"; 
+import {  useState } from "react";
+
 
 function Emails (){
-  const formik = useFormik({
+  
+  const[email, setEmail]= useState('')
+  const[lista, setLista]= useState([])
 
-    initialValues:{
-      emails:'',
-      
-    }, onSubmit:async (values) =>{
-      
-      // await funcao(values)
 
-      formik.resetForm()
-    }
-  })
+  function cadastrarEmail(){
+
+    setLista([...lista, (email)])
+    
+  }
+
+  console.log(lista);
 
   return(
-    <div>
-
-      <h1>Página Emails</h1>
     
-      <h1>Adicionar E-mails</h1>
-      
-      <form onSubmit={formik.handleSubmit}>
-          
+    <div >
+      <h1>Página emails</h1>
+      <form>
         <div>
-          <label htmlFor="emails">Para</label>
-          <input type="text" name="emails" id="emails" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.emails} />
+          <input type="e-mail" onChange={e => setEmail(e.target.value)}/>
         </div>
-
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
-
+        <button type="button" onClick={()=> cadastrarEmail()} >Add</button>
       </form>
-      
     </div>
-  )
+  );
 }
 export default Emails;
