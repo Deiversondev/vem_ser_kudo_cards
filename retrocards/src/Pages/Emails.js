@@ -1,4 +1,5 @@
 import {  useState } from "react";
+import api from "../api";
 
 
 function Emails (){
@@ -7,13 +8,20 @@ function Emails (){
   const[lista, setLista]= useState([])
 
 
-  function cadastrarEmail(){
+  const cadastrarEmail =() => {
 
     setLista([...lista, (email)])
     
   }
 
+  const enviarEmail = async() => {
+   const {data} =  await api.post('/email', lista)
+    console.log('função enviar e-mail chamada')
+    console.log(data)
+    
+  }
   console.log(lista);
+  
 
   return(
     
@@ -21,9 +29,13 @@ function Emails (){
       <h1>Página emails</h1>
       <form>
         <div>
-          <input type="e-mail" onChange={e => setEmail(e.target.value)}/>
+          <input type="email" onChange={e => setEmail(e.target.value)}/>
+        </div>
+        <div>
+          <small>Você pode adicionar múltiplos e-mails usando vírgula(',')</small>
         </div>
         <button type="button" onClick={()=> cadastrarEmail()} >Add</button>
+        <button type="submit" onClick={()=> enviarEmail()} >Enviar</button>
       </form>
     </div>
   );
