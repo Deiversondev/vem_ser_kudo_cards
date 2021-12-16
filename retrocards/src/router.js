@@ -16,7 +16,8 @@ import InitialPage from './Pages/InitialPage';
 import Sprint from './Pages/Sprint';
 import Retrospectiva from './Pages/Retrospectiva';
 import KudoBox from './Pages/KudoBox';
-import KudoCard from './Pages/KudoCard'
+import KudoCard from './Pages/KudoCard';
+import Emails from './Pages/Emails';
 
 
 function Routers (){
@@ -35,6 +36,7 @@ function Routers (){
     <Route path='/createkudobox' element={<CreateKudoBox/>}/>
     <Route path='/createitems' element={<CreateItems/>}/>
     <Route path='/retrospectiva' element={<Retrospectiva/>}/>
+    <Route path='/emails' element={<Emails/>}/>
     </Routes>
   </BrowserRouter>    
 

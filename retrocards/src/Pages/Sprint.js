@@ -6,8 +6,14 @@ import CardKudoBox from "../components/cardKudoBox/CardKudoBox";
 
 function Sprint (){
 
-  const{setListRetrospectivas} = useContext(ListContext)
-  const{setListKudoBoxes} = useContext(ListContext)
+  const
+  {
+    listRetrospectivas, 
+    setListRetrospectivas, 
+    listKudoBoxes, 
+    setListKudoBoxes
+  } = useContext(ListContext)
+  
 
   useEffect(()=>{
 
@@ -16,9 +22,6 @@ function Sprint (){
 
   },[])
 
- 
-
-  
   const goToCreateKudoBox = () => {
 
     window.location.href = '/createkudobox'
@@ -34,10 +37,8 @@ function Sprint (){
     const idSprint = localStorage.getItem('idSprint')
 
     const {data} = await api.get(`/retrospectiva/listar-por-id-sprint?idSprint=${idSprint}`)
-    
-  
     setListRetrospectivas(data)
-    console.log(data)
+    
   }
 
   const getKudoBox= async() =>{
@@ -46,16 +47,21 @@ function Sprint (){
 
     const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
     setListKudoBoxes(data)
-    console.log(data)
+  
   }
   
   return(
     <div>
       <h1>Página Sprint</h1>
+
       <button type="button" onClick={()=> goToCreateRetrospectiva()} >Criar nova Retrospectiva</button>
       <button type="button" onClick={()=> goToCreateKudoBox()} >Criar nova Kudo Box</button>
-      <CardRetrospectiva/>
-      <CardKudoBox/>
+      
+      {listRetrospectivas.length !== 0 && <CardRetrospectiva/>}
+      {listRetrospectivas.length === 0 && <p>Não existem Retrospectivas cadastradas</p>}
+      {listKudoBoxes.length !== 0 && <CardKudoBox/>}
+      {listKudoBoxes.length === 0 && <p>Não existem Kudo Boxes cadastradas</p>}
+    
     </div>
     
   )

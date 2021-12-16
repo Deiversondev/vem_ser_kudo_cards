@@ -15,8 +15,8 @@ function CardSprint (){
     <div>
       <ul>
         {listSprints.map(sprint =>(
-          <div>
-            <li key= {sprint.idSprint}>
+          <div key= {sprint.idSprint}>
+            <li>
               {sprint.idSprint}
               {sprint.titulo}
               {sprint.dataConclusao}

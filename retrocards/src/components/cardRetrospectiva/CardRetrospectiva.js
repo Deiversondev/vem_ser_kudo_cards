@@ -36,18 +36,15 @@ const finishRetro = async (id) => {
 
   const {data} = api.put(`/retrospectiva/${id}/status?status=ENCERRADA`)
   console.log(data)
+  window.location.href ='/emails'
  
 }
-
-
-
-
 
   return (
     <div>
       <ul>
-        {listRetrospectivas.map(retrospectiva => (
-          <li>
+        {listRetrospectivas.map((retrospectiva,index) => (
+          <li key={index}>
           {retrospectiva.idRetrospectiva}
           {retrospectiva.tituloRetrospectiva}
           {retrospectiva.dataReuniao}
