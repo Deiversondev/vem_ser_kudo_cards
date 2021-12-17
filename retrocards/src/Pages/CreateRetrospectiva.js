@@ -1,29 +1,34 @@
 import { useFormik} from 'formik';
 import api from '../api';
-
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
+import Loading from '../components/loading/Loading'
 
 
 function CreateRetrospectiva() {
 
-    const addRetrospectiva = async (values) =>{
-        const id = localStorage.getItem('idSprint')
-        const {data} = await api.post(`/retrospectiva?id=${id}`,values)
-        console.log(data)
-    
-      }
+  const{loading, setLoading}= useContext(AuthContext)
 
-    const formik = useFormik({
-      initialValues:{
-        tituloRetrospectiva:'',
-        dataReuniao:'',
-      }, onSubmit:async (values) =>{
+  const addRetrospectiva = async (values) =>{
 
-        addRetrospectiva(values)
-        console.log(values)
-          
+      const id = localStorage.getItem('idSprint')
+      setLoading(true)
+      const {data} = await api.post(`/retrospectiva?id=${id}`,values)
+      setLoading(false)
+    }
 
-          formik.resetForm()
-      }
+  const formik = useFormik({
+    initialValues:{
+      tituloRetrospectiva:'',
+      dataReuniao:'',
+    }, onSubmit:async (values) =>{
+
+      addRetrospectiva(values)
+      console.log(values)
+        
+
+        formik.resetForm()
+    }
   })
 
 
@@ -31,7 +36,10 @@ function CreateRetrospectiva() {
 
   return (
       <div>
-        <h1>Criar Nova Retrospectiva</h1>
+        {loading && <Loading/>}
+        {!loading && 
+        <div>
+          <h1>Criar Nova Retrospectiva</h1>
         
           <form onSubmit={formik.handleSubmit}>
               
@@ -50,6 +58,8 @@ function CreateRetrospectiva() {
               </div>
 
           </form>
+        </div>
+        }
       </div>
   )
 }

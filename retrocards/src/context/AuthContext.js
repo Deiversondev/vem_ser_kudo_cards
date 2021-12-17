@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import api from "../api";
-import Loading from "../components/loading/Loading";
+
 
 
 const AuthContext = createContext({});
@@ -30,7 +30,7 @@ function AuthProvider ({children}) {
   } 
   
   return(
-    <AuthContext.Provider value={{auth, setAuth, handleLogout, idSprint,setIdSprint}}>
+    <AuthContext.Provider value={{auth, setAuth, loading, setLoading, handleLogout, idSprint,setIdSprint}}>
       {children}
     </AuthContext.Provider>
   );

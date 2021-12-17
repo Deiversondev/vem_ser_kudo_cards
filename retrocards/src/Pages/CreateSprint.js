@@ -1,17 +1,19 @@
 import { useFormik} from 'formik'
 import api from '../api'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
+import Loading from '../components/loading/Loading'
 
 function CreateSprint() {
 
+    const{loading, setLoading}= useContext(AuthContext)
+
     const createSprint = async (values) => {
+        setLoading(true)
         const {data} =  await api.post('/sprint',values)
-        console.log(data)
+        setLoading(false)
     }
-    const getSprint =async () =>{
-        const {data} =  await api.get('/sprint/listar-sprint')
-        console.log(data)
-        console.log('test')
-    }
+    
     
     const formik = useFormik({
         initialValues:{
@@ -19,18 +21,20 @@ function CreateSprint() {
             dataInicio:'',
             dataConclusao:'',
         }, onSubmit:async (values) =>{
-            console.log(values)
+
             await createSprint(values)
             
             formik.resetForm()
         }
     })
 
+    
     return (
         
         <div>
-
-
+            {loading && <Loading/>}
+            {!loading && 
+            <div>
             <h1>Criar sprint</h1>
 
             <form onSubmit={formik.handleSubmit}>
@@ -56,7 +60,8 @@ function CreateSprint() {
                 </div>
 
             </form>
-            <button onClick={getSprint} type="submit">Get</button>
+            </div>
+            }
         </div>
     )
 }
