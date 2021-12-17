@@ -1,8 +1,8 @@
 import { useFormik} from 'formik'
-import api from "../api"
+import api from "../../api"
 import { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import Loading from '../components/loading/Loading'
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
 
 
 function CreateItems() {

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import api from '../api'
+import api from '../../api'
 import { useContext } from "react";
-import { ListContext } from "../context/ListContext"
-import ItemCard from '../components/cardItemRetrospectiva/ItemCard';
-import Loading from '../components/loading/Loading'
-import { AuthContext } from '../context/AuthContext';
+import { ListContext } from "../../context/ListContext"
+import ItemCard from '../../components/cardItemRetrospectiva/ItemCard'
+import Loading from '../../components/loading/Loading'
+import { AuthContext } from '../../context/AuthContext';
 
 function Retrospectiva() {
 

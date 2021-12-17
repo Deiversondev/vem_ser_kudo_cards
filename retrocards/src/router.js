@@ -7,20 +7,20 @@ import {
 } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from './context/AuthContext';
-import CreateSprint from './Pages/CreateSprint';
-import CreateRetrospectiva from './Pages/CreateRetrospectiva';
-import CreateKudoCards from './Pages/CreateKudoCards';
-import CreateKudoBox from './Pages/CreateKudoBox';
-import CreateItems from './Pages/CreateItems';
-import Login from './Pages/Login';
-import InitialPage from './Pages/InitialPage';
-import Sprint from './Pages/Sprint';
-import Retrospectiva from './Pages/Retrospectiva';
-import KudoBox from './Pages/KudoBox';
-import KudoCard from './Pages/KudoCard';
-import Emails from './Pages/Emails';
-import NotFound from './Pages/NotFound';
-import Loading from './components/loading/Loading'
+import CreateSprint from './Pages/sprint/CreateSprint';
+import CreateRetrospectiva from './Pages/retrospectiva/CreateRetrospectiva';
+import CreateKudoCards from './Pages/kudoCard/CreateKudoCards';
+import CreateKudoBox from './Pages/kudoBox/CreateKudoBox';
+import CreateItems from './Pages/Itens/CreateItems';
+import Login from './Pages/login/Login';
+import InitialPage from './Pages/initialPage/InitialPage';
+import Sprint from './Pages/sprint/Sprint';
+import Retrospectiva from './Pages/retrospectiva/Retrospectiva';
+import KudoBox from './Pages/kudoBox/KudoBox';
+import KudoCard from './Pages/kudoCard/KudoCard';
+import Emails from './Pages/email/Emails';
+import NotFound from './Pages/notFound/NotFound';
+
 
 
 function Routers (){

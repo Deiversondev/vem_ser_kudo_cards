@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react"
-import { ListContext } from "../context/ListContext"
-import api from "../api"
-import CardSprint from "../components/cardSprint/CardSprint"
-import { AuthContext } from '../context/AuthContext'
-import Loading from '../components/loading/Loading'
+import { ListContext } from "../../context/ListContext"
+import api from "../../api"
+import CardSprint from "../../components/cardSprint/CardSprint"
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
 
 function InitialPage (){
 

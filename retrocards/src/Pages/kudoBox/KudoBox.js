@@ -1,9 +1,9 @@
-import api from "../api"
+import api from "../../api"
 import { useEffect, useContext } from "react"
-import { ListContext } from "../context/ListContext"
-import CardKudoCard from "../components/cardKudoCard/CardKudoCard"
-import { AuthContext } from '../context/AuthContext'
-import Loading from '../components/loading/Loading'
+import { ListContext } from "../../context/ListContext"
+import CardKudoCard from "../../components/cardKudoCard/CardKudoCard"
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
 
 
 function KudoBox (){

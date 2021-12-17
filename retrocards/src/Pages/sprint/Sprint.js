@@ -1,10 +1,10 @@
 import { useEffect, useContext } from "react";
-import { ListContext } from "../context/ListContext";
-import api from "../api";
-import CardRetrospectiva from "../components/cardRetrospectiva/CardRetrospectiva";
-import CardKudoBox from "../components/cardKudoBox/CardKudoBox";
-import { AuthContext } from '../context/AuthContext'
-import Loading from '../components/loading/Loading'
+import { ListContext } from "../../context/ListContext";
+import api from "../../api";
+import CardRetrospectiva from "../../components/cardRetrospectiva/CardRetrospectiva";
+import CardKudoBox from "../../components/cardKudoBox/CardKudoBox";
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
 
 function Sprint (){
 
