@@ -20,6 +20,7 @@ import KudoBox from './Pages/KudoBox';
 import KudoCard from './Pages/KudoCard';
 import Emails from './Pages/Emails';
 import NotFound from './Pages/NotFound';
+import Loading from './components/loading/Loading'
 
 
 function Routers (){
@@ -33,9 +34,6 @@ function Routers (){
       setAuth(true)
     }
   
-    // if (auth.loading){
-    //   return <Loading/>
-    // }
   },[])
 
   return(
