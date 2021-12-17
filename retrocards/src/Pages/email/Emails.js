@@ -64,8 +64,9 @@ function Emails (){
         {
           lista && lista.map(em =>(
           <div>
-              <p>{em}   <button onClick={() => deleteEmail(em)}>Remove</button></p>
-          
+            
+            <p>{em}   <button onClick={() => deleteEmail(em)}>Remove</button></p>
+
           </div>
 
           ))
@@ -73,6 +74,7 @@ function Emails (){
         <form>
       
           <div>
+            <label htmlFor="inputEmail">Para:</label>
             <input type="text" onChange={e => setEmail(e.target.value)}/>
           </div>
           <div>
