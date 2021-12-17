@@ -14,10 +14,24 @@ function Emails (){
     
   }
 
+
   const enviarEmail = async() => {
-   const {data} =  await api.post('/email', lista)
+  
+    const report = {
+      assunto: "string",
+      dataEnvio: "2021-12-16",
+      emailDestinatario: lista.toString()
+    }
+   
+
+    console.log(lista, report)
+  try{
+    const {data} =  await api.post('/email', report)
+  } catch(e){
+    console.log(e)
+  }
     console.log('função enviar e-mail chamada')
-    console.log(data)
+   
     
   }
   console.log(lista);
