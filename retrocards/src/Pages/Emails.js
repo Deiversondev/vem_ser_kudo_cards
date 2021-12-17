@@ -1,27 +1,28 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import api from "../api";
 
 
 function Emails (){
   
-  const[email, setEmail]= useState('')
-  const[lista, setLista]= useState([])
-
-
-  const cadastrarEmail =() => {
-
-    setLista([...lista, (email)])
+  // useEffect(()=>{
     
-  }
+  //   aceitarMutiplosEmails()
+
+  // },[])
+  const[lista, setLista]= useState({assunto:'',dataEnvio:'2021-12-16', emailDestinatario:''})
+
+  // const aceitarMutiplosEmails = () => {
+  //   document.getElementById('emails').multiple = true;
+  // }
 
   const enviarEmail = async() => {
-   const {data} =  await api.post('/email', lista)
+    
     console.log('função enviar e-mail chamada')
-    console.log(data)
+    setLista({...lista, dataEnvio:'2021-12-16'})
+    console.log(lista)
+    await api.post('/email', lista)
     
   }
-  console.log(lista);
-  
 
   return(
     
@@ -29,13 +30,21 @@ function Emails (){
       <h1>Página emails</h1>
       <form>
         <div>
-          <input type="email" onChange={e => setEmail(e.target.value)}/>
+          <label htmlFor="assunto">Assunto:</label>
+          <input type="text" onChange={e => setLista({...lista, assunto:e.target.value})}/>
         </div>
+
+        <div>
+        <label htmlFor="destinatarios">Para:</label>
+          <input type="email" onChange={e => setLista({...lista, emailDestinatario:e.target.value})}/>
+        </div>
+
         <div>
           <small>Você pode adicionar múltiplos e-mails usando vírgula(',')</small>
         </div>
-        <button type="button" onClick={()=> cadastrarEmail()} >Add</button>
+
         <button type="submit" onClick={()=> enviarEmail()} >Enviar</button>
+
       </form>
     </div>
   );
