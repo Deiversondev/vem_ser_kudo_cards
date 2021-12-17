@@ -11,7 +11,7 @@ function Emails (){
 
 
   const enviarEmail = async() => {
-   const {data} =  await api.post('/email', lista)
+
 
     const report = {
       assunto: "string",
@@ -27,7 +27,6 @@ function Emails (){
     console.log(e)
   }
     console.log('função enviar e-mail chamada')
-    console.log(data)
 
 
   }
