@@ -1,0 +1,12 @@
+.loading{
+  display: flex;
+  align-self: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.loading img {
+  display: flex;
+  justify-content: center;
+}
