@@ -1,17 +1,21 @@
-import { useFormik} from 'formik'
-import api from '../api'
+import { useFormik} from 'formik';
+import api from '../../api';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import Loading from '../../components/loading/Loading';
 
 function CreateSprint() {
 
+    const{loading, setLoading}= useContext(AuthContext);
+
     const createSprint = async (values) => {
-        const {data} =  await api.post('/sprint',values)
-        console.log(data)
+        setLoading(true);
+        const {data} =  await api.post('/sprint',values);
+        setLoading(false);
+        alert('Nova sprint criada com sucesso!')
+        window.history.back()
     }
-    const getSprint =async () =>{
-        const {data} =  await api.get('/sprint/listar-sprint')
-        console.log(data)
-        console.log('test')
-    }
+    
     
     const formik = useFormik({
         initialValues:{
@@ -19,34 +23,36 @@ function CreateSprint() {
             dataInicio:'',
             dataConclusao:'',
         }, onSubmit:async (values) =>{
-            console.log(values)
-            await createSprint(values)
+
+            await createSprint(values);
             
-            formik.resetForm()
+            formik.resetForm();
         }
     })
 
+    
     return (
         
         <div>
-
-
+            {loading && <Loading/>}
+            {!loading && 
+            <div>
             <h1>Criar sprint</h1>
 
             <form onSubmit={formik.handleSubmit}>
                 
                 <div>
-                    <label htmlFor="titulo">Título</label>
+                    <label htmlFor="titulo">Título: </label>
                     <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
                 </div>
 
                 <div >
-                    <label htmlFor="dataInicio">De</label>
+                    <label htmlFor="dataInicio">Data de Início: </label>
                     <input type="date" name="dataInicio" id="dataInicio" placeholder="dataInicio" onChange={formik.handleChange} value={formik.values.dataInicio} />
                 </div>
 
                 <div >
-                    <label htmlFor="dataConclusao">Para</label>
+                    <label htmlFor="dataConclusao">Data de Conclusão: </label>
                     <input type="date" name="dataConclusao" id="dataConclusao" placeholder="dataConclusao" onChange={formik.handleChange} value={formik.values.dataConclusao} />
                 </div>
 
@@ -56,7 +62,8 @@ function CreateSprint() {
                 </div>
 
             </form>
-            <button onClick={getSprint} type="submit">Get</button>
+            </div>
+            }
         </div>
     )
 }

@@ -1,16 +1,23 @@
 import { useFormik} from 'formik'
-import api from '../api'
-
+import api from '../../api'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
 
 
 function CreateKudoBox() {
 
+  const{loading, setLoading}= useContext(AuthContext)
+
   const idSprint = localStorage.getItem('idSprint') 
 
   const createKudobox = async (values) => {
-   
+    
+    setLoading(true)
     const {data} =  await api.post(`/kudobox?id=${idSprint}`,values)
-    console.log(data)
+    setLoading(false)
+    alert('Nova kudo box criada com sucesso!')
+    window.history.back()
   }
 
   const formik = useFormik({
@@ -29,6 +36,10 @@ function CreateKudoBox() {
 
   return (
     <div>
+
+      {loading && <Loading/>}
+      {!loading && 
+      <div>
       <h1>Criar Nova Kudo Box</h1>
       
       <form onSubmit={formik.handleSubmit}>
@@ -48,6 +59,8 @@ function CreateKudoBox() {
         </div>
 
       </form>
+      </div>
+      }
     </div>
   )
 }

@@ -7,10 +7,16 @@ const Header = () =>{
   const goBack = () => {
     window.history.back()
   }
+  const localToken = localStorage.getItem('token')
+  
   return(
       <header>
-        <button type='button' onClick={()=> goBack()}>Voltar</button>
-        <button type='button' onClick={()=> handleLogout()}>Sair</button>
+        {localToken &&
+        <div>
+          <button type='button' onClick={()=> goBack()}>Voltar</button>
+          <button type='button' onClick={()=> handleLogout()}>Sair</button>
+        </div>
+        }
       </header>
   );
 }
