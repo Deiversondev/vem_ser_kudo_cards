@@ -15,6 +15,8 @@ function CreateRetrospectiva() {
       setLoading(true)
       const {data} = await api.post(`/retrospectiva?id=${id}`,values)
       setLoading(false)
+      alert('Nova retrospectiva criada com sucesso!')
+      window.history.back()
     }
 
   const formik = useFormik({
