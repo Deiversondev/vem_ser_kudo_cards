@@ -4,10 +4,12 @@ import api from "../../api"
 import CardSprint from "../../components/cardSprint/CardSprint"
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
+import CardKudoBoxEmAndamento from "../../components/cardKudoBox/CardKudoBoxEmAndamento "
 
 function InitialPage (){
 
   const{listSprints, setListSprints} = useContext(ListContext)
+  const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
   
   useEffect(()=>{
@@ -44,14 +46,13 @@ function InitialPage (){
       {!loading && 
       <div>
         <h1>Página Inicial</h1>
-        {/* {recentRetro.map(e => (
-          e.IdRetrospectiva)
-        )} */}
 
         <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
         <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
         {listSprints.length !== 0 && <CardSprint/>}
         {listSprints.length === 0 && <p>Não existem Sprints cadastradas</p>}
+        {listKudoBoxesEmAndamento.length !== 0 && <CardKudoBoxEmAndamento/>}
+        {listKudoBoxesEmAndamento.length === 0 && <p>Não existem Kudo Boxes em andamento</p>}
       </div>
       }
     </div>
