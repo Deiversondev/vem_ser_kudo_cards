@@ -19,7 +19,6 @@ import Retrospectiva from './Pages/retrospectiva/Retrospectiva';
 import KudoBox from './Pages/kudoBox/KudoBox';
 import KudoCard from './Pages/kudoCard/KudoCard';
 import Emails from './Pages/email/Emails';
-import NotFound from './Pages/notFound/NotFound';
 
 
 
