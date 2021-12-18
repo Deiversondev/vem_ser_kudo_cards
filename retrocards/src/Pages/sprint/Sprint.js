@@ -51,6 +51,7 @@ function Sprint (){
     const idSprint = localStorage.getItem('idSprint')
     setLoading(true)
     const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
+    console.log(data)
     setLoading(false)
     setListKudoBoxes(data)
   

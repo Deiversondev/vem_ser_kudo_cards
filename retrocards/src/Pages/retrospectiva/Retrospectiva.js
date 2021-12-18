@@ -40,6 +40,7 @@ function Retrospectiva() {
     const {data} = await api.get(`/retrospectiva/listar-por-id-retro?idRetro=${idRetro}`)
     console.log('Esse console log é referente a retrospectiva')
     setRetrospectiva(data)
+    console.log(data)
       
   }
   return (

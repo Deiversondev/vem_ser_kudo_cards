@@ -17,11 +17,14 @@ function Emails (){
 
   const cadastrarEmail =() => {
     setLista([...lista, (email)])
+    let input = document.querySelector('input')
+    input.value = '';
+    setEmail('')
     
   }
 
 
-  const deleteEmail = (ff, e) =>{
+  const deleteEmail = (ff) =>{
     // e.preventDefault();
      setLista(lista.filter((email) => email !== ff))
     
