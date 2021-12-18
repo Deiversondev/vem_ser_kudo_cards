@@ -13,7 +13,10 @@ function InitialPage (){
   const{loading, setLoading}= useContext(AuthContext)
   
   useEffect(()=>{
+
     getSprint()
+    getKudoBoxEmAndamento()
+
   },[])
 
   const getSprint =async () =>{
@@ -38,6 +41,13 @@ function InitialPage (){
   
     localStorage.setItem('IdRetrospectiva',recentRetro[0]) 
     window.location.href ='/retrospectiva'
+  }
+
+  const getKudoBoxEmAndamento = async()=> {
+    
+    const {data} = await api.get('/kudobox')
+    setListKudoBoxesEmAndamento(data)
+
   }
 
   return(

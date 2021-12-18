@@ -1,25 +1,11 @@
-import { useContext, useEffect } from "react";
-import api from "../../api";
-import { ListContext } from "../../context/ListContext"
+import { useContext } from "react";
+import { ListContext } from "../../context/ListContext";
 
 
 
 function CardKudoBoxEmAndamento (){
 
-  useEffect(()=>{
-    getKudoBoxEmAndamento()
-  },[])
-
-  const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
-  
-  const getKudoBoxEmAndamento = async()=> {
-    console.log('get box em andamento chamada')
-    const {data} = await api.get('/kudobox')
-    console.log(data)
-    setListKudoBoxesEmAndamento(data)
-    console.log(listKudoBoxesEmAndamento)
-
-  }
+  const{listKudoBoxesEmAndamento} = useContext(ListContext);
   
   return (
     <div>
