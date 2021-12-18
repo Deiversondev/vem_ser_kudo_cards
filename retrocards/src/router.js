@@ -51,13 +51,13 @@ function Routers (){
         <Route path='/createitems' element={<CreateItems/>}/>
         <Route path='/retrospectiva' element={<Retrospectiva/>}/>
         <Route path='/emails' element={<Emails/>}/>
-        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/*' element={<Login/>}/>
       </Routes>
       :
       <Routes>
-        <Route path='/' element={<login/>}/>
+        <Route path='/' element={<Login/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/*' element={<Login/>}/>
       </Routes>
       }
       

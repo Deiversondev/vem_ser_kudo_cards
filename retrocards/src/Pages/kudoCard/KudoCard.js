@@ -38,6 +38,7 @@ function KudoCard (){
           {detalheKudoCard.map(card => (
             <div key={card.idKudoCard}>
               <li>
+              {card.idKudoCard}
               {card.titulo}
               {card.dataCriacao}
               {card.de}
