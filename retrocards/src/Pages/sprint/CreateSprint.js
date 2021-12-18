@@ -1,17 +1,19 @@
-import { useFormik} from 'formik'
-import api from '../../api'
-import { useContext } from 'react'
-import { AuthContext } from '../../context/AuthContext'
-import Loading from '../../components/loading/Loading'
+import { useFormik} from 'formik';
+import api from '../../api';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import Loading from '../../components/loading/Loading';
 
 function CreateSprint() {
 
-    const{loading, setLoading}= useContext(AuthContext)
+    const{loading, setLoading}= useContext(AuthContext);
 
     const createSprint = async (values) => {
-        setLoading(true)
-        const {data} =  await api.post('/sprint',values)
-        setLoading(false)
+        setLoading(true);
+        const {data} =  await api.post('/sprint',values);
+        setLoading(false);
+        alert('Nova sprint criada com sucesso!')
+        window.history.back()
     }
     
     
@@ -22,9 +24,9 @@ function CreateSprint() {
             dataConclusao:'',
         }, onSubmit:async (values) =>{
 
-            await createSprint(values)
+            await createSprint(values);
             
-            formik.resetForm()
+            formik.resetForm();
         }
     })
 

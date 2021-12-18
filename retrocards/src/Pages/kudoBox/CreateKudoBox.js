@@ -16,6 +16,8 @@ function CreateKudoBox() {
     setLoading(true)
     const {data} =  await api.post(`/kudobox?id=${idSprint}`,values)
     setLoading(false)
+    alert('Nova kudo box criada com sucesso!')
+    window.history.back()
   }
 
   const formik = useFormik({

@@ -14,7 +14,8 @@ function CreateKudoCards() {
     setLoading(true)
     const {data} =  await api.post(`/kudocard?id=${idKudoBox}`,values)
     setLoading(false)
-
+    alert('Novo kudo card criado com sucesso!')
+    window.history.back()
   }
 
     const formik = useFormik({
