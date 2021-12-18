@@ -40,17 +40,17 @@ function CreateSprint() {
             <form onSubmit={formik.handleSubmit}>
                 
                 <div>
-                    <label htmlFor="titulo">Título</label>
+                    <label htmlFor="titulo">Título: </label>
                     <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
                 </div>
 
                 <div >
-                    <label htmlFor="dataInicio">De</label>
+                    <label htmlFor="dataInicio">Data de Início: </label>
                     <input type="date" name="dataInicio" id="dataInicio" placeholder="dataInicio" onChange={formik.handleChange} value={formik.values.dataInicio} />
                 </div>
 
                 <div >
-                    <label htmlFor="dataConclusao">Para</label>
+                    <label htmlFor="dataConclusao">Data de Conclusão: </label>
                     <input type="date" name="dataConclusao" id="dataConclusao" placeholder="dataConclusao" onChange={formik.handleChange} value={formik.values.dataConclusao} />
                 </div>
 
