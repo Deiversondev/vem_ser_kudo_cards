@@ -51,7 +51,7 @@ const finishRetro = async (id) => {
           {retrospectiva.statusRetrospectivaEntity}
           {/*Faltam os Itens da retrospectiva na API*/}
           {retrospectiva.statusRetrospectivaEntity === 'CRIADA' && <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>}
-          <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
+          {retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>}
           <button onClick={test}>Test</button>
           <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
         </li>
