@@ -1,5 +1,5 @@
 import { useFormik} from 'formik';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import api from '../../api';
 import { AuthContext } from '../../context/AuthContext';
 import Loading from '../../components/loading/Loading'
@@ -8,6 +8,7 @@ function Login() {
     
   const { setAuth } = useContext(AuthContext)
   const{loading, setLoading}= useContext(AuthContext)
+
 
   const handleLogin = async (values) => {
 
