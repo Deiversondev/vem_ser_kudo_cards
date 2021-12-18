@@ -57,7 +57,7 @@ function Retrospectiva() {
                 <p><strong>STATUS: </strong>{retro.statusRetrospectivaEntity}</p>
                 {/* <button onClick={startRetro}>Iniciar</button> */}
                 <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
-                {retrospectiva[0].itemDeRetrospectivaDTO.length === 0 ? <p>Não há nenhum card aqui</p> :  <ItemCard/>}
+                {retrospectiva[0].itemDeRetrospectivaDTO.length === 0 ? <p>Não existem itens cadastrados</p> :  <ItemCard/>}
               
               </div>
             ))
