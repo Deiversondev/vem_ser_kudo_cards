@@ -20,6 +20,7 @@ function CardKudoBox (){
             <li>
             {kudoBox.idKudoBox}
             {kudoBox.titulo}
+            {kudoBox.statusKudoBoxEntity}
             {kudoBox.dataLeitura}
             <button onClick={()=> goToKudoBox(kudoBox.idKudoBox)}>Abrir Kudo Box</button>
             </li>
