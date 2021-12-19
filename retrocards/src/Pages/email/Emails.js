@@ -24,10 +24,13 @@ function Emails (){
   }
 
   const deleteEmail = (ff) =>{
-    // e.preventDefault();
-     setLista(lista.filter((email) => email !== ff))
+ 
+    setLista(lista.filter((email) => email !== ff))
     
-      console.log(lista)
+  }
+
+  const statuRetroEncerrada = async() => {
+    await api.put('/retrospectiva/9/status?status=ENCERRADA')
   }
 
   const enviarEmail = async() => {
@@ -42,9 +45,17 @@ function Emails (){
     console.log(lista, report)
     
   try{
+
     setLoading(true)
     const {data} =  await api.post('/email', report)
     setLoading(false)
+
+    setLista([])
+    window.alert('Envio realizado com sucesso!')
+
+    
+    window.history.back()
+
   } catch(e){
     console.log(e)
   }
@@ -76,10 +87,7 @@ function Emails (){
             <label htmlFor="inputEmail">Para:</label>
             <input type="text" onChange={e => setEmail(e.target.value)}/>
           </div>
-          <div>
-            <small>Você pode adicionar múltiplos e-mails usando vírgula(',')</small>
-          </div>
-          
+         
           <button type="button" onClick={()=> cadastrarEmail()} >Add</button>
           <button type="submit" onClick={()=> enviarEmail()} >Enviar</button>
         </form>
