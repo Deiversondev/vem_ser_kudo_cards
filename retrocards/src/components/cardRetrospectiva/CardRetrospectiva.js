@@ -11,26 +11,20 @@ function CardRetrospectiva (){
   const getIdRetrospectiva = (id) => {
     localStorage.setItem('IdRetrospectiva',id)
     window.location.href = '/retrospectiva'
+    console.log(listRetrospectivas)
 }
 
 const startRetro = async (id) => {
   
   const {data} = api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
-  
+  localStorage.setItem('IdRetrospectiva',id)
+  window.location.href = '/retrospectiva'
+ 
   console.log(data)
  
 }
 
-const test = async () => {
-  for(let i = 0; i < listRetrospectivas.length ; i++){
-    if (listRetrospectivas[i].statusRetrospectivaEntity === 'EM_ANDAMENTO') {
-      console.log('Há uma reunião em andamento')
-    }
-    else {
-      console.log('Não há nehuma reunião em andamento')
-    }
-  }
-  }
+
 
 const finishRetro = async (id) => {
 
@@ -49,10 +43,14 @@ const finishRetro = async (id) => {
           {retrospectiva.tituloRetrospectiva}
           {retrospectiva.dataReuniao}
           {retrospectiva.statusRetrospectivaEntity}
+          {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
+            <div>{tes.descricao}</div>
+          ))
+}
           {/*Faltam os Itens da retrospectiva na API*/}
           {retrospectiva.statusRetrospectivaEntity === 'CRIADA' && <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>}
-          <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
-          <button onClick={test}>Test</button>
+          {retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>}
+
           <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
         </li>
         ))}

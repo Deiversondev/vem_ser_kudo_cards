@@ -15,6 +15,8 @@ function CreateItems() {
     setLoading(true)
     const {data} = await api.post(`/item?id=${id}`,values)
     setLoading(false)
+    alert('Novo item criado com sucesso!')
+    window.history.back()
   }
 
 

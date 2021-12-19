@@ -18,7 +18,9 @@ function CardKudoBox (){
         {listKudoBoxes.map(kudoBox => (
           <div key={kudoBox.idKudoBox}>
             <li>
+            {kudoBox.idKudoBox}
             {kudoBox.titulo}
+            {kudoBox.statusKudoBoxEntity}
             {kudoBox.dataLeitura}
             <button onClick={()=> goToKudoBox(kudoBox.idKudoBox)}>Abrir Kudo Box</button>
             </li>

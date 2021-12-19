@@ -26,7 +26,25 @@ function ItemCard() {
       }
     
       const deleteItem = async (id) => {
-      await api.delete(`/item/${id}`)
+        let sure = window.confirm('Você realmente deseja excluir esse item?')
+        if (sure) {
+          await api.delete(`/item/${id}`)
+         
+          window.location.reload()
+          setTimeout(() =>{
+            alert(`Item de ID número ${id} foi excluido com sucesso`)
+          },500)
+         
+        }
+        else{
+          alert('Ação de excluir cancelada com sucesso!')
+        }
+
+
+
+
+
+      // await api.delete(`/item/${id}`)
       }
     
       const getMeeting = async () =>{

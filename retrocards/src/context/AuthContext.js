@@ -23,7 +23,8 @@ function AuthProvider ({children}) {
 
 
   const handleLogout= async() =>  {
-    localStorage.removeItem('token');
+    
+    localStorage.clear();
     api.defaults.headers.common['Authorization']= '';
     window.location.href = '/login'
     setAuth(false)
