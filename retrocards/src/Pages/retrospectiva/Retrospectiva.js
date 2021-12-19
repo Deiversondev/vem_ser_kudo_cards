@@ -29,6 +29,8 @@ function Retrospectiva() {
     setRetrospectiva(data)
       
   }
+
+
   return (
     <div>
       {loading && <Loading/>}

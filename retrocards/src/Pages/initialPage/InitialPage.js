@@ -19,6 +19,7 @@ function InitialPage (){
     getSprint()
     getKudoBoxEmAndamento()
     getKudoCardsEncerrados()
+    getUpdateStatusKudoBox()
 
   },[])
 
@@ -61,6 +62,13 @@ function InitialPage (){
     setListKudoCardsEncerrados(data)
     console.log()
 
+  }
+
+  const getUpdateStatusKudoBox = async () =>{
+
+    setLoading(true)
+    await api.get('/kudobox/listar-atualizando-status')
+    setLoading(false)
   }
 
   return(
