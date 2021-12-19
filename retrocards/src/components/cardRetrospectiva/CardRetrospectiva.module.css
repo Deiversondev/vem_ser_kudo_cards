@@ -1,0 +1,14 @@
+.card_main {
+    width: 80%;
+    border: 1px solid #000;
+    margin: auto;
+    padding: 20px;
+}
+
+.card_main .encerrar_btn {
+    border: none;
+    background: #c41818;
+    color: #fff;
+    height: 25px;
+    border-radius: 5px;
+}

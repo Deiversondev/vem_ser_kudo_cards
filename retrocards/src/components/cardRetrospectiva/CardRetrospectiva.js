@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import api from "../../api";
 import { ListContext } from "../../context/ListContext"
+import styles from './CardRetrospectiva.module.css'
 
 
 
@@ -36,25 +37,25 @@ const finishRetro = async (id) => {
 
   return (
     <div>
-      <ul>
+   
         {listRetrospectivas.map((retrospectiva,index) => (
-          <li key={index}>
+          <div className={styles.card_main} key={index}>
           {retrospectiva.idRetrospectiva}
           {retrospectiva.tituloRetrospectiva}
           {retrospectiva.dataReuniao}
           {retrospectiva.statusRetrospectivaEntity}
-          {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
+          {/* {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
             <div>{tes.descricao}</div>
           ))
-}
+} */}
           {/*Faltam os Itens da retrospectiva na API*/}
           {retrospectiva.statusRetrospectivaEntity === 'CRIADA' && <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>}
-          {retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>}
+          {retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && <button className={styles.encerrar_btn} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>}
 
           <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
-        </li>
+        </div>
         ))}
-      </ul>
+     
     </div>
   )
 }
