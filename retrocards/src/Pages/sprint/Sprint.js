@@ -50,27 +50,29 @@ function Sprint (){
     
   }
 
-    const getKudoBox= async() =>{
+  const getKudoBox= async() =>{
 
-      const idSprint = localStorage.getItem('idSprint')
-      setLoading(true)
-      const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
-      console.log(data)
-      setLoading(false)
-      setListKudoBoxes(data)
-    
-    }
-
-    const getKudoCardsEncerradosSprint = async()=> {
-
-      const idSprint = localStorage.getItem('idSprint')
-      setLoading(true)
-      const {data} = await api.get(`/kudocard/find-by-id-sprint?idSprint=${idSprint}`)
-      setLoading(false)
-      setListKudoCardsEncerradosSprint(data)
-      console.log(listKudoCardsEncerradosSprint)
-    }
+    const idSprint = localStorage.getItem('idSprint')
+    setLoading(true)
+    const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
+    console.log(data)
+    setLoading(false)
+    setListKudoBoxes(data)
   
+  }
+
+  const getKudoCardsEncerradosSprint = async()=> {
+
+    const idSprint = localStorage.getItem('idSprint')
+    setLoading(true)
+    const {data} = await api.get(`/kudocard/find-by-id-sprint?idSprint=${idSprint}`)
+    setLoading(false)
+    setListKudoCardsEncerradosSprint(data)
+    console.log(listKudoCardsEncerradosSprint)
+  }
+    
+  const checkIfEmAndamento = listRetrospectivas.find(e => e.statusRetrospectivaEntity === 'EM_ANDAMENTO')
+  console.log(checkIfEmAndamento)
   
   return(
     <div>

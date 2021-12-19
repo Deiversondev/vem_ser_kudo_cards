@@ -23,8 +23,11 @@ function Retrospectiva() {
 
 
   const getMeeting = async () =>{
+
     const idRetro = localStorage.getItem('IdRetrospectiva')
+    setLoading(true)
     const {data} = await api.get(`/retrospectiva/listar-por-id-retro?idRetro=${idRetro}`)
+    setLoading(false)
     console.log('Esse console log é referente a retrospectiva')
     setRetrospectiva(data)
       
