@@ -38,8 +38,12 @@ function CardKudoBox (){
               {kudoBox.titulo}
               {kudoBox.statusKudoBoxEntity}
               {kudoBox.dataLeitura}
+              {kudoBox.statusKudoBoxEntity === "CRIADO" &&
               <button onClick={()=> startKudoBox(kudoBox.idKudoBox)}>Iniciar Kudo Box</button>
+              }
+              {kudoBox.statusKudoBoxEntity !=="EM_ANDAMENTO" &&
               <button onClick={()=> goToKudoBox(kudoBox.idKudoBox)}>Abrir Kudo Box</button>
+              }
               </li>
             </div>
           ))}

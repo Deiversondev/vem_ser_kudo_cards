@@ -1,8 +1,5 @@
 import { useContext } from "react";
-import api from "../../api";
-import { ListContext } from "../../context/ListContext"
-import { AuthContext } from '../../context/AuthContext'
-import Loading from '../loading/Loading'
+import { ListContext } from "../../context/ListContext";
 
 
 function CardKudoCard (){
