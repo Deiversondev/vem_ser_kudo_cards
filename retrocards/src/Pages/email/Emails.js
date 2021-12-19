@@ -23,7 +23,6 @@ function Emails (){
     
   }
 
-
   const deleteEmail = (ff) =>{
     // e.preventDefault();
      setLista(lista.filter((email) => email !== ff))
@@ -31,15 +30,14 @@ function Emails (){
       console.log(lista)
   }
 
-
   const enviarEmail = async() => {
-  
+    let sure = window.confirm('Enviar e-mail?')
+    if (sure) {
     const report = {
       assunto: "Relatório Retrspectiva",
       dataEnvio: today.format('YYYY-MM-DD'),
       emailDestinatario: lista.toString()
     }
-   
 
     console.log(lista, report)
     
@@ -51,12 +49,12 @@ function Emails (){
     console.log(e)
   }
     console.log('função enviar e-mail chamada')
-   
-    
+     
+  }
   }
   console.log(lista);
-  
 
+  
   return(
     
     <div >
@@ -66,12 +64,10 @@ function Emails (){
         <h1>Página emails</h1>
         {
           lista && lista.map(em =>(
+
           <div>
-            
             <p>{em}   <button onClick={() => deleteEmail(em)}>Remove</button></p>
-
           </div>
-
           ))
         }
         <form>
