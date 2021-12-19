@@ -1,5 +1,5 @@
 import { useFormik} from 'formik';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import api from '../../api';
 import { AuthContext } from '../../context/AuthContext';
 import Loading from '../../components/loading/Loading'
@@ -25,8 +25,8 @@ function Login() {
 
   const formik = useFormik({
     initialValues:{
-      usuario:'facilitador',
-      senha:'123'
+      usuario:'',
+      senha:''
     }, onSubmit:async (values) =>{
       await handleLogin(values)
       console.log(values)

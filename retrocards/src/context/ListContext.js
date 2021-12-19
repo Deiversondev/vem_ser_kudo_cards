@@ -12,6 +12,7 @@ function ListProvider ({children}) {
   const[listKudoBoxes, setListKudoBoxes] = useState([]) 
   const[listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento] = useState([]) 
   const[listKudoCards, setListKudoCards] = useState([]) 
+  const[listKudoCardsEncerrados, setListKudoCardsEncerrados] = useState([]) 
   const[detalheKudoCard, setDetalheKudoCard] = useState([]) 
 
   return(
@@ -31,7 +32,9 @@ function ListProvider ({children}) {
       detalheKudoCard, 
       setDetalheKudoCard,
       listKudoBoxesEmAndamento, 
-      setListKudoBoxesEmAndamento
+      setListKudoBoxesEmAndamento,
+      listKudoCardsEncerrados, 
+      setListKudoCardsEncerrados
     }}>
 
       {children}
