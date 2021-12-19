@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import api from "../../api";
 import { ListContext } from "../../context/ListContext"
-import styles from './CardRetrospectiva.module.css'
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
 
 
 
 
 function CardRetrospectiva (){
+
   const{listRetrospectivas} = useContext(ListContext)
+  const{loading, setLoading}= useContext(AuthContext)
 
   const getIdRetrospectiva = (id) => {
     localStorage.setItem('IdRetrospectiva',id)
@@ -16,8 +19,11 @@ function CardRetrospectiva (){
 }
 
 const startRetro = async (id) => {
-  
+
+  setLoading(true)
   const {data} = api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
+  setLoading(false)
+  window.location.reload()
   localStorage.setItem('IdRetrospectiva',id)
   window.location.href = '/retrospectiva'
  
@@ -25,37 +31,52 @@ const startRetro = async (id) => {
  
 }
 
-
-
 const finishRetro = async (id) => {
 
+  setLoading(true)
   const {data} = api.put(`/retrospectiva/${id}/status?status=ENCERRADA`)
-  console.log(data)
+  setLoading(false)
+  
   window.location.href ='/emails'
  
 }
 
   return (
     <div>
-   
-        {listRetrospectivas.map((retrospectiva,index) => (
-          <div className={styles.card_main} key={index}>
-          {retrospectiva.idRetrospectiva}
-          {retrospectiva.tituloRetrospectiva}
-          {retrospectiva.dataReuniao}
-          {retrospectiva.statusRetrospectivaEntity}
-          {/* {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
-            <div>{tes.descricao}</div>
-          ))
-} */}
-          {/*Faltam os Itens da retrospectiva na API*/}
-          {retrospectiva.statusRetrospectivaEntity === 'CRIADA' && <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>}
-          {retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && <button className={styles.encerrar_btn} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>}
+      {loading && <Loading/>}
+      {!loading && 
+      <div>
+        <ul>
+          {listRetrospectivas.map((retrospectiva) => (
+            <li key={retrospectiva.idRetrospectiva}>
+            {retrospectiva.idRetrospectiva}
+            {retrospectiva.tituloRetrospectiva}
+            {retrospectiva.dataReuniao}
+            {retrospectiva.statusRetrospectivaEntity}
+            {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
+              <div>{tes.descricao}</div>
+            ))
+            }             
 
-          <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
-        </div>
-        ))}
-     
+            {
+            retrospectiva.statusRetrospectivaEntity === 'CRIADA' && 
+            <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>
+            }
+
+            {
+            retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && 
+            <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
+            }
+
+            {
+            retrospectiva.statusRetrospectivaEntity !== 'CRIADA' &&
+            <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
+            }
+          </li>
+          ))}
+        </ul>
+      </div>
+      }
     </div>
   )
 }

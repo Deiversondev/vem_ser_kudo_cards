@@ -5,6 +5,7 @@ import CardRetrospectiva from "../../components/cardRetrospectiva/CardRetrospect
 import CardKudoBox from "../../components/cardKudoBox/CardKudoBox";
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
+import CardKudoCardEcerradoSprint from '../../components/cardKudoCard/CardKudoCardEcerradoSprint'
 
 function Sprint (){
 
@@ -15,7 +16,9 @@ function Sprint (){
     listRetrospectivas, 
     setListRetrospectivas, 
     listKudoBoxes, 
-    setListKudoBoxes
+    setListKudoBoxes,
+    listKudoCardsEncerradosSprint, 
+    setListKudoCardsEncerradosSprint
   } = useContext(ListContext)
   
 
@@ -23,6 +26,7 @@ function Sprint (){
 
     getRetrospectiva()
     getKudoBox()
+    getKudoCardsEncerradosSprint()
 
   },[])
 
@@ -46,17 +50,27 @@ function Sprint (){
     
   }
 
-  const getKudoBox= async() =>{
+    const getKudoBox= async() =>{
 
-    const idSprint = localStorage.getItem('idSprint')
-    setLoading(true)
-    const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
-    console.log(data)
-    setLoading(false)
-    setListKudoBoxes(data)
+      const idSprint = localStorage.getItem('idSprint')
+      setLoading(true)
+      const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
+      console.log(data)
+      setLoading(false)
+      setListKudoBoxes(data)
+    
+    }
+
+    const getKudoCardsEncerradosSprint = async()=> {
+
+      const idSprint = localStorage.getItem('idSprint')
+      setLoading(true)
+      const {data} = await api.get(`/kudocard/find-by-id-sprint?idSprint=${idSprint}`)
+      setLoading(false)
+      setListKudoCardsEncerradosSprint(data)
+      console.log(listKudoCardsEncerradosSprint)
+    }
   
-  }
-
   
   return(
     <div>
@@ -72,6 +86,8 @@ function Sprint (){
         {listRetrospectivas.length === 0 && <p>Não existem Retrospectivas cadastradas</p>}
         {listKudoBoxes.length !== 0 && <CardKudoBox/>}
         {listKudoBoxes.length === 0 && <p>Não existem Kudo Boxes cadastradas</p>}
+        {listKudoCardsEncerradosSprint.length !== 0 && <CardKudoCardEcerradoSprint/>}
+        {listKudoCardsEncerradosSprint.length === 0 && <p>Não existem Kudo Cards arquivados</p>}
       </div>
       }
     </div>

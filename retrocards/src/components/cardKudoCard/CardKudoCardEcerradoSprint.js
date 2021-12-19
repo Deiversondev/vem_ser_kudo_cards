@@ -1,16 +1,17 @@
 import { useContext } from "react";
-import { ListContext } from "../../context/ListContext";
+import { ListContext } from "../../context/ListContext"
+import Loading from '../loading/Loading'
 
 
-function CardKudoCard (){
+function CardKudoCardEcerradoSprint(){
 
-  const{listKudoCardsEncerrados} = useContext(ListContext) 
+  const{listKudoCardsEncerradosSprint} = useContext(ListContext) 
   
 
   return (
     <div>
       <ul>
-        {listKudoCardsEncerrados.map(kudoCard => (
+        {listKudoCardsEncerradosSprint.map(kudoCard => (
           <div key={kudoCard.idKudoCard}>
           <li>
           <p>Id: {kudoCard.idKudoCard}</p>
@@ -28,4 +29,4 @@ function CardKudoCard (){
   )
 }
 
-export default CardKudoCard;
+export default CardKudoCardEcerradoSprint;
