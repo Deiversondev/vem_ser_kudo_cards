@@ -21,10 +21,11 @@ function CardRetrospectiva (){
 const startRetro = async (id) => {
 
   setLoading(true)
-  const {data} = api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
+  const {data} = await api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
   setLoading(false)
+
   window.location.reload()
-  localStorage.setItem('IdRetrospectiva',id)
+  localStorage.setItem('IdRetrospectiva',id) 
   window.location.href = '/retrospectiva'
  
   console.log(data)
@@ -34,7 +35,7 @@ const startRetro = async (id) => {
 const finishRetro = async (id) => {
 
   setLoading(true)
-  const {data} = api.put(`/retrospectiva/${id}/status?status=ENCERRADA`)
+  await api.put(`/retrospectiva/${id}/status?status=ENCERRADA`) 
   setLoading(false)
   
   window.location.href ='/emails'
