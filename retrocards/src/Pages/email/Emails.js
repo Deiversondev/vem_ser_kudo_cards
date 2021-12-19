@@ -29,9 +29,9 @@ function Emails (){
     
   }
 
-  const statuRetroEncerrada = async() => {
-    await api.put('/retrospectiva/9/status?status=ENCERRADA')
-  }
+  // const statuRetroEncerrada = async() => {
+  //   await api.put('/retrospectiva/9/status?status=ENCERRADA')
+  // }
 
   const enviarEmail = async() => {
     let sure = window.confirm('Enviar e-mail?')

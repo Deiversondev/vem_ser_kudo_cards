@@ -17,23 +17,10 @@ function Retrospectiva() {
     
   },[])
 
-
-  const getRetro = async() => {
-    const idRetro = localStorage.getItem('IdRetrospectiva')
-    const {data} = await api.get(`/retrospectiva/listar-por-id-retro?idRetro=${idRetro}`)
-    console.log('Esse console log é referente a retrospectiva')
-    console.log(data)
-    // setListItems(data)
-  } 
   const goToCreateItems = () =>{
     window.location.href = '/createitems'
   }
 
-  const deleteItem = async (id) => {
-    setLoading(true)
-    await api.delete(`/item/${id}`)
-    setLoading(false)
-  }
 
   const getMeeting = async () =>{
     const idRetro = localStorage.getItem('IdRetrospectiva')
