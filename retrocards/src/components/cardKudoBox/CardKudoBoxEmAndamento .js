@@ -16,10 +16,10 @@ function CardKudoBoxEmAndamento (){
        {listKudoBoxesEmAndamento.map(kudoBox => (
           <div className={styles.kudoBox} key={kudoBox.idKudoBox}>
          
-            <h4><strong>ID: </strong> {kudoBox.idKudoBox}</h4>
-           <p><strong>Título: </strong>  {kudoBox.titulo}</p>
-            {kudoBox.idSprint}
-           <p> <strong>Data de leitura:</strong> {kudoBox.dataLeitura}</p>
+          <h4><strong>ID: </strong> {kudoBox.idKudoBox}</h4>
+          <p><strong>Título: </strong>  {kudoBox.titulo}</p>
+          <p> <strong>Data de leitura:</strong> {kudoBox.dataLeitura}</p>
+          <p> <strong>ID Sprint: </strong>{kudoBox.sprintDTO.idSprint}</p>
           
           </div>
         ))}

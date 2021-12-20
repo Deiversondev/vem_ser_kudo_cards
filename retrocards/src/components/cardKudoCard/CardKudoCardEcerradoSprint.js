@@ -16,11 +16,11 @@ function CardKudoCardEcerradoSprint(){
           <li>
           <p>Id: {kudoCard.idKudoCard}</p>
           <p>Título: {kudoCard.titulo}</p>
-          <p>ID KudoBox: {kudoCard.idKudoBox}</p>
-          <p>Data de Conclusão: {kudoCard.dataConclusao}</p>
-          <p>{kudoCard.de? kudoCard.de : "Anônimo"}</p>
-          <p>Para:{kudoCard.para}</p>
-          <p>{kudoCard.descricao}</p>
+          <p>De: {kudoCard.de? kudoCard.de : "Anônimo"}</p>
+          <p>Para: {kudoCard.para}</p>
+          <p>Descrição: {kudoCard.descricao}</p>
+          <p>ID KudoBox: {kudoCard.kudoBoxDTO.idKudoBox}</p>
+          <p>Data da Leitura: {kudoCard.kudoBoxDTO.dataLeitura}</p>
           </li>
         </div>
         ))}
