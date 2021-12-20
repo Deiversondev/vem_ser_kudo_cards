@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
-import Loading from '../loading/Loading'
+
 
 
 function CardKudoCardEcerradoSprint(){
 
-  const{listKudoCardsEncerradosSprint} = useContext(ListContext) 
+  const{listKudoCardsEncerradosSprint} = useContext(ListContext); 
   
 
   return (
@@ -26,7 +26,7 @@ function CardKudoCardEcerradoSprint(){
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 export default CardKudoCardEcerradoSprint;
