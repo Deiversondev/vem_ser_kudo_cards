@@ -9,9 +9,9 @@ import * as Yup from 'yup';
 
 function CreateKudoBox() {
 
-  const{loading, setLoading}= useContext(AuthContext)
+  const{loading, setLoading}= useContext(AuthContext);
 
-  const idSprint = localStorage.getItem('idSprint') 
+  const idSprint = localStorage.getItem('idSprint'); 
 
   const validation = Yup.object().shape({
 
