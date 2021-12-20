@@ -59,7 +59,7 @@ function CardRetrospectiva (){
             <p> <span>ID: </span>   {retrospectiva.idRetrospectiva}</p>
             <p> <span>Título da retrospectiva: </span> {retrospectiva.tituloRetrospectiva}</p>
             <p> <span>Data da Retrospectiva</span> {moment(retrospectiva.dataReuniao).format( 'DD/MM/YYYY')} </p>
-            <p> <span>Status da Retrospectiva : </span> {retrospectiva.statusRetrospectivaEntity} </p>
+            <p> <span>Status da Retrospectiva : </span> {retrospectiva.statusRetrospectivaEntity.replaceAll('_', ' ')} </p>
             {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
               <div></div>
             ))

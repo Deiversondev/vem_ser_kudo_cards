@@ -31,15 +31,18 @@ function CardKudoBox (){
     <div>
       {loading && <Loading/>}
       {!loading && 
-      <div className={styles.boxContainer}>
-      
-          {listKudoBoxes.map(kudoBox => (
+      <div className={styles.main_container} >
+      <h2>KudoBoxes</h2>
+         <div className={styles.boxContainer}>
+         {listKudoBoxes.map(kudoBox => (
             <div className={styles.card_main} key={kudoBox.idKudoBox}>
               <div >
+              <div className={styles.kudo_content}>
               <h3><strong>Título:</strong>  {kudoBox.titulo}</h3>
               <p><strong>ID: </strong> {kudoBox.idKudoBox}</p>
-              <p><strong>Status:</strong>  {kudoBox.statusKudoBoxEntity}</p>
+              <p><strong>Status:</strong>  {kudoBox.statusKudoBoxEntity.replaceAll('_', ' ')}</p>
               <p><strong>Data: </strong> {moment(kudoBox.dataLeitura).format('DD/MM/YYYY')}</p>
+              </div>
               {kudoBox.statusKudoBoxEntity === "CRIADO" &&
               <button onClick={()=> startKudoBox(kudoBox.idKudoBox)}>Iniciar Kudo Box</button>
               }
@@ -49,6 +52,7 @@ function CardKudoBox (){
               </div>
             </div>
           ))}
+         </div>
        
       </div>
       }
