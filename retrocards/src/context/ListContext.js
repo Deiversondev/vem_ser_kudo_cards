@@ -15,6 +15,7 @@ function ListProvider ({children}) {
   const[listKudoCardsEncerrados, setListKudoCardsEncerrados] = useState([]) 
   const[listKudoCardsEncerradosSprint, setListKudoCardsEncerradosSprint] = useState([]) 
   const[detalheKudoCard, setDetalheKudoCard] = useState([]) 
+  const[listKudoCardsUser, setListKudoCardsUser] = useState([])
 
   return(
     <ListContext.Provider value={{
@@ -37,7 +38,9 @@ function ListProvider ({children}) {
       listKudoCardsEncerrados, 
       setListKudoCardsEncerrados,
       listKudoCardsEncerradosSprint, 
-      setListKudoCardsEncerradosSprint
+      setListKudoCardsEncerradosSprint,
+      listKudoCardsUser, 
+      setListKudoCardsUser
     }}>
 
       {children}

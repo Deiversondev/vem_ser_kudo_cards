@@ -64,11 +64,15 @@ function InitialPage (){
 
   }
 
-  const getUpdateStatusKudoBox = async () =>{
+  const getUpdateStatusKudoBox = async ()=> {
 
     setLoading(true)
     await api.get('/kudobox/listar-atualizando-status')
     setLoading(false)
+  }
+
+  const goToMeusKudoCards = async() => {
+    window.location.href = '/kudocardsuser'
   }
 
   return(
@@ -78,6 +82,7 @@ function InitialPage (){
       <div>
         <h1>Página Inicial</h1>
 
+        <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
         <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
         <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
         {listSprints.length !== 0 && <CardSprint/>}
