@@ -3,69 +3,90 @@ import api from '../../api';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import Loading from '../../components/loading/Loading';
+import { Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
 
 function CreateSprint() {
 
-    const{loading, setLoading}= useContext(AuthContext);
+  const{loading, setLoading}= useContext(AuthContext);
 
-    const createSprint = async (values) => {
-        setLoading(true);
-        const {data} =  await api.post('/sprint',values);
-        setLoading(false);
-        alert('Nova sprint criada com sucesso!')
-        window.history.back()
-    }
+  const validation = Yup.object().shape({
+
+    titulo: Yup.string()
+      .max(30, 'Máximo 30 caracteres')
+      .required('Campo Obrigatório'),
+
+    dataInicio: Yup.date()
+      .required('Campo Obrigatório'),
+    
+      dataConclusao: Yup.date()
+      .required('Campo Obrigatório'),
+
+  });
+
+  const createSprint = async (values) => {
+    setLoading(true);
+    const {data} =  await api.post('/sprint',values);
+    setLoading(false);
+    alert('Nova sprint criada com sucesso!')
+    window.history.back()
+  }
     
     
-    const formik = useFormik({
-        initialValues:{
-            titulo:'',
-            dataInicio:'',
-            dataConclusao:'',
-        }, onSubmit:async (values) =>{
+  return (
+      
+    <div>
+      {loading && <Loading/>}
+      {!loading && 
+      <div>
+      <h1>Criar sprint</h1>
 
-            await createSprint(values);
-            
-            formik.resetForm();
-        }
-    })
+      <Formik
+      initialValues={{
+        titulo:'',
+        dataInicio:'',
+        dataConclusao:''
+      }}
+      validationSchema={validation}
+      onSubmit={values => {
 
-    
-    return (
-        
-        <div>
-            {loading && <Loading/>}
-            {!loading && 
-            <div>
-            <h1>Criar sprint</h1>
+        createSprint(values);
 
-            <form onSubmit={formik.handleSubmit}>
-                
-                <div>
-                    <label htmlFor="titulo">Título: </label>
-                    <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
-                </div>
+      }}
+      >
+      {({ errors, touched }) => (
+        <Form>
 
-                <div >
-                    <label htmlFor="dataInicio">Data de Início: </label>
-                    <input type="date" name="dataInicio" id="dataInicio" placeholder="dataInicio" onChange={formik.handleChange} value={formik.values.dataInicio} />
-                </div>
+          <div>
+          Título: <Field name="titulo" id="titulo"/>
+          {errors.titulo && touched.titulo ? (
+            <div>{errors.titulo}</div>
+          ) : null}
+          </div>
 
-                <div >
-                    <label htmlFor="dataConclusao">Data de Conclusão: </label>
-                    <input type="date" name="dataConclusao" id="dataConclusao" placeholder="dataConclusao" onChange={formik.handleChange} value={formik.values.dataConclusao} />
-                </div>
+          <div>
+          Data de Início: <Field name="dataInicio" id="dataInicio" type= "date"/>
+          {errors.dataInicio && touched.dataInicio ? (
+            <div>{errors.dataInicio}</div>
+          ) : null}
+          </div>
 
-                <div>
-                    <button type="submit">Salvar</button>
-                    
-                </div>
+          <div>
+          Data de Conclusão: <Field name="dataConclusao" id="dataConclusao" type= "date"/>
+          {errors.dataConclusao && touched.dataConclusao ? (
+            <div>{errors.dataConclusao}</div>
+          ) : null}
+          </div>
 
-            </form>
-            </div>
-            }
-        </div>
-    )
+          <button type="submit">Submit</button>
+
+        </Form>
+      )}
+      </Formik>   
+      </div>
+      }
+    </div>
+  )
 }
 
 export default CreateSprint;

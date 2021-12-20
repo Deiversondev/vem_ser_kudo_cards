@@ -3,11 +3,24 @@ import api from '../../api';
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
+import { Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
 
 
 function CreateRetrospectiva() {
 
-  const{loading, setLoading}= useContext(AuthContext)
+  const{loading, setLoading}= useContext(AuthContext);
+
+  const validation = Yup.object().shape({
+
+    tituloRetrospectiva: Yup.string()
+      .max(30, 'Máximo 30 caracteres')
+      .required('Campo Obrigatório'),
+
+    dataReuniao: Yup.date()
+      .required('Campo Obrigatório'),
+
+  });
 
   const addRetrospectiva = async (values) =>{
 
@@ -19,50 +32,53 @@ function CreateRetrospectiva() {
       window.history.back()
     }
 
-  const formik = useFormik({
-    initialValues:{
-      tituloRetrospectiva:'',
-      dataReuniao:'',
-    }, onSubmit:async (values) =>{
-
-      addRetrospectiva(values)
-      console.log(values)
-        
-
-        formik.resetForm()
-    }
-  })
-
-
-
 
   return (
+
+    <div>
+      {loading && <Loading/>}
+      {!loading && 
       <div>
-        {loading && <Loading/>}
-        {!loading && 
-        <div>
-          <h1>Criar Nova Retrospectiva</h1>
-        
-          <form onSubmit={formik.handleSubmit}>
-              
+        <h1>Criar Nova Retrospectiva</h1>
+
+        <Formik
+          initialValues={{
+            tituloRetrospectiva:'',
+            dataReuniao:''
+          }}
+          validationSchema={validation}
+          onSubmit={values => {
+
+            addRetrospectiva(values);
+            
+
+          }}
+          >
+          {({ errors, touched }) => (
+            <Form>
+
               <div>
-                  <label htmlFor="tituloRetrospectiva">Título</label>
-                  <input type="text" name="tituloRetrospectiva" id="tituloRetrospectiva" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.tituloRetrospectiva} />
-              </div>
-
-              <div >
-                  <label htmlFor="dataReuniao">Data da Reuniao:</label>
-                  <input type="date" name="dataReuniao" id="dataReuniao" placeholder="Digite uma Data" onChange={formik.handleChange} value={formik.values.dataReuniao} />
+              Título: <Field name="tituloRetrospectiva" id="tituloRetrospectiva"/>
+              {errors.tituloRetrospectiva && touched.tituloRetrospectiva ? (
+                <div>{errors.tituloRetrospectiva}</div>
+              ) : null}
               </div>
 
               <div>
-                  <button type="submit">Salvar</button>
+              Data da Reunião: <Field name="dataReuniao" id="dataReuniao" type= "date" />
+              {errors.dataReuniao && touched.dataReuniao ? (
+                <div>{errors.dataReuniao}</div>
+              ) : null}
               </div>
 
-          </form>
-        </div>
-        }
+              <button type="submit">Submit</button>
+
+            </Form>
+          )}
+          </Formik>   
       </div>
+      }
+    </div>
   )
 }
 

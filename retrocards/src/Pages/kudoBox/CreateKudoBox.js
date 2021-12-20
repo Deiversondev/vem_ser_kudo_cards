@@ -3,6 +3,8 @@ import api from '../../api'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
+import { Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
 
 
 function CreateKudoBox() {
@@ -10,6 +12,17 @@ function CreateKudoBox() {
   const{loading, setLoading}= useContext(AuthContext)
 
   const idSprint = localStorage.getItem('idSprint') 
+
+  const validation = Yup.object().shape({
+
+    titulo: Yup.string()
+      .max(30, 'Máximo 30 caracteres')
+      .required('Campo Obrigatório'),
+
+    dataLeitura: Yup.date()
+      .required('Campo Obrigatório'),
+
+  });
 
   const createKudobox = async (values) => {
     
@@ -20,19 +33,6 @@ function CreateKudoBox() {
     window.history.back()
   }
 
-  const formik = useFormik({
-    initialValues:{
-      titulo:'',
-      dataLeitura:'',
-      statusKudoBoxEntity:'EM_ANDAMENTO'
-
-    }, onSubmit:async (values) =>{
-      console.log(values)
-      await createKudobox(values)
-
-      formik.resetForm()
-    }
-  })
 
   return (
     <div>
@@ -40,26 +40,44 @@ function CreateKudoBox() {
       {loading && <Loading/>}
       {!loading && 
       <div>
-      <h1>Criar Nova Kudo Box</h1>
+        <h1>Criar Nova Kudo Box</h1>
       
-      <form onSubmit={formik.handleSubmit}>
-          
-        <div>
-          <label htmlFor="titulo">Título</label>
-          <input type="text" name="titulo" id="titulo" placeholder="Digite um título" onChange={formik.handleChange} value={formik.values.titulo} />
-        </div>
+          <Formik
+            initialValues={{
+              titulo:'',
+              dataLeitura:'',
+              statusKudoBoxEntity:'CRIADO'
+            }}
+            validationSchema={validation}
+            onSubmit={values => {
 
-        <div >
-          <label htmlFor="dataLeitura">Data da Leitura:</label>
-          <input type="date" name="dataLeitura" id="dataLeitura" placeholder="Digite uma Data" onChange={formik.handleChange} value={formik.values.dataLeitura} />
-        </div>
+              createKudobox(values);
 
-        <div>
-          <button type="submit">Salvar</button>
-        </div>
+            }}
+            >
+            {({ errors, touched }) => (
+              <Form>
 
-      </form>
-      </div>
+                <div>
+                Título: <Field name="titulo" id="titulo"/>
+                {errors.titulo && touched.titulo ? (
+                  <div>{errors.titulo}</div>
+                ) : null}
+                </div>
+
+                <div>
+                Data da Leitura: <Field name="dataLeitura" id="dataLeitura" type= "date"/>
+                {errors.dataLeitura && touched.dataLeitura ? (
+                  <div>{errors.dataLeitura}</div>
+                ) : null}
+                </div>
+
+                <button type="submit">Submit</button>
+
+              </Form>
+            )}
+            </Formik>   
+        </div>
       }
     </div>
   )
