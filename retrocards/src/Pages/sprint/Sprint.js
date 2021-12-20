@@ -5,6 +5,8 @@ import CardRetrospectiva from "../../components/cardRetrospectiva/CardRetrospect
 import CardKudoBox from "../../components/cardKudoBox/CardKudoBox";
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
+import CardKudoCardEcerradoSprint from '../../components/cardKudoCard/CardKudoCardEcerradoSprint'
+import styles from './Sprint.module.css'
 
 function Sprint (){
 
@@ -15,7 +17,9 @@ function Sprint (){
     listRetrospectivas, 
     setListRetrospectivas, 
     listKudoBoxes, 
-    setListKudoBoxes
+    setListKudoBoxes,
+    listKudoCardsEncerradosSprint, 
+    setListKudoCardsEncerradosSprint
   } = useContext(ListContext)
   
 
@@ -23,6 +27,7 @@ function Sprint (){
 
     getRetrospectiva()
     getKudoBox()
+    getKudoCardsEncerradosSprint()
 
   },[])
 
@@ -51,11 +56,24 @@ function Sprint (){
     const idSprint = localStorage.getItem('idSprint')
     setLoading(true)
     const {data} = await api.get(`/kudobox/id-sprint?idSprint=${idSprint}`)
+    console.log(data)
     setLoading(false)
     setListKudoBoxes(data)
   
   }
 
+  const getKudoCardsEncerradosSprint = async()=> {
+
+    const idSprint = localStorage.getItem('idSprint')
+    setLoading(true)
+    const {data} = await api.get(`/kudocard/find-by-id-sprint?idSprint=${idSprint}`)
+    setLoading(false)
+    setListKudoCardsEncerradosSprint(data)
+    console.log(listKudoCardsEncerradosSprint)
+  }
+    
+  const checkIfEmAndamento = listRetrospectivas.find(e => e.statusRetrospectivaEntity === 'EM_ANDAMENTO')
+  console.log(checkIfEmAndamento)
   
   return(
     <div>
@@ -64,13 +82,17 @@ function Sprint (){
       <div>
         <h1>Página Sprint</h1>
 
-        <button type="button" onClick={()=> goToCreateRetrospectiva()} >Criar nova Retrospectiva</button>
-        <button type="button" onClick={()=> goToCreateKudoBox()} >Criar nova Kudo Box</button>
+        <button className={styles.btn} type="button" onClick={()=> goToCreateRetrospectiva()} >Criar nova Retrospectiva</button>
+        <button className={styles.btn} type="button" onClick={()=> goToCreateKudoBox()} >Criar nova Kudo Box</button>
         
         {listRetrospectivas.length !== 0 && <CardRetrospectiva/>}
         {listRetrospectivas.length === 0 && <p>Não existem Retrospectivas cadastradas</p>}
+        <h3>Kudoboxes:</h3>
         {listKudoBoxes.length !== 0 && <CardKudoBox/>}
         {listKudoBoxes.length === 0 && <p>Não existem Kudo Boxes cadastradas</p>}
+        <h3>KudoCards de Boxes Encerradas:</h3>
+        {listKudoCardsEncerradosSprint.length !== 0 && <CardKudoCardEcerradoSprint/>}
+        {listKudoCardsEncerradosSprint.length === 0 && <p>Não existem Kudo Cards arquivados</p>}
       </div>
       }
     </div>

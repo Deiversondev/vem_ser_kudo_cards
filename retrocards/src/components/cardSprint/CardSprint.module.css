@@ -1,0 +1,29 @@
+.container {
+    /* border: 1px solid #000; */
+    display: flex;
+    /* background-color: rgb(126, 126, 126); */
+    justify-content: center;
+}
+
+.main {
+    background-color: #b3b3b3;
+    padding: 10px;
+}
+
+.sprint_main {
+    /* border: 1px solid #000; */
+    width: 200px;
+    height: 200px;
+    background-color: #0e5f96;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 20px;
+    padding-bottom: 10px;
+}
+
+.sprint_main button {
+    width: 100px;
+    height: 25px;
+}

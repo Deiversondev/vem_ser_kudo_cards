@@ -2,7 +2,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate
   
 } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
@@ -19,6 +18,7 @@ import Retrospectiva from './Pages/retrospectiva/Retrospectiva';
 import KudoBox from './Pages/kudoBox/KudoBox';
 import KudoCard from './Pages/kudoCard/KudoCard';
 import Emails from './Pages/email/Emails';
+import KudoCardsUsuario from './Pages/kudocardsUsuario/KudoCardsUsuario';
 
 
 
@@ -46,6 +46,7 @@ function Routers (){
         <Route path='/kudocard' element={<KudoCard/>}/>
         <Route path='/createretrospectiva' element={<CreateRetrospectiva/>}/>
         <Route path='/createkudocards' element={<CreateKudoCards/>}/>
+        <Route path='/kudocardsuser' element={<KudoCardsUsuario/>}/>
         <Route path='/createkudobox' element={<CreateKudoBox/>}/>
         <Route path='/createitems' element={<CreateItems/>}/>
         <Route path='/retrospectiva' element={<Retrospectiva/>}/>

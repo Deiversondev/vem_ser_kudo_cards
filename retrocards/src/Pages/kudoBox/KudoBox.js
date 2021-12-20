@@ -26,11 +26,14 @@ function KudoBox (){
 
     const idKudoBox = localStorage.getItem('idKudoBox')
     setLoading(true)
-    const {data} = await api.get(`/kudocard/list-por-box?id=${idKudoBox}`)
+    const {data} = await api.get(`/kudocard/list-por-box?idKudoBox=${idKudoBox}`)
+  
     setLoading(false)
     setListKudoCards(data)
     
   }
+
+  
 
   
   return(

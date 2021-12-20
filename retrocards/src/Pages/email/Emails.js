@@ -17,43 +17,55 @@ function Emails (){
 
   const cadastrarEmail =() => {
     setLista([...lista, (email)])
+    let input = document.querySelector('input')
+    input.value = '';
+    setEmail('')
     
   }
 
-
-  const deleteEmail = (ff, e) =>{
-    // e.preventDefault();
-     setLista(lista.filter((email) => email !== ff))
+  const deleteEmail = (ff) =>{
+ 
+    setLista(lista.filter((email) => email !== ff))
     
-      console.log(lista)
   }
 
+  // const statuRetroEncerrada = async() => {
+  //   await api.put('/retrospectiva/9/status?status=ENCERRADA')
+  // }
 
   const enviarEmail = async() => {
-  
+    let sure = window.confirm('Enviar e-mail?')
+    if (sure) {
     const report = {
       assunto: "Relatório Retrspectiva",
       dataEnvio: today.format('YYYY-MM-DD'),
       emailDestinatario: lista.toString()
     }
-   
 
     console.log(lista, report)
     
   try{
+
     setLoading(true)
     const {data} =  await api.post('/email', report)
     setLoading(false)
+
+    setLista([])
+    window.alert('Envio realizado com sucesso!')
+
+    
+    window.history.back()
+
   } catch(e){
     console.log(e)
   }
     console.log('função enviar e-mail chamada')
-   
-    
+     
+  }
   }
   console.log(lista);
-  
 
+  
   return(
     
     <div >
@@ -63,12 +75,10 @@ function Emails (){
         <h1>Página emails</h1>
         {
           lista && lista.map(em =>(
+
           <div>
-            
             <p>{em}   <button onClick={() => deleteEmail(em)}>Remove</button></p>
-
           </div>
-
           ))
         }
         <form>
@@ -77,10 +87,7 @@ function Emails (){
             <label htmlFor="inputEmail">Para:</label>
             <input type="text" onChange={e => setEmail(e.target.value)}/>
           </div>
-          <div>
-            <small>Você pode adicionar múltiplos e-mails usando vírgula(',')</small>
-          </div>
-          
+         
           <button type="button" onClick={()=> cadastrarEmail()} >Add</button>
           <button type="submit" onClick={()=> enviarEmail()} >Enviar</button>
         </form>

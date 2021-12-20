@@ -36,10 +36,9 @@ function CardKudoCard (){
               {kudoCard.idKudoCard}
               {kudoCard.titulo}
               {kudoCard.dataCriacao}
-              {kudoCard.de}
+              {kudoCard.de? kudoCard.de : "Anônimo"}
               {kudoCard.para}
               <button onClick={()=> goToKudoCard(kudoCard.idKudoCard)}>Abrir Kudo Card</button>
-              <button onClick={()=> deleteKudoCard(kudoCard.idKudoCard)}>Deletar Kudo Card</button>
               </li>
           </div>
           ))}

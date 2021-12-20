@@ -1,62 +1,90 @@
 import { useContext } from "react";
 import api from "../../api";
 import { ListContext } from "../../context/ListContext"
+import { AuthContext } from '../../context/AuthContext'
+import Loading from '../../components/loading/Loading'
+import styles from './CardRetrospectiva.module.css'
+import moment from "moment";
 
 
 
 
 function CardRetrospectiva (){
+
   const{listRetrospectivas} = useContext(ListContext)
+  const{loading, setLoading}= useContext(AuthContext)
 
   const getIdRetrospectiva = (id) => {
     localStorage.setItem('IdRetrospectiva',id)
     window.location.href = '/retrospectiva'
-}
-
-const startRetro = async (id) => {
-  
-  const {data} = api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
-  
-  console.log(data)
- 
-}
-
-const test = async () => {
-  for(let i = 0; i < listRetrospectivas.length ; i++){
-    if (listRetrospectivas[i].statusRetrospectivaEntity === 'EM_ANDAMENTO') {
-      console.log('Há uma reunião em andamento')
-    }
-    else {
-      console.log('Não há nehuma reunião em andamento')
-    }
-  }
+    console.log(listRetrospectivas)
   }
 
-const finishRetro = async (id) => {
+  const startRetro = async (id) => {
 
-  const {data} = api.put(`/retrospectiva/${id}/status?status=ENCERRADA`)
-  console.log(data)
-  window.location.href ='/emails'
- 
-}
+    setLoading(true)
+    const {data} = await api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
+    setLoading(false)
+
+    window.location.reload()
+    localStorage.setItem('IdRetrospectiva',id) 
+    window.location.href = '/retrospectiva'
+  
+    console.log(data)
+  
+  }
+
+  const finishRetro = async (id) => {
+
+    setLoading(true)
+    await api.put(`/retrospectiva/${id}/status?status=ENCERRADA`) 
+    setLoading(false)
+    
+    window.location.href ='/emails'
+  
+  }
+
+  const checkIfEmAndamento = listRetrospectivas.find(e => e.statusRetrospectivaEntity === 'EM_ANDAMENTO')
+  console.log(checkIfEmAndamento)
 
   return (
     <div>
-      <ul>
-        {listRetrospectivas.map((retrospectiva,index) => (
-          <li key={index}>
-          {retrospectiva.idRetrospectiva}
-          {retrospectiva.tituloRetrospectiva}
-          {retrospectiva.dataReuniao}
-          {retrospectiva.statusRetrospectivaEntity}
-          {/*Faltam os Itens da retrospectiva na API*/}
-          {retrospectiva.statusRetrospectivaEntity === 'CRIADA' && <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>}
-          <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
-          <button onClick={test}>Test</button>
-          <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
-        </li>
+      {loading && <Loading/>}
+      {!loading && 
+      <div >
+      
+        {listRetrospectivas.map((retrospectiva) => (
+          <div className={styles.card_main} key={retrospectiva.idRetrospectiva}>
+          <div className={styles.card_content}>
+            <p> <span>ID: </span>   {retrospectiva.idRetrospectiva}</p>
+            <p> <span>Título da retrospectiva: </span> {retrospectiva.tituloRetrospectiva}</p>
+            <p> <span>Data da Retrospectiva</span> {moment(retrospectiva.dataReuniao).format( 'DD/MM/YYYY')} </p>
+            <p> <span>Status da Retrospectiva : </span> {retrospectiva.statusRetrospectivaEntity.replaceAll('_', ' ')} </p>
+            {retrospectiva.itemDeRetrospectivaDTO.map((tes,index) => (
+              <div></div>
+            ))
+            }             
+             
+            {
+            (retrospectiva.statusRetrospectivaEntity === 'CRIADA')  && (checkIfEmAndamento === undefined) &&
+            <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>
+            }
+            
+            {
+            retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && 
+            <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
+            }
+
+            {
+            retrospectiva.statusRetrospectivaEntity !== 'CRIADA' &&
+            <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
+            }
+          </div>
+        </div>
         ))}
-      </ul>
+    
+      </div>
+      }
     </div>
   )
 }
