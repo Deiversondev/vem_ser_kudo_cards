@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
 import CardKudoBoxEmAndamento from '../../components/cardKudoBox/CardKudoBoxEmAndamento '
 import CardKudoCardEcerrado from '../../components/cardKudoCard/CardKudoCardEcerrado'
+import styles from './InitialPage.module.css'
 
 function InitialPage (){
 
@@ -76,21 +77,25 @@ function InitialPage (){
   }
 
   return(
-    <div>
+    <div >
       {loading && <Loading/>}
       {!loading && 
       <div>
-        <h1>Página Inicial</h1>
+        {/* s */}
 
-        <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
+       <div className={styles.btns}>
+       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
         <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
         <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
-        {listSprints.length !== 0 && <CardSprint/>}
+       </div>
+      <div className={styles.body}>
+      {listSprints.length !== 0 && <CardSprint/>}
         {listSprints.length === 0 && <p>Não existem Sprints cadastradas</p>}
         {listKudoBoxesEmAndamento.length !== 0 && <CardKudoBoxEmAndamento/>}
         {listKudoBoxesEmAndamento.length === 0 && <p>Não existem Kudo Boxes em andamento</p>}
         {listKudoCardsEncerrados.length !== 0 && <CardKudoCardEcerrado/>}
         {listKudoCardsEncerrados.length === 0 && <p>Não existem Kudo Cards arquivados</p>}
+      </div>
       </div>
       }
     </div>

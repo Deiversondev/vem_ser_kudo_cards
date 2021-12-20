@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext";
+import styles from './CardKudoBox.module.css'
 
 
 
@@ -8,20 +9,22 @@ function CardKudoBoxEmAndamento (){
   const{listKudoBoxesEmAndamento} = useContext(ListContext);
   
   return (
-    <div>
+    <div className={styles.kudoBox_Container}>
       <h3>KudoBoxes em andamento:</h3>
-      <ul>
-        {listKudoBoxesEmAndamento.map(kudoBox => (
-          <div key={kudoBox.idKudoBox}>
-            <li>
-            {kudoBox.idKudoBox}
-            {kudoBox.titulo}
+    
+       <div className={styles.kudoBoxMain}>
+       {listKudoBoxesEmAndamento.map(kudoBox => (
+          <div className={styles.kudoBox} key={kudoBox.idKudoBox}>
+         
+            <h4><strong>ID: </strong> {kudoBox.idKudoBox}</h4>
+           <p><strong>Título: </strong>  {kudoBox.titulo}</p>
             {kudoBox.idSprint}
-            {kudoBox.dataLeitura}
-            </li>
+           <p> <strong>Data de leitura:</strong> {kudoBox.dataLeitura}</p>
+          
           </div>
         ))}
-      </ul>
+       </div>
+     
     </div>
   )
 }

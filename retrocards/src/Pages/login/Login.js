@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import api from '../../api';
 import { AuthContext } from '../../context/AuthContext';
 import Loading from '../../components/loading/Loading'
+import styles from './Login.module.css'
 
 function Login() {
     
@@ -46,12 +47,12 @@ function Login() {
         <form onSubmit={formik.handleSubmit}>
             
           <div>
-            <label htmlFor="usuario">Usuario</label>
+            <label htmlFor="usuario">Usuario:</label>
             <input type="text" name="usuario" id="usuario" placeholder="Digite seu username" onChange={formik.handleChange} value={formik.values.usuario} />
           </div>
 
           <div >
-            <label htmlFor="senha">Senha</label>
+            <label htmlFor="senha">Senha: </label>
             <input type="password" name="senha" id="senha" placeholder="Digite sua senha" onChange={formik.handleChange} value={formik.values.senha} />
           </div>
 

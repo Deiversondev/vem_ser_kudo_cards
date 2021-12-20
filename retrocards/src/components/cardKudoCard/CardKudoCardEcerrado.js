@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext";
+import styles from './CardKudoCard.module.css'
 
 
 function CardKudoCard (){
@@ -8,22 +9,24 @@ function CardKudoCard (){
   
 
   return (
-    <div>
-      <ul>
-        {listKudoCardsEncerrados.map(kudoCard => (
-          <div key={kudoCard.idKudoCard}>
-          <li>
-          <p>Id: {kudoCard.idKudoCard}</p>
-          <p>Título: {kudoCard.titulo}</p>
-          <p>ID KudoBox: {kudoCard.idKudoBox}</p>
-          <p>Data de Conclusão: {kudoCard.dataConclusao}</p>
-          <p>{kudoCard.de? kudoCard.de : "Anônimo"}</p>
-          <p>Para:{kudoCard.para}</p>
-          <p>{kudoCard.descricao}</p>
-          </li>
+    <div className={styles.kudoCard_container}>
+     <h3>Kudo Cards Encerrados</h3>
+       <div className={styles.cardsContainer}>
+       {listKudoCardsEncerrados.map(kudoCard => (
+          <div className={styles.kudoCard_main }  key={kudoCard.idKudoCard}>
+         
+          <p><strong>Id:</strong> {kudoCard.idKudoCard}</p>
+          <p><strong>Título:</strong> {kudoCard.titulo}</p>
+          <p><strong>ID KudoBox:</strong> {kudoCard.idKudoBox}</p>
+          <p><strong>Data de Conclusão:</strong> {kudoCard.dataConclusao}</p>
+          <p> <strong>De: </strong> {kudoCard.de? kudoCard.de : "Anônimo"}</p>
+          <p><strong>Para: </strong>{kudoCard.para}</p>
+          <p><strong>Descrição: </strong> {kudoCard.descricao}</p>
+        
         </div>
         ))}
-      </ul>
+       </div>
+     
     </div>
   )
 }

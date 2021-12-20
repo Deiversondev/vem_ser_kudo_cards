@@ -1,0 +1,18 @@
+.kudoBox_Container {
+    /* border: 1px solid #000; */
+    background-color: #b6b6b6;
+    margin: 20px 0px;
+}
+
+.kudoBoxMain {
+    display: flex;
+    justify-content: center;
+}
+
+.kudoBox {
+    /* border: 1px solid #000; */
+    width: 250px;
+    height: 250px;
+    background-color: #008E75;
+    margin-bottom: 10px;
+}
