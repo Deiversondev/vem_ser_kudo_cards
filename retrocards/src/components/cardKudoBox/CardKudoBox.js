@@ -41,7 +41,7 @@ function CardKudoBox (){
               {kudoBox.statusKudoBoxEntity === "CRIADO" &&
               <button onClick={()=> startKudoBox(kudoBox.idKudoBox)}>Iniciar Kudo Box</button>
               }
-              {kudoBox.statusKudoBoxEntity !=="EM_ANDAMENTO" &&
+              {kudoBox.statusKudoBoxEntity === "ENCERRADO" &&
               <button onClick={()=> goToKudoBox(kudoBox.idKudoBox)}>Abrir Kudo Box</button>
               }
               </li>

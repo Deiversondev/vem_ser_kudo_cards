@@ -32,7 +32,10 @@ function CardKudoCardsUsers (){
             <p>Para: {kudoCard.para}</p>
             <p>Descrição: {kudoCard.descricao}</p>
             <p>KudoBox: {kudoCard.kudoBoxDTO.idKudoBox}- {kudoCard.kudoBoxDTO.titulo}- {kudoCard.kudoBoxDTO.dataLeitura}</p>
-            <button onClick={() => deletarKudocard(kudoCard.idKudoCard)}>Deletar</button>
+            { 
+              kudoCard.kudoBoxDTO.statusKudoBoxEntity === 'EM_ANDAMENTO' &&
+              <button onClick={() => deletarKudocard(kudoCard.idKudoCard)}>Deletar</button>
+            }
             </li>
           </div>
           ))}

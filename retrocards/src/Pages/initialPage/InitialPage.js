@@ -81,13 +81,13 @@ function InitialPage (){
       {loading && <Loading/>}
       {!loading && 
       <div>
-        {/* s */}
+        
 
-       <div className={styles.btns}>
-       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
-        <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
-        <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
-       </div>
+      <div className={styles.btns}>
+      <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
+      <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
+      <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
+      </div>
       <div className={styles.body}>
       {listSprints.length !== 0 && <CardSprint/>}
         {listSprints.length === 0 && <p>Não existem Sprints cadastradas</p>}
