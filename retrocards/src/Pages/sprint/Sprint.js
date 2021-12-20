@@ -6,6 +6,7 @@ import CardKudoBox from "../../components/cardKudoBox/CardKudoBox";
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
 import CardKudoCardEcerradoSprint from '../../components/cardKudoCard/CardKudoCardEcerradoSprint'
+import styles from './Sprint.module.css'
 
 function Sprint (){
 
@@ -81,8 +82,8 @@ function Sprint (){
       <div>
         <h1>Página Sprint</h1>
 
-        <button type="button" onClick={()=> goToCreateRetrospectiva()} >Criar nova Retrospectiva</button>
-        <button type="button" onClick={()=> goToCreateKudoBox()} >Criar nova Kudo Box</button>
+        <button className={styles.btn} type="button" onClick={()=> goToCreateRetrospectiva()} >Criar nova Retrospectiva</button>
+        <button className={styles.btn} type="button" onClick={()=> goToCreateKudoBox()} >Criar nova Kudo Box</button>
         
         {listRetrospectivas.length !== 0 && <CardRetrospectiva/>}
         {listRetrospectivas.length === 0 && <p>Não existem Retrospectivas cadastradas</p>}

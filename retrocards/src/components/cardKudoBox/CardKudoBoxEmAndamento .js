@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext";
-import styles from './CardKudoBox.module.css'
+import styles from './CardKudoBoxEmAberto.module.css'
 
 
 

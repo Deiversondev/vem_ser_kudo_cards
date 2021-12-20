@@ -1,0 +1,17 @@
+.card_main {
+    border: 1px solid #000;
+    width: 300px;
+    background-color: #009E5E;
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.kudoContainer {
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+}

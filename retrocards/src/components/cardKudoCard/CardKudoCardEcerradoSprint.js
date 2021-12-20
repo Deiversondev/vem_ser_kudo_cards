@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
 import Loading from '../loading/Loading'
+import styles  from './CardKudoCardEcerrado.module.css'
+import moment from "moment";
 
 
 function CardKudoCardEcerradoSprint(){
@@ -9,22 +11,24 @@ function CardKudoCardEcerradoSprint(){
   
 
   return (
-    <div>
-      <ul>
+    <div className={styles.kudoContainer}>
+    
         {listKudoCardsEncerradosSprint.map(kudoCard => (
-          <div key={kudoCard.idKudoCard}>
-          <li>
-          <p>Id: {kudoCard.idKudoCard}</p>
-          <p>Título: {kudoCard.titulo}</p>
-          <p>De: {kudoCard.de? kudoCard.de : "Anônimo"}</p>
-          <p>Para: {kudoCard.para}</p>
-          <p>Descrição: {kudoCard.descricao}</p>
-          <p>ID KudoBox: {kudoCard.kudoBoxDTO.idKudoBox}</p>
-          <p>Data da Leitura: {kudoCard.kudoBoxDTO.dataLeitura}</p>
-          </li>
+          <div  key={kudoCard.idKudoCard}>
+      
+        <div className={styles.card_main}>
+            <p><strong>ID:</strong> {kudoCard.idKudoCard}</p>
+            <p><strong>Título:</strong> {kudoCard.titulo}</p>
+            <p><strong>De:</strong> {kudoCard.de? kudoCard.de : "Anônimo"}</p>
+            <p><strong>Para:</strong> {kudoCard.para}</p>
+            <p><strong>Descrição:</strong> {kudoCard.descricao}</p>
+            <p><strong>ID KudoBox:</strong> {kudoCard.kudoBoxDTO.idKudoBox}</p>
+            <p><strong>Data da Leitura:</strong> {moment(kudoCard.kudoBoxDTO.dataLeitura).format('DD/MM/YYYY')}</p>
+        </div>
+         
         </div>
         ))}
-      </ul>
+      
     </div>
   )
 }
