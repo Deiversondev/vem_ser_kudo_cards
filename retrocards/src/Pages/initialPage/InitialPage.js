@@ -89,10 +89,13 @@ function InitialPage (){
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
       </div>
       <div className={styles.body}>
-      {listSprints.length !== 0 && <CardSprint/>}
+        
+        {listSprints.length !== 0 && <CardSprint/>}
         {listSprints.length === 0 && <p>Não existem Sprints cadastradas</p>}
+       
         {listKudoBoxesEmAndamento.length !== 0 && <CardKudoBoxEmAndamento/>}
         {listKudoBoxesEmAndamento.length === 0 && <p>Não existem Kudo Boxes em andamento</p>}
+        
         {listKudoCardsEncerrados.length !== 0 && <CardKudoCardEcerrado/>}
         {listKudoCardsEncerrados.length === 0 && <p>Não existem Kudo Cards arquivados</p>}
       </div>

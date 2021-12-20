@@ -27,6 +27,8 @@ function CardKudoBox (){
     window.location.reload()
   }
 
+  const checkIfEmAndamento = listKudoBoxes.find(e => e.statusKudoBoxEntity === 'EM_ANDAMENTO')
+
   return (
     <div>
       {loading && <Loading/>}
@@ -43,7 +45,7 @@ function CardKudoBox (){
               <p><strong>Status:</strong>  {kudoBox.statusKudoBoxEntity.replaceAll('_', ' ')}</p>
               <p><strong>Data: </strong> {moment(kudoBox.dataLeitura).format('DD/MM/YYYY')}</p>
               </div>
-              {kudoBox.statusKudoBoxEntity === "CRIADO" &&
+              {(kudoBox.statusKudoBoxEntity === "CRIADO") && (checkIfEmAndamento === undefined) &&
               <button onClick={()=> startKudoBox(kudoBox.idKudoBox)}>Iniciar Kudo Box</button>
               }
               {kudoBox.statusKudoBoxEntity === "ENCERRADO" &&

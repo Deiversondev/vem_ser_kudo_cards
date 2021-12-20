@@ -7,7 +7,7 @@ import moment from "moment";
 
 function CardKudoCardEcerradoSprint(){
 
-  const{listKudoCardsEncerradosSprint} = useContext(ListContext) 
+  const{listKudoCardsEncerradosSprint} = useContext(ListContext); 
   
 
   return (
@@ -32,7 +32,7 @@ function CardKudoCardEcerradoSprint(){
        </div>
       
     </div>
-  )
+  );
 }
 
 export default CardKudoCardEcerradoSprint;
