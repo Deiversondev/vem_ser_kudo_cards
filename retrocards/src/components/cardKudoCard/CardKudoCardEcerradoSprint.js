@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
 import Loading from '../loading/Loading'
-import styles  from './CardKudoCardEcerrado.module.css'
+import styles  from './CardKudoCardEcerradoSprint.module.css'
 import moment from "moment";
 
 

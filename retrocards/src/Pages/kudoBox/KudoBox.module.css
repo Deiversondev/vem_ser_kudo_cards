@@ -1,0 +1,12 @@
+.kudobox_main button {
+    height: 30px;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.kudobox_main {
+    border: 1px solid #000;
+    padding-top: 10px;
+}

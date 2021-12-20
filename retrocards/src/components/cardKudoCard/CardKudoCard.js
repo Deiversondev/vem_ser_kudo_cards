@@ -3,6 +3,7 @@ import api from "../../api";
 import { ListContext } from "../../context/ListContext"
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../loading/Loading'
+import styles from './CardKudoCard.module.css'
 
 
 function CardKudoCard (){
@@ -29,20 +30,22 @@ function CardKudoCard (){
       {loading && <Loading/>}
       {!loading && 
       <div>
-        <ul>
-          {listKudoCards.map(kudoCard => (
-            <div key={kudoCard.idKudoCard}>
-              <li>
-              {kudoCard.idKudoCard}
-              {kudoCard.titulo}
-              {kudoCard.dataCriacao}
-              {kudoCard.de? kudoCard.de : "Anônimo"}
-              {kudoCard.para}
-              <button onClick={()=> goToKudoCard(kudoCard.idKudoCard)}>Abrir Kudo Card</button>
-              </li>
-          </div>
-          ))}
-        </ul>
+       
+            <div className={styles.cards_container}>
+            {listKudoCards.map(kudoCard => (
+                        <div className={styles.card_main} key={kudoCard.idKudoCard}>
+                          
+                          <p><strong>ID: </strong>{kudoCard.idKudoCard}</p>
+                         <h3>Título: {kudoCard.titulo}</h3>
+                         <p> <strong>Data: </strong>  {kudoCard.dataCriacao} </p>
+                         <p><strong>De: </strong>  {kudoCard.de? kudoCard.de : "Anônimo"}</p>
+                         <p><strong>Para: </strong>  {kudoCard.para} </p>
+                          <button  onClick={()=> goToKudoCard(kudoCard.idKudoCard)}>Abrir Kudo Card</button>
+                        
+                      </div>
+                      ))}
+                    
+            </div>
       </div>
       }
     </div>

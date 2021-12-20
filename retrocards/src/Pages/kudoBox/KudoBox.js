@@ -4,6 +4,7 @@ import { ListContext } from "../../context/ListContext"
 import CardKudoCard from "../../components/cardKudoCard/CardKudoCard"
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
+import styles from './KudoBox.module.css'
 
 
 function KudoBox (){
@@ -40,7 +41,7 @@ function KudoBox (){
     <div>
       {loading && <Loading/>}
       {!loading && 
-      <div>
+      <div className={styles.kudobox_main}>
         <h1>Página KudoBox</h1>
         <button onClick={()=> goToCreateKudoCard()}>Criar novo Kudo Card </button>
         {listKudoCards.length !== 0 && <CardKudoCard/>}

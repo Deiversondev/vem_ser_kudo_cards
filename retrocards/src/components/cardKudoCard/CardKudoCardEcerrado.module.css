@@ -1,21 +1,17 @@
-.card_main {
+.kudoCard_main {
+    /* border: 1px solid #000; */
     width: 300px;
+    height: 300px;
     background-color: #009E5E;
-    color: #fff;
-    margin-top: 10px;
-    margin-left: 10px;
-    border-radius: 5px;
-    padding: 10px 0px;
 }
 
-.kudoContainer {
+.kudoCard_container {
+    /* display: flex; */
+    justify-content: space-evenly;
+    background-color: #c5c5c5;
+}
+
+.cardsContainer {
     display: flex;
-    width: 90%;
-    flex-wrap: wrap;
-    margin: auto;
-    justify-content: center;
-}
-
-.main_container {
-    border: 1px solid #000;
+    justify-content: space-evenly;
 }

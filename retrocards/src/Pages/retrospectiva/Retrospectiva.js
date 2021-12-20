@@ -44,8 +44,8 @@ function Retrospectiva() {
           retrospectiva && (
             retrospectiva.map((retro,index) => (
               <div key={index}>
-                <p>ID da retrospectiva: {retro.idRetrospectiva}</p>
-                <p><strong>STATUS: </strong>{retro.statusRetrospectivaEntity}</p>
+                <p><strong>ID da retrospectiva:</strong> {retro.idRetrospectiva}</p>
+                <p><strong>STATUS: </strong>{retro.statusRetrospectivaEntity.replaceAll('_', ' ')}</p>
                 
                 <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
                 {retrospectiva[0].itemDeRetrospectivaDTO.length === 0 ? <p>Não existem itens cadastrados</p> :  <ItemCard/>}
