@@ -11,8 +11,20 @@ header {
     justify-content: space-between;
 }
 
-.btns button {
-    width: 80px;
-    height: 30px;
-    margin: auto 10px;
+.btns button{
+    background-color: white;
+    color: #009E5E;
+    border-radius: 3px;
+    border: none;
+    height: 20px;
+    margin: 10px;
+    width: 50px;
+    
+}
+
+.btns button:hover{
+    box-shadow: 3px 6px 6px #184936;
+    cursor: pointer;
+    /* height: 20.2px; */
+    /* background-color: #027e4c; */
 }
