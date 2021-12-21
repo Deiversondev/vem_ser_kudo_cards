@@ -5,15 +5,19 @@ import { ListContext } from "../../context/ListContext"
 import ItemCard from '../../components/cardItemRetrospectiva/ItemCard'
 import Loading from '../../components/loading/Loading'
 import { AuthContext } from '../../context/AuthContext';
+import { UserGroupContext } from '../../context/UserGroupContext'
 
 function Retrospectiva() {
 
   const{retrospectiva,setRetrospectiva} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
+  const{getUserGroup, idGrupo, getlocalIdGrupo}= useContext(UserGroupContext)
 
-  useEffect(() =>{
+  useEffect(async() =>{
 
     getMeeting()
+    await getUserGroup()
+    getlocalIdGrupo()
     
   },[])
 
@@ -50,7 +54,7 @@ function Retrospectiva() {
                 <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
                 {retrospectiva[0].itemDeRetrospectivaDTO.length === 0 ? <p>Não existem itens cadastrados</p> :  <ItemCard/>}
               
-                {retro.statusRetrospectivaEntity !== 'ENCERRADA' &&
+                {(idGrupo ==  2) && (retro.statusRetrospectivaEntity !== 'ENCERRADA') &&
                 <button onClick={goToCreateItems}>Create Items</button>
         }
               </div>

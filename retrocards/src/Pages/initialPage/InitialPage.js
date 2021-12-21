@@ -8,7 +8,6 @@ import Loading from '../../components/loading/Loading'
 import CardKudoBoxEmAndamento from '../../components/cardKudoBox/CardKudoBoxEmAndamento '
 import CardKudoCardEcerrado from '../../components/cardKudoCard/CardKudoCardEcerrado'
 import styles from './InitialPage.module.css'
-import { ValidationError } from 'yup'
 
 
 
@@ -18,7 +17,7 @@ function InitialPage (){
   const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
   const{listKudoCardsEncerrados, setListKudoCardsEncerrados} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
-  const{getUserGroup, idGrupo, setIdGrupo}= useContext(UserGroupContext)
+  const{getUserGroup, idGrupo, getlocalIdGrupo}= useContext(UserGroupContext)
   
 
   useEffect(async()=>{
@@ -82,17 +81,6 @@ function InitialPage (){
   const goToMeusKudoCards = async() => {
     window.location.href = '/kudocardsuser'
   }
-
-  const getlocalIdGrupo = async()=>{
-    console.log('função get id grupo foi chamada')
-    await setIdGrupo(localStorage.getItem('idGrupo'));
-
-  }
-  console.log(idGrupo)
-
-  // useEffect(()=>{
-  //   setIdGrupo(localStorage.getItem('idGrupo'));
-  // },[idGrupo])
 
   return(
     <div >

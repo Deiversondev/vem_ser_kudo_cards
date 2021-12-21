@@ -14,9 +14,15 @@ function UserGroupProvider ({children}) {
     localStorage.setItem('idGrupo', data[0].grupos[0].idGrupo)
   }
 
+  const getlocalIdGrupo = async()=>{
+    console.log('função get id grupo foi chamada')
+    await setIdGrupo(localStorage.getItem('idGrupo'));
+
+  }
+
   return(
     
-    <UserGroupContext.Provider value={{ getUserGroup, idGrupo, setIdGrupo }}>
+    <UserGroupContext.Provider value={{ getUserGroup, idGrupo, setIdGrupo, getlocalIdGrupo }}>
       {children}
     </UserGroupContext.Provider>
   )

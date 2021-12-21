@@ -2,16 +2,20 @@ import React , {useEffect}from 'react'
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
 import api from '../../api';
+import { UserGroupContext } from '../../context/UserGroupContext'
 import styles from './ItemCard.module.css'
 
 function ItemCard() {
 
-const{retrospectiva,setRetrospectiva} = useContext(ListContext)
+  const{retrospectiva,setRetrospectiva} = useContext(ListContext)
+  const{getUserGroup, idGrupo, getlocalIdGrupo}= useContext(UserGroupContext)
 
-useEffect(() =>{
+  useEffect(async() =>{
 
     getMeeting()
-    
+    await getUserGroup()
+    getlocalIdGrupo()
+      
   },[])
 
 
@@ -20,7 +24,7 @@ useEffect(() =>{
     const {data} = await api.get(`/retrospectiva/listar-por-id-retro?idRetro=${idRetro}`)
     console.log('Esse console log é referente a retrospectiva')
     console.log(data)
-    // setListItems(data)
+    
   } 
   const goToCreateItems = () =>{
     window.location.href = '/createitems'
@@ -41,7 +45,7 @@ useEffect(() =>{
       alert('Ação de excluir cancelada com sucesso!')
     }
 
-  // await api.delete(`/item/${id}`)
+  
   }
 
   const getMeeting = async () =>{
@@ -51,10 +55,11 @@ useEffect(() =>{
     setRetrospectiva(data)
       
   }
+  
 
 return (
     <div>
-      {/* <h1>Retrospectiva</h1> */}
+      
       {
 
         retrospectiva && (
@@ -73,9 +78,9 @@ return (
                     <p> <span>Tipo:</span>  {item.tipo}</p>
 
                     <p><span>Descrição: </span>{item.descricao}</p>
-
+                    {(idGrupo ==  2) &&
                     <button  onClick={() => deleteItem(item.idItemRetrospectiva)}>Deletar</button>
-                
+                    }
                   </div>
                 ))
               }
