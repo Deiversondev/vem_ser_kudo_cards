@@ -1,29 +1,28 @@
 .card_main {
+
     width: 250px;
-    height: 250px;
-    border: 1px solid #000;
+    height: 270px;
     margin: 20px auto;
-    padding: 20px;
     display: flex;
     justify-content: space-evenly;
     border-radius: 10px;
-    background-color: #000;
+    background-color: #4861B4;
+    font-size: 13px;
+    
 }
 
 .card_main .encerrar_btn {
     border: none;
-    background: #c41818;
-    color: #fff;
-    height: 25px;
+    background: white;
+    color: #c41818;
+    width: 120px;
+    height: 30px;
     border-radius: 5px;
+    font-weight: bold;
+    font-size: 13px;
 }
 
-.card_img {
-    width: 35%;
-    border: 1px solid #000;
-    /* height: 200px; */
-    background-color: #1238ce;
-}
+
 
 .card_content {
     width: 80%;
@@ -33,13 +32,22 @@
 }
 
 .card_content button {
-    width: 100px;
+    width: 120px;
     height: 30px;
-    background-color: rgb(26, 165, 216);
-    color: #fff;
+    background-color: white;
+    color: #4861B4;
     border: none;
     border-radius: 5px;
     margin-left: 10px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.card_content button:hover{
+    
+    box-shadow: 3px 6px 6px #354886;
+    cursor: pointer;
+
 }
 
 .card_content span {
