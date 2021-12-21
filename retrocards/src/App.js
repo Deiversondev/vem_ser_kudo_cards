@@ -8,12 +8,12 @@ import Header from './components/header/Header';
 function App() {
   return (
     <div className="App">
-      <AuthProvider>
+      <AuthProvider> 
       <ListProvider>
-      {/* <UserGroupProvider> */}
+      <UserGroupProvider>
         <Header/>
         <Routers/>
-      {/* </UserGroupProvider> */}
+      </UserGroupProvider>
       </ListProvider>
       </AuthProvider>
     </div>

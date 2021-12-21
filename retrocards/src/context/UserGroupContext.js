@@ -6,46 +6,19 @@ const UserGroupContext = createContext();
 
 function UserGroupProvider ({children}) {
 
-//   // useEffect(()=>{
+  const[idGrupo, setIdGrupo] = useState(0)
 
-//   //   // recuperarUsuario()
-
-//   // },[])
-
-//   const[groupUser, setGroupUser] = useState('')
-
-  
-
-//   const getGrupoUsuario = async(idUser) => {
-
+  const getUserGroup = async() => {
     
-//     const{data} = await api.get('/usuario')
-
-//     data.map(e => (
-
-//       e.idUsuario === idUser && 
-//       setGroupUser(e.grupos[0].idGrupo)
-  
-//     ))
-    
-//     console.log('Grupo do usuário:', groupUser)
-//   }
+    const{data} = await api.get('/usuario/listar-por-grupo')
+    localStorage.setItem('idGrupo', data[0].grupos[0].idGrupo)
+  }
 
   return(
-    <h4>olá</h4>
     
-    // <UserGroupContext.Provider 
-    // value={{
-    // // idUser, 
-    // // setIdUser, 
-    // groupUser, 
-    // setGroupUser, 
-    // // recuperarUsuario,
-    // getGrupoUsuario
-    
-    // }}>
-    //   {children}
-    // </UserGroupContext.Provider>
+    <UserGroupContext.Provider value={{ getUserGroup, idGrupo, setIdGrupo }}>
+      {children}
+    </UserGroupContext.Provider>
   )
 }
 

@@ -8,6 +8,7 @@ import Loading from '../../components/loading/Loading'
 import CardKudoBoxEmAndamento from '../../components/cardKudoBox/CardKudoBoxEmAndamento '
 import CardKudoCardEcerrado from '../../components/cardKudoCard/CardKudoCardEcerrado'
 import styles from './InitialPage.module.css'
+import { ValidationError } from 'yup'
 
 
 
@@ -17,48 +18,20 @@ function InitialPage (){
   const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
   const{listKudoCardsEncerrados, setListKudoCardsEncerrados} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
-  // const{groupUser, getGrupoUsuario}= useContext(UserGroupContext)
-  const[idUser, setIdUser] = useState('')
-  const[groupUser, setGroupUser] = useState('')
+  const{getUserGroup, idGrupo, setIdGrupo}= useContext(UserGroupContext)
+  
 
-  useEffect(()=>{
+  useEffect(async()=>{
     
     getSprint()
     getKudoBoxEmAndamento()
     getKudoCardsEncerrados()
     getUpdateStatusKudoBox()
-    recuperarUsuario()
-    getGrupoUsuario()
+    await getUserGroup()
+    getlocalIdGrupo()
 
   },[])
 
-  const recuperarUsuario = async() => {
-
-    const{data} = await api.get('/usuario/recuperar')
-    localStorage.setItem('idUsuario', data.idUsuario)
-
-  }
-  const getGrupoUsuario = async() => {
-
-    
-    const{data} = await api.get('/usuario')
-    const idUser = localStorage.getItem('idUsuario')
-    console.log(data)
-    data.map(e => {
-
-      if (e.idUsuario === idUser){
-        console.log('oi')
-      }
-      
-      // if (e.idUsuario === idUser){ 
-      //   localStorage.setItem('GrupoUsuario', e.grupos[0].idGrupo)
-      //   console.log(e.grupos[0].idGrupo)
-      // }
-      
-    })
-    
-    console.log('Grupo do usuário:', groupUser)
-  }
 
   const getSprint =async () =>{
     setLoading(true)
@@ -95,7 +68,7 @@ function InitialPage (){
     const {data} = await api.get('/kudocard/find-by-sprint')
     setLoading(false)
     setListKudoCardsEncerrados(data)
-    console.log()
+    
 
   }
 
@@ -110,17 +83,22 @@ function InitialPage (){
     window.location.href = '/kudocardsuser'
   }
 
+  const getlocalIdGrupo = async()=>{
+    console.log('função get id grupo foi chamada')
+    await setIdGrupo(localStorage.getItem('idGrupo'));
+    console.log(idGrupo)
+
+  }
+
+
   return(
     <div >
       {loading && <Loading/>}
       {!loading && 
       <div>
-
+      {/* {localIdGrupo}  */}
       <div className={styles.btns}>
-      id: {idUser}
-      grupo:{groupUser}
-      {/* {groupUser !== 1 && */}
-      {/* <button onClick={()=>getGrupoUsuario()}>grupoUser</button> */}
+      {/* {localIdGrupo ===  2 && */}
       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
       
       <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
