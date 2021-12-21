@@ -1,12 +1,15 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ListContext } from '../../context/ListContext'
 import api from '../../api'
 import CardSprint from '../../components/cardSprint/CardSprint'
+import { UserGroupContext } from '../../context/UserGroupContext'
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
 import CardKudoBoxEmAndamento from '../../components/cardKudoBox/CardKudoBoxEmAndamento '
 import CardKudoCardEcerrado from '../../components/cardKudoCard/CardKudoCardEcerrado'
 import styles from './InitialPage.module.css'
+
+
 
 function InitialPage (){
 
@@ -14,15 +17,20 @@ function InitialPage (){
   const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
   const{listKudoCardsEncerrados, setListKudoCardsEncerrados} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
+  const{getUserGroup, idGrupo, getlocalIdGrupo}= useContext(UserGroupContext)
   
-  useEffect(()=>{
 
+  useEffect(async()=>{
+    
     getSprint()
     getKudoBoxEmAndamento()
     getKudoCardsEncerrados()
     getUpdateStatusKudoBox()
+    await getUserGroup()
+    getlocalIdGrupo()
 
   },[])
+
 
   const getSprint =async () =>{
     setLoading(true)
@@ -59,7 +67,7 @@ function InitialPage (){
     const {data} = await api.get('/kudocard/find-by-sprint')
     setLoading(false)
     setListKudoCardsEncerrados(data)
-    console.log()
+    
 
   }
 
@@ -76,13 +84,16 @@ function InitialPage (){
 
   return(
     <div >
+
       {loading && <Loading/>}
       {!loading && 
       <div>
-        
-
+     
       <div className={styles.btns}>
+      {(idGrupo ==  2) && 
+      
       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
+      }
       <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
       </div>
