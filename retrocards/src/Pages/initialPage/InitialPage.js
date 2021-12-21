@@ -37,14 +37,12 @@ function InitialPage (){
 
   const getRecentRetrospectiva = async() =>{
     setLoading(true)
-    const {data} = await api.get('/retrospectiva/findo-retro-mais-recente')
+    const {data} = await api.get('/retrospectiva/find-retro-mais-recente')
     setLoading(false)
     
-    const recentRetro = data.map(e => (
-      e.idRetrospectiva
-    ))
+    console.log(data.idRetrospectiva)
   
-    localStorage.setItem('IdRetrospectiva',recentRetro[0]) 
+    localStorage.setItem('IdRetrospectiva', data.idRetrospectiva) 
     window.location.href ='/retrospectiva'
   }
 
