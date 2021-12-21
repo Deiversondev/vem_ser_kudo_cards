@@ -86,21 +86,26 @@ function InitialPage (){
   const getlocalIdGrupo = async()=>{
     console.log('função get id grupo foi chamada')
     await setIdGrupo(localStorage.getItem('idGrupo'));
-    console.log(idGrupo)
 
   }
+  console.log(idGrupo)
 
+  // useEffect(()=>{
+  //   setIdGrupo(localStorage.getItem('idGrupo'));
+  // },[idGrupo])
 
   return(
     <div >
+
       {loading && <Loading/>}
       {!loading && 
       <div>
-      {/* {localIdGrupo}  */}
+     
       <div className={styles.btns}>
-      {/* {localIdGrupo ===  2 && */}
-      <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
+      {(idGrupo ==  2) && 
       
+      <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
+      }
       <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
       </div>
