@@ -11,8 +11,15 @@
 
 .kudoBox {
     /* border: 1px solid #000; */
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 150px;
     background-color: #008E75;
     margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 15px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    font-size: 13px;
 }
