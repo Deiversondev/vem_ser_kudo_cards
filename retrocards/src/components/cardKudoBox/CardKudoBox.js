@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import api from "../../api";
 import { ListContext } from "../../context/ListContext"
 import { AuthContext } from "../../context/AuthContext";
 import Loading from "../loading/Loading";
+import { UserGroupContext } from '../../context/UserGroupContext';
 import styles from './CardKudoBox.module.css'
 import moment from "moment";
 
@@ -12,6 +13,14 @@ function CardKudoBox (){
 
   const{listKudoBoxes} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
+  const{getUserGroup, idGrupo, getlocalIdGrupo}= useContext(UserGroupContext)
+
+  useEffect(async() =>{
+
+    await getUserGroup()
+    getlocalIdGrupo()
+      
+  },[])
   
   const goToKudoBox = (idKudoBox)=> {
     localStorage.setItem('idKudoBox', idKudoBox)
@@ -46,7 +55,7 @@ function CardKudoBox (){
               <p><strong>Data: </strong> {moment(kudoBox.dataLeitura).format('DD/MM/YYYY')}</p>
               </div>
               {
-                (kudoBox.statusKudoBoxEntity === 'EM_ANDAMENTO') &&
+                (idGrupo ==  1) && (kudoBox.statusKudoBoxEntity === 'EM_ANDAMENTO') &&
                 <button onClick={() => {window.location.href = '/createkudocards'}}>Criar KudoCard</button>
               }
               {(kudoBox.statusKudoBoxEntity === "CRIADO") && (checkIfEmAndamento === undefined) &&
