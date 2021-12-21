@@ -6,6 +6,7 @@ import ItemCard from '../../components/cardItemRetrospectiva/ItemCard'
 import Loading from '../../components/loading/Loading'
 import { AuthContext } from '../../context/AuthContext';
 import { UserGroupContext } from '../../context/UserGroupContext'
+import styles from '../retrospectiva/Retrospectiva.module.css'
 
 function Retrospectiva() {
 
@@ -42,16 +43,16 @@ function Retrospectiva() {
     <div>
       {loading && <Loading/>}
       {!loading && 
-      <div>
-        <h1>Retrospectiva</h1>
+      <div className={styles.retrospectiva}>
+        <h1>Retrospectivas:</h1>
         {
           retrospectiva && (
             retrospectiva.map((retro,index) => (
-              <div key={index}>
+              <div key={index} className={styles.cardRetrospectiva} >
                 <p><strong>ID da retrospectiva:</strong> {retro.idRetrospectiva}</p>
                 <p><strong>STATUS: </strong>{retro.statusRetrospectivaEntity.replaceAll('_', ' ')}</p>
                 
-                <h2>Titulo da retrospectiva: {retro.tituloRetrospectiva}</h2>
+                <p><strong>Titulo da retrospectiva:</strong> {retro.tituloRetrospectiva}</p>
                 {retrospectiva[0].itemDeRetrospectivaDTO.length === 0 ? <p>Não existem itens cadastrados</p> :  <ItemCard/>}
               
                 {(idGrupo ==  2) && (retro.statusRetrospectivaEntity !== 'ENCERRADA') &&

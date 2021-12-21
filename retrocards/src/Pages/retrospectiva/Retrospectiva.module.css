@@ -1,0 +1,17 @@
+.retrospectiva{
+
+ 
+}
+
+.cardRetrospectiva {
+  width: 180px;
+  height: 150px;
+  background-color: #a5438d;
+  padding: 5px;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0 15px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  font-size: 13px;
+}
