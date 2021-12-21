@@ -5,13 +5,14 @@
     margin-right: 55px;
     width: 200px;
     text-align: center;
-
+    
     
 }
 
 .login h1 {
     color: #009E5E;
     margin-bottom: 30px;
+    
 }
 
 
@@ -22,6 +23,7 @@
     border-radius: 3px;
     border: none;
     height: 20px;
+    font-weight: bold;
 }
 
 .login button:hover{
@@ -41,4 +43,5 @@
 .heightInput{
     height: 45px;
     color: #027e4c;
+    font-weight: bold;
 }

@@ -6,24 +6,39 @@
 }
 
 .main {
-    background-color: #b3b3b3;
+    
     padding: 10px;
 }
 
 .sprint_main {
-    /* border: 1px solid #000; */
-    width: 200px;
-    height: 200px;
+    
+    width: 150px;
+    height: 150px;
     background-color: #0e5f96;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    margin: 0 20px;
+    margin: 0 15px;
     padding-bottom: 10px;
+    border-radius: 5px;
 }
 
 .sprint_main button {
-    width: 100px;
-    height: 25px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    
+}
+
+.sprint_main p{
+    font-size: 13px;
+}
+
+.styles.divData{
+    height: 80px;
+}
+
+.divButton{
+    margin-bottom: 10px;
 }

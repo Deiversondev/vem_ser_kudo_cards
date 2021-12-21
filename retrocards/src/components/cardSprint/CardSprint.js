@@ -19,12 +19,15 @@ function CardSprint (){
        {listSprints.map(sprint =>(
           <div key= {sprint.idSprint}>
             <div className={styles.sprint_main}>
-              <div>
-             <p><strong>ID: </strong> {sprint.idSprint}</p>
-              <p><strong>Título: </strong> {sprint.titulo}</p>
-              <p><strong>Data: </strong>{sprint.dataConclusao}</p>
+              <div className={styles.divData}>
+                <p><strong>ID: </strong> {sprint.idSprint}</p>
+                <p><strong>Título: </strong> {sprint.titulo}</p>
+                <p><strong>Data: </strong>{sprint.dataConclusao}</p>
+                
               </div>
-              <button onClick={() => setSprintId(sprint.idSprint)}>Go to Sprint</button>
+              <div className={styles.divButton}>
+              <button onClick={() => setSprintId(sprint.idSprint)}>Abrir</button>
+              </div>
             </div>
           </div>
         ))}
