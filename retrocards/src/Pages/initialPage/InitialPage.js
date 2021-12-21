@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ListContext } from '../../context/ListContext'
 import api from '../../api'
 import CardSprint from '../../components/cardSprint/CardSprint'
-import { AuthContext } from '../../context/AuthContext'
 import { UserGroupContext } from '../../context/UserGroupContext'
+import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
 import CardKudoBoxEmAndamento from '../../components/cardKudoBox/CardKudoBoxEmAndamento '
 import CardKudoCardEcerrado from '../../components/cardKudoCard/CardKudoCardEcerrado'
@@ -17,10 +17,12 @@ function InitialPage (){
   const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
   const{listKudoCardsEncerrados, setListKudoCardsEncerrados} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
-  const{idUser, groupUser, recuperarUsuario, getGrupoUsuario}= useContext(UserGroupContext)
-  
-  useEffect(()=>{
+  // const{groupUser, getGrupoUsuario}= useContext(UserGroupContext)
+  const[idUser, setIdUser] = useState('')
+  const[groupUser, setGroupUser] = useState('')
 
+  useEffect(()=>{
+    
     getSprint()
     getKudoBoxEmAndamento()
     getKudoCardsEncerrados()
@@ -30,7 +32,33 @@ function InitialPage (){
 
   },[])
 
-  
+  const recuperarUsuario = async() => {
+
+    const{data} = await api.get('/usuario/recuperar')
+    localStorage.setItem('idUsuario', data.idUsuario)
+
+  }
+  const getGrupoUsuario = async() => {
+
+    
+    const{data} = await api.get('/usuario')
+    const idUser = localStorage.getItem('idUsuario')
+    console.log(data)
+    data.map(e => {
+
+      if (e.idUsuario === idUser){
+        console.log('oi')
+      }
+      
+      // if (e.idUsuario === idUser){ 
+      //   localStorage.setItem('GrupoUsuario', e.grupos[0].idGrupo)
+      //   console.log(e.grupos[0].idGrupo)
+      // }
+      
+    })
+    
+    console.log('Grupo do usuário:', groupUser)
+  }
 
   const getSprint =async () =>{
     setLoading(true)
@@ -89,10 +117,12 @@ function InitialPage (){
       <div>
 
       <div className={styles.btns}>
-      {groupUser}
-      {groupUser !== 1 &&
+      id: {idUser}
+      grupo:{groupUser}
+      {/* {groupUser !== 1 && */}
+      {/* <button onClick={()=>getGrupoUsuario()}>grupoUser</button> */}
       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
-      }
+      
       <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
       </div>

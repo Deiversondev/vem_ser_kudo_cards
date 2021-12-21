@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <AuthProvider>
       <ListProvider>
-      <UserGroupProvider>
+      {/* <UserGroupProvider> */}
         <Header/>
         <Routers/>
-        </UserGroupProvider>
+      {/* </UserGroupProvider> */}
       </ListProvider>
       </AuthProvider>
     </div>
