@@ -27,10 +27,18 @@ function CreateKudoBox() {
   const createKudobox = async (values) => {
     
     setLoading(true)
+  try{
     const {data} =  await api.post(`/kudobox?id=${idSprint}`,values)
     setLoading(false)
     alert('Nova kudo box criada com sucesso!')
     window.history.back()
+  }
+  catch{
+    alert('Houve uma falha nos servidores!')
+    window.history.back()
+  }
+
+    
   }
 
 

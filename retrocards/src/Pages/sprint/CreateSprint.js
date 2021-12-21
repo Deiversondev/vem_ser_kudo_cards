@@ -26,9 +26,15 @@ function CreateSprint() {
 
   const createSprint = async (values) => {
     setLoading(true);
+   try{
     const {data} =  await api.post('/sprint',values);
     setLoading(false);
     alert('Nova sprint criada com sucesso!')
+   }
+   catch{
+    setLoading(false);
+     alert('Data de conclusão não pode ser antes da data de inicio! Verifique os dados inseridos, se foram inseridos corretamente , houve uma falha nos servidores , tente novamente mais tarde')
+   }
     window.history.back()
   }
     

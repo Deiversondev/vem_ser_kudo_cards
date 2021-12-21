@@ -26,9 +26,17 @@ function CreateRetrospectiva() {
 
       const id = localStorage.getItem('idSprint')
       setLoading(true)
-      const {data} = await api.post(`/retrospectiva?id=${id}`,values)
-      setLoading(false)
-      alert('Nova retrospectiva criada com sucesso!')
+      try{
+        const {data} = await api.post(`/retrospectiva?id=${id}`,values)
+        setLoading(false)
+        alert('Nova retrospectiva criada com sucesso!')
+      }
+      catch{
+        alert(' Houve uma falha nos servidores')
+        setLoading(false)
+      }
+      
+      
       window.history.back()
     }
 
