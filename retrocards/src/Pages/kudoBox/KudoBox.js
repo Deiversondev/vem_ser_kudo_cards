@@ -43,7 +43,7 @@ function KudoBox (){
       {!loading && 
       <div className={styles.kudobox_main}>
         <h1>Página KudoBox</h1>
-        <button onClick={()=> goToCreateKudoCard()}>Criar novo Kudo Card </button>
+        
         {listKudoCards.length !== 0 && <CardKudoCard/>}
         {listKudoCards.length === 0 && <p>Não existem Kudo Cards cadastrados</p>}
       </div>
