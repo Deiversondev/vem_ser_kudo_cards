@@ -55,7 +55,7 @@ function CardKudoBox (){
               <p><strong>Data: </strong> {moment(kudoBox.dataLeitura).format('DD/MM/YYYY')}</p>
               </div>
               {
-                (idGrupo ==  1) && (kudoBox.statusKudoBoxEntity === 'EM_ANDAMENTO') &&
+                (idGrupo ==  2) && (kudoBox.statusKudoBoxEntity === 'EM_ANDAMENTO') &&
                 <button onClick={() => {window.location.href = '/createkudocards'}}>Criar KudoCard</button>
               }
               {(kudoBox.statusKudoBoxEntity === "CRIADO") && (checkIfEmAndamento === undefined) &&
