@@ -23,14 +23,23 @@ function CardRetrospectiva (){
   const startRetro = async (id) => {
 
     setLoading(true)
-    const {data} = await api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
-    setLoading(false)
+    try{
+      const {data} = await api.put(`/retrospectiva/${id}/status?status=EM_ANDAMENTO`)
+      localStorage.setItem('IdRetrospectiva',id) 
+      window.location.href = '/retrospectiva'
+      setLoading(false)
+    }
+    catch{
+      alert('Houve uma falha nos servidores, tente novamente mais tarde')
+      setLoading(false)
+    }
+
+    
 
     window.location.reload()
-    localStorage.setItem('IdRetrospectiva',id) 
-    window.location.href = '/retrospectiva'
+    
   
-    console.log(data)
+    // console.log(data)
   
   }
 
@@ -69,7 +78,7 @@ function CardRetrospectiva (){
             }             
              
             {
-            (retrospectiva.statusRetrospectivaEntity === 'CRIADA')  && (checkIfEmAndamento === undefined) &&
+            (retrospectiva.statusRetrospectivaEntity === 'CRIADA')  && 
             <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>
             }
             

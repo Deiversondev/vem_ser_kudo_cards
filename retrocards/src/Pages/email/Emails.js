@@ -86,7 +86,7 @@ function Emails (){
       
           <div>
             <label htmlFor="inputEmail">Para:</label>
-            <input type="text" onChange={e => setEmail(e.target.value)}/>
+            <input type="email" onChange={e => setEmail(e.target.value)}/>
           </div>
          
           <button type="button" onClick={()=> cadastrarEmail()} >Add</button>

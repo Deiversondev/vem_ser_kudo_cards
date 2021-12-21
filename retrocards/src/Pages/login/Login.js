@@ -15,11 +15,17 @@ function Login() {
   const handleLogin = async (values) => {
 
     setLoading(true)
-    const {data} =  await api.post('/auth',values)
+    try{
+      const {data} =  await api.post('/auth',values)
+      localStorage.setItem('token',data)
+      api.defaults.headers.common['Authorization'] = data;
+    }
+    catch{
+      alert('Verifique se digitou sua informação de login corretamente. Caso o erro persista, tente novamente mais tarde')
+    }
     setLoading(false)
 
-    localStorage.setItem('token',data)
-    api.defaults.headers.common['Authorization'] = data;
+   
     
     window.location.href = '/initialpage'
     setAuth(true)
