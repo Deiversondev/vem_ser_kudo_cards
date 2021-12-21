@@ -95,7 +95,9 @@ function InitialPage (){
       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
       }
       <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
+      {(idGrupo ==  1) && 
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
+      }
       </div>
       <div className={styles.body}>
         
