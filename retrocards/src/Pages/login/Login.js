@@ -63,7 +63,7 @@ function Login() {
             <Form>
 
             <div> 
-              Usuário: <Field name="usuario" /> 
+              Usuário:<Field name="usuario" /> 
             {errors.usuario && touched.usuario ? (
               <div>{errors.usuario}</div>
             ) : null}
