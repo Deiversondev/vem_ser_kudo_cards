@@ -42,7 +42,7 @@ function Login() {
 
   return (
 
-    <div>
+    <div className={styles.login}>
       {loading && <Loading/>}
       {!loading &&
         <div>
@@ -62,16 +62,16 @@ function Login() {
         
             <Form>
 
-            <div> 
+            <div className={styles.heightInput} > 
               Usuário:<Field name="usuario" /> 
             {errors.usuario && touched.usuario ? (
-              <div>{errors.usuario}</div>
+              <div className={styles.erro}>{errors.usuario}</div>
             ) : null}
             </div>
-            <div>
+            <div className={styles.heightInput}>
             Senha: <Field name="senha" type = "password" /> 
             {errors.senha && touched.senha ? (
-              <div>{errors.senha}</div>
+              <div className={styles.erro}>{errors.senha}</div>
             ) : null}
             </div>
             

@@ -1,6 +1,6 @@
-input {
+
+.login input {
     height: 20px;
-    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 55px;
     width: 200px;
@@ -9,20 +9,36 @@ input {
     
 }
 
-h1 {
+.login h1 {
     color: #009E5E;
     margin-bottom: 30px;
 }
 
-label {
-    color: #009E5E;
-    
-}
 
-button{
+
+.login button{
     background-color: #009E5E;
     color: white;
     border-radius: 3px;
     border: none;
     height: 20px;
+}
+
+.login button:hover{
+    box-shadow: 3px 6px 6px gainsboro;
+    cursor: pointer;
+    height: 20.2px;
+    background-color: #027e4c;
+}
+
+.erro{   
+    color: red;
+    font-size: 8px;
+    margin-bottom: 10px;
+
+}
+
+.heightInput{
+    height: 45px;
+    color: #027e4c;
 }
