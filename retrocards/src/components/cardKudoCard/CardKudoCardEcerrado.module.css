@@ -1,14 +1,17 @@
 .kudoCard_main {
     /* border: 1px solid #000; */
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     background-color: #009E5E;
+    font-size: 13px;
+    margin: 0 15px;
+    padding-bottom: 10px;
+    border-radius: 5px;
 }
 
 .kudoCard_container {
     /* display: flex; */
     justify-content: space-evenly;
-    
 }
 
 .cardsContainer {
