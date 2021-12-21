@@ -45,6 +45,10 @@ function CardKudoBox (){
               <p><strong>Status:</strong>  {kudoBox.statusKudoBoxEntity.replaceAll('_', ' ')}</p>
               <p><strong>Data: </strong> {moment(kudoBox.dataLeitura).format('DD/MM/YYYY')}</p>
               </div>
+              {
+                (kudoBox.statusKudoBoxEntity === 'EM_ANDAMENTO') &&
+                <button onClick={() => {window.location.href = '/createkudocards'}}>Criar KudoCard</button>
+              }
               {(kudoBox.statusKudoBoxEntity === "CRIADO") && (checkIfEmAndamento === undefined) &&
               <button onClick={()=> startKudoBox(kudoBox.idKudoBox)}>Iniciar Kudo Box</button>
               }
