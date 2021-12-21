@@ -3,10 +3,13 @@ import { ListContext } from '../../context/ListContext'
 import api from '../../api'
 import CardSprint from '../../components/cardSprint/CardSprint'
 import { AuthContext } from '../../context/AuthContext'
+import { UserGroupContext } from '../../context/UserGroupContext'
 import Loading from '../../components/loading/Loading'
 import CardKudoBoxEmAndamento from '../../components/cardKudoBox/CardKudoBoxEmAndamento '
 import CardKudoCardEcerrado from '../../components/cardKudoCard/CardKudoCardEcerrado'
 import styles from './InitialPage.module.css'
+
+
 
 function InitialPage (){
 
@@ -14,6 +17,7 @@ function InitialPage (){
   const{listKudoBoxesEmAndamento, setListKudoBoxesEmAndamento} = useContext(ListContext)
   const{listKudoCardsEncerrados, setListKudoCardsEncerrados} = useContext(ListContext)
   const{loading, setLoading}= useContext(AuthContext)
+  const{idUser, groupUser, recuperarUsuario, getGrupoUsuario}= useContext(UserGroupContext)
   
   useEffect(()=>{
 
@@ -21,8 +25,12 @@ function InitialPage (){
     getKudoBoxEmAndamento()
     getKudoCardsEncerrados()
     getUpdateStatusKudoBox()
+    recuperarUsuario()
+    getGrupoUsuario()
 
   },[])
+
+  
 
   const getSprint =async () =>{
     setLoading(true)
@@ -79,10 +87,12 @@ function InitialPage (){
       {loading && <Loading/>}
       {!loading && 
       <div>
-        
 
       <div className={styles.btns}>
+      {groupUser}
+      {groupUser !== 1 &&
       <button type="button" onClick={()=> goToMeusKudoCards()} >Meus KudoCards</button>
+      }
       <button type="button" onClick={()=> getRecentRetrospectiva()} >Retrospectiva mais recente</button>
       <button type="button" onClick={()=> irPagNovaSprint()} >Criar nova sprint</button>
       </div>
