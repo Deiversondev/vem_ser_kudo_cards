@@ -1,14 +1,28 @@
 input {
-    height: 40px;
+    height: 20px;
     margin-bottom: 10px;
-    /* margin-left: 10px; */
-    width: 400px;
+    margin-left: 10px;
+    margin-right: 55px;
+    width: 200px;
+    text-align: center;
+
+    
 }
 
 h1 {
     color: #009E5E;
+    margin-bottom: 30px;
 }
 
 label {
     color: #009E5E;
+    
+}
+
+button{
+    background-color: #009E5E;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    height: 20px;
 }
