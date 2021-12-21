@@ -36,6 +36,7 @@ function CardRetrospectiva (){
 
   const finishRetro = async (id) => {
 
+    localStorage.setItem('idRetrospectiva', id);
     setLoading(true)
     await api.put(`/retrospectiva/${id}/status?status=ENCERRADA`) 
     setLoading(false)

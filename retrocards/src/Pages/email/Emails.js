@@ -46,8 +46,9 @@ function Emails (){
     
   try{
 
+    const idRetrospectiva = localStorage.getItem('idRetrospectiva')
     setLoading(true)
-    const {data} =  await api.post('/email', report)
+    await api.post(`/email?idRetrospectiva=${idRetrospectiva}`, report)
     setLoading(false)
 
     setLista([])
