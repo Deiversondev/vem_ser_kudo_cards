@@ -96,7 +96,7 @@ function Sprint (){
        
         {listKudoBoxes.length !== 0 && <CardKudoBox/>}
         {listKudoBoxes.length === 0 && <p>Não existem Kudo Boxes cadastradas</p>}
-        <h3>KudoCards de Boxes Encerradas:</h3>
+        
         {listKudoCardsEncerradosSprint.length !== 0 && <CardKudoCardEcerradoSprint/>}
         {listKudoCardsEncerradosSprint.length === 0 && <p>Não existem Kudo Cards arquivados</p>}
       </div>

@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import Loading from '../../components/loading/Loading';
 import { Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
+import styles from '../sprint/CreateSprint.module.css'
 
 function CreateSprint() {
 
@@ -41,7 +42,7 @@ function CreateSprint() {
     
   return (
       
-    <div>
+    <div className={styles.createSprint}>
       {loading && <Loading/>}
       {!loading && 
       <div>
@@ -63,24 +64,24 @@ function CreateSprint() {
       {({ errors, touched }) => (
         <Form>
 
-          <div>
+          <div >
           Título: <Field name="titulo" id="titulo"/>
           {errors.titulo && touched.titulo ? (
-            <div>{errors.titulo}</div>
+            <div className={styles.erro}>{errors.titulo}</div>
           ) : null}
           </div>
 
           <div>
           Data de Início: <Field name="dataInicio" id="dataInicio" type= "date"/>
           {errors.dataInicio && touched.dataInicio ? (
-            <div>{errors.dataInicio}</div>
+            <div className={styles.erro}>{errors.dataInicio}</div>
           ) : null}
           </div>
 
           <div>
           Data de Conclusão: <Field name="dataConclusao" id="dataConclusao" type= "date"/>
           {errors.dataConclusao && touched.dataConclusao ? (
-            <div>{errors.dataConclusao}</div>
+            <div className={styles.erro}>{errors.dataConclusao}</div>
           ) : null}
           </div>
 

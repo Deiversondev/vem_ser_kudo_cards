@@ -1,0 +1,46 @@
+.createSprint input {
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 55px;
+  width: 200px;
+  text-align: center;
+  
+
+}
+
+.createSprint h1 {
+  color: #009E5E;
+  margin-bottom: 30px;
+  
+}
+
+
+.createSprint button{
+  background-color: #009E5E;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  height: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.createSprint button:hover{
+  box-shadow: 3px 6px 6px gainsboro;
+  cursor: pointer;
+  height: 20.2px;
+  background-color: #027e4c;
+}
+
+.erro{   
+  color: red;
+  font-size: 8px;
+  margin-bottom: 10px;
+
+}
+
+.heightInput{
+  height: 45px;
+  color: #027e4c;
+  font-weight: bold;
+}
