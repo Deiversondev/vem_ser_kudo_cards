@@ -30,7 +30,7 @@ function KudoCardsUsuario(){
       {loading && <Loading/>}
       {!loading && 
       <div>
-      <h1>Pagina KudoCards do Usuário</h1>
+      <h1>Meus KudoCards</h1>
       {listKudoCardsUser.length !== 0 && <CardKudoCardsUsers/>}
       {listKudoCardsUser.length === 0 && <p>Você não mandou nenhum KudoCard</p>}
       </div>
