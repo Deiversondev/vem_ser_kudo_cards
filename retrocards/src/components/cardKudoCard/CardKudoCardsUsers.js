@@ -3,6 +3,7 @@ import api from "../../api";
 import { ListContext } from "../../context/ListContext"
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../loading/Loading'
+import styles from '../cardKudoCard/CardKudoCardsUsers.module.css'
 
 
 function CardKudoCardsUsers (){
@@ -19,13 +20,13 @@ function CardKudoCardsUsers (){
   }
   
   return (
-    <div>
+    <div >
       {loading && <Loading/>}
       {!loading && 
-      <div>
+      <div >
         <ul>
           {listKudoCardsUser.map(kudoCard => (
-            <div key={kudoCard.idKudoCard}>
+            <div key={kudoCard.idKudoCard} className={styles.cardUser}>
             <li>
             <p>Id: {kudoCard.idKudoCard}</p>
             <p>Título: {kudoCard.titulo}</p>
