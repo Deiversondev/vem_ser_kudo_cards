@@ -79,17 +79,17 @@ function CardRetrospectiva (){
              
             {
             (retrospectiva.statusRetrospectivaEntity === 'CRIADA')  && 
-            <button style={{backgroundColor:'green' ,color:'white'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>
+            <button style={{backgroundColor:'white' ,color:'green'}} onClick={() => startRetro(retrospectiva.idRetrospectiva)}>Iniciar</button>
             }
             
             {
             retrospectiva.statusRetrospectivaEntity === 'EM_ANDAMENTO' && 
-            <button style={{backgroundColor:'red',color:'white'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
+            <button style={{backgroundColor:'white',color:'red'}} onClick={() => finishRetro(retrospectiva.idRetrospectiva)}>Encerrar</button>
             }
 
             {
             retrospectiva.statusRetrospectivaEntity !== 'CRIADA' &&
-            <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Go to Meeting</button>
+            <button onClick={() => getIdRetrospectiva(retrospectiva.idRetrospectiva)} >Detalhes</button>
             }
           </div>
         </div>

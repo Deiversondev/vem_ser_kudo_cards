@@ -56,7 +56,7 @@ function Retrospectiva() {
                 {retrospectiva[0].itemDeRetrospectivaDTO.length === 0 ? <p>Não existem itens cadastrados</p> :  <ItemCard/>}
               
                 {(idGrupo ==  2) && (retro.statusRetrospectivaEntity !== 'ENCERRADA') &&
-                <button onClick={goToCreateItems}>Create Items</button>
+                <button onClick={goToCreateItems}>Criar Itens</button>
               }
               </div>
             ))

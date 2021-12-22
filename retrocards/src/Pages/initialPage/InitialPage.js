@@ -100,12 +100,12 @@ function InitialPage (){
       }
       </div>
       <div className={styles.body}>
+
+        {listKudoBoxesEmAndamento.length !== 0 && <CardKudoBoxEmAndamento/>}
+        {listKudoBoxesEmAndamento.length === 0 && <p>Não existem Kudo Boxes em andamento</p>}
         
         {listSprints.length !== 0 && <CardSprint/>}
         {listSprints.length === 0 && <p>Não existem Sprints cadastradas</p>}
-       
-        {listKudoBoxesEmAndamento.length !== 0 && <CardKudoBoxEmAndamento/>}
-        {listKudoBoxesEmAndamento.length === 0 && <p>Não existem Kudo Boxes em andamento</p>}
         
         {listKudoCardsEncerrados.length !== 0 && <CardKudoCardEcerrado/>}
         {listKudoCardsEncerrados.length === 0 && <p>Não existem Kudo Cards arquivados</p>}
