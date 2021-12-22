@@ -38,7 +38,10 @@
     height: 25px;
     border: 1px solid #3c5bc0;
     border-radius: 5px;
+    margin: 0px 30px;
     margin-bottom: 10px;
+    position: relative;
+    left: 125px;
 }
 
 .card_main button:hover {
