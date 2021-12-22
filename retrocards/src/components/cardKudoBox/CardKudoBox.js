@@ -36,6 +36,11 @@ function CardKudoBox (){
     window.location.reload()
   }
 
+  const goToCreateKudoCard = (id) =>{
+    localStorage.setItem('idKudoBox', id )
+    window.location.href = '/createkudocards'
+  }
+  
   const checkIfEmAndamento = listKudoBoxes.find(e => e.statusKudoBoxEntity === 'EM_ANDAMENTO')
 
   return (
@@ -56,7 +61,7 @@ function CardKudoBox (){
               </div>
               {
                 (idGrupo ==  2) && (kudoBox.statusKudoBoxEntity === 'EM_ANDAMENTO') &&
-                <button onClick={() => {window.location.href = '/createkudocards'}}>Criar KudoCard</button>
+                <button onClick={() => goToCreateKudoCard(kudoBox.idKudoBox)}>Criar KudoCard</button>
               }
               {(kudoBox.statusKudoBoxEntity === "CRIADO") && (checkIfEmAndamento === undefined) &&
               <button onClick={()=> startKudoBox(kudoBox.idKudoBox)}>Iniciar Kudo Box</button>
