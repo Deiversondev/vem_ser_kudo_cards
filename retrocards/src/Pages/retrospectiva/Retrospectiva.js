@@ -44,7 +44,7 @@ function Retrospectiva() {
       {loading && <Loading/>}
       {!loading && 
       <div className={styles.retrospectiva}>
-        <h1>Retrospectivas:</h1>
+        <h1>Retrospectiva:</h1>
         {
           retrospectiva && (
             retrospectiva.map((retro,index) => (
@@ -57,7 +57,7 @@ function Retrospectiva() {
               
                 {(idGrupo ==  2) && (retro.statusRetrospectivaEntity !== 'ENCERRADA') &&
                 <button onClick={goToCreateItems}>Create Items</button>
-        }
+              }
               </div>
             ))
           )  

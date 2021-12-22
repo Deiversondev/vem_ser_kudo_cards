@@ -1,12 +1,22 @@
 .cardUser{
-  width: 300px;
-  height: 250px;
+  
+  width: 200px;
+  height: 230px;
   background-color: #009E5E;
-  margin-right: 20px;
   font-size: 13px;
-  align-items: center;
   justify-content: space-between;
-  margin: 0 15px;
   border-radius: 5px;
   list-style: none;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.cards ul{
+  
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+
 }

@@ -24,16 +24,18 @@ function CardKudoCardsUsers (){
     <div >
       {loading && <Loading/>}
       {!loading && 
-      <div >
+      <div className={styles.cards}>
         <ul>
           {listKudoCardsUser.map(kudoCard => (
             <div key={kudoCard.idKudoCard} className={styles.cardUser}>
             <li>
-            <p>Id: {kudoCard.idKudoCard}</p>
-            <p>Título: {kudoCard.titulo}</p>
-            <p>Para: {kudoCard.para}</p>
-            <p>Descrição: {kudoCard.descricao}</p>
-            <p>KudoBox: {kudoCard.kudoBoxDTO.idKudoBox}- {kudoCard.kudoBoxDTO.titulo}- {moment(kudoCard.kudoBoxDTO.dataLeitura).format('DD/MM/YYYY')}</p>
+            <p><strong>Id: </strong>{kudoCard.idKudoCard}</p>
+            <p><strong>Título: </strong>{kudoCard.titulo}</p>
+            <p><strong>Para: </strong>{kudoCard.para}</p>
+            <p><strong>Descrição: </strong>{kudoCard.descricao}</p>
+            <p><strong>KudoBox: </strong>{kudoCard.kudoBoxDTO.idKudoBox}</p>
+            <p>{kudoCard.kudoBoxDTO.titulo}</p>
+            <p>{moment(kudoCard.kudoBoxDTO.dataLeitura).format('DD/MM/YYYY')}</p>
             { 
               kudoCard.kudoBoxDTO.statusKudoBoxEntity === 'EM_ANDAMENTO' &&
               <button onClick={() => deletarKudocard(kudoCard.idKudoCard)}>Deletar</button>
