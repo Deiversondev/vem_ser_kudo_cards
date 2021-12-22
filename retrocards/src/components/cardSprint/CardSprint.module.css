@@ -1,17 +1,15 @@
 .container {
     /* border: 1px solid #000; */
     display: flex;
-    /* background-color: rgb(126, 126, 126); */
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .main {
-    
     padding: 10px;
 }
 
 .sprint_main {
-    
     width: 150px;
     height: 150px;
     background-color: #0e5f96;
@@ -19,7 +17,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    margin: 0 15px;
+    margin: 10px 15px;
     padding-bottom: 10px;
     border-radius: 5px;
 }
@@ -28,17 +26,16 @@
     width: 60px;
     height: 20px;
     font-size: 12px;
-    
 }
 
-.sprint_main p{
+.sprint_main p {
     font-size: 13px;
 }
 
-.styles.divData{
+.styles.divData {
     height: 80px;
 }
 
-.divButton{
+.divButton {
     margin-bottom: 10px;
 }
