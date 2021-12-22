@@ -6,11 +6,13 @@ import CardKudoBox from "../../components/cardKudoBox/CardKudoBox";
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../../components/loading/Loading'
 import CardKudoCardEcerradoSprint from '../../components/cardKudoCard/CardKudoCardEcerradoSprint'
+import { UserGroupContext } from '../../context/UserGroupContext'
 import styles from './Sprint.module.css'
 
 function Sprint (){
 
   const{loading, setLoading}= useContext(AuthContext)
+  const{getUserGroup, idGrupo, getlocalIdGrupo}= useContext(UserGroupContext)
 
   const
   {
@@ -23,11 +25,13 @@ function Sprint (){
   } = useContext(ListContext)
   
 
-  useEffect(()=>{
+  useEffect(async()=>{
 
     getRetrospectiva()
     getKudoBox()
     getKudoCardsEncerradosSprint()
+    await getUserGroup()
+    getlocalIdGrupo()
 
   },[])
 
@@ -81,10 +85,12 @@ function Sprint (){
       {!loading && 
       <div>
         <h1>Página Sprint</h1>
-
+        {(idGrupo ==  1) &&
         <button className={styles.btn} type="button" onClick={()=> goToCreateRetrospectiva()} >Criar nova Retrospectiva</button>
+        }
+        {(idGrupo ==  1) &&
         <button className={styles.btn} type="button" onClick={()=> goToCreateKudoBox()} >Criar nova Kudo Box</button>
-        
+        }
         {listRetrospectivas.length !== 0 && <CardRetrospectiva/>}
         {listRetrospectivas.length === 0 && <p>Não existem Retrospectivas cadastradas</p>}
         <h3>Kudoboxes:</h3>

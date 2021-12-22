@@ -13,10 +13,18 @@ function CreateItems() {
 
   const crItems = async (id,values) => {
     setLoading(true)
+   try{
     const {data} = await api.post(`/item?id=${id}`,values)
     setLoading(false)
     alert('Novo item criado com sucesso!')
     window.history.back()
+   }
+   catch{
+     alert('Houve um problema no servidor')
+    setLoading(false)
+   }
+    setLoading(false)
+    
   }
 
 

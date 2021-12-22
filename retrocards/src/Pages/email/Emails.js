@@ -48,11 +48,17 @@ function Emails (){
 
     const idRetrospectiva = localStorage.getItem('idRetrospectiva')
     setLoading(true)
-    await api.post(`/email?idRetrospectiva=${idRetrospectiva}`, report)
+    try{
+      await api.post(`/email?idRetrospectiva=${idRetrospectiva}`, report)
+      window.alert('Envio realizado com sucesso!')
     setLoading(false)
+    }
+    catch{
+      alert('Houve uma falha nos servidores!')
+    }
 
     setLista([])
-    window.alert('Envio realizado com sucesso!')
+   
 
     
     window.history.back()
@@ -86,7 +92,7 @@ function Emails (){
       
           <div>
             <label htmlFor="inputEmail">Para:</label>
-            <input type="text" onChange={e => setEmail(e.target.value)}/>
+            <input type="email" onChange={e => setEmail(e.target.value)}/>
           </div>
          
           <button type="button" onClick={()=> cadastrarEmail()} >Add</button>

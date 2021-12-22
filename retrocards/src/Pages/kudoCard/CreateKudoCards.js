@@ -11,10 +11,19 @@ function CreateKudoCards() {
   const idKudoBox = localStorage.getItem('idKudoBox') 
 
   const createKudoCard = async (values) => {
+    
+   try{
     setLoading(true)
     const {data} =  await api.post(`/kudocard?id=${idKudoBox}`,values)
-    setLoading(false)
     alert('Novo kudo card criado com sucesso!')
+    setLoading(false)
+   }
+   catch{
+     console.log('Houve um erro nos servidores, tente novamente mais tarde!')
+     setLoading(false)
+   }
+    setLoading(false)
+    
     window.history.back()
   }
 
