@@ -1,41 +1,36 @@
-
 .cardRetrospectiva {
-  
-  margin-top: 30px;
-  width: 190px;
-  height: 250px;
-  background-color: #4861B4;
-  color: white;
-  padding: 5px;
-  padding-bottom: 10px;
-  border-radius: 5px;
-  font-size: 13px;
-  
+    margin-top: 30px;
+    width: 60%;
+    /* height: 250px; */
+    background-color: #4861B4;
+    color: white;
+    padding: 5px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    padding-bottom: 20px;
 }
 
-.retrospectiva{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.retrospectiva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.retrospectiva button{
 
-
-  margin-top: 30px;
-  width: 120px;
-  height: 30px;
-  background-color: white;
-  color: #4861B4;
-  border: none;
-  border-radius: 5px;
-  margin-left: 10px;
-  font-weight: bold;
-  font-size: 13px;
-  
-  
+.retrospectiva button {
+    margin-top: 30px;
+    width: 120px;
+    height: 30px;
+    background-color: white;
+    color: #4861B4;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .retrospectiva button:hover {
-  box-shadow: 3px 6px 6px #354886;
-  cursor: pointer;
+    box-shadow: 3px 6px 6px #354886;
+    cursor: pointer;
 }
