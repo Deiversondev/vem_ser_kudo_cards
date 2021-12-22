@@ -61,7 +61,7 @@ function CardRetrospectiva (){
     <div>
       {loading && <Loading/>}
       {!loading && 
-      <div >
+      <div className={styles.main_container} >
       
         {listRetrospectivas.map((retrospectiva, index) => (
           <div className={styles.card_main} key={index}>
