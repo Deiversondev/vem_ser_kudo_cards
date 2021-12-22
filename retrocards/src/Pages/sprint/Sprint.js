@@ -93,7 +93,7 @@ function Sprint (){
         }
         {listRetrospectivas.length !== 0 && <CardRetrospectiva/>}
         {listRetrospectivas.length === 0 && <p>Não existem Retrospectivas cadastradas</p>}
-        <h3>Kudoboxes:</h3>
+       
         {listKudoBoxes.length !== 0 && <CardKudoBox/>}
         {listKudoBoxes.length === 0 && <p>Não existem Kudo Boxes cadastradas</p>}
         <h3>KudoCards de Boxes Encerradas:</h3>

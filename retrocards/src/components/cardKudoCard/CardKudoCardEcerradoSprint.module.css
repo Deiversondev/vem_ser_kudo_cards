@@ -6,7 +6,7 @@
     margin-top: 10px;
     margin-left: 10px;
     border-radius: 5px;
-    padding: 10px 0px;
+    padding: 20px 0px;
 }
 
 .kudoContainer {
@@ -15,8 +15,10 @@
     flex-wrap: wrap;
     margin: auto;
     justify-content: center;
+    /* padding: 10px 0px; */
 }
 
-.main_container {
+
+/* .main_container {
     border: 1px solid #000;
-}
+} */
