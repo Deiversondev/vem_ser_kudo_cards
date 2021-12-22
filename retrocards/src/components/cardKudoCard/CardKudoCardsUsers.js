@@ -38,7 +38,7 @@ function CardKudoCardsUsers (){
             <p>{moment(kudoCard.kudoBoxDTO.dataLeitura).format('DD/MM/YYYY')}</p>
             { 
               kudoCard.kudoBoxDTO.statusKudoBoxEntity === 'EM_ANDAMENTO' &&
-              <button onClick={() => deletarKudocard(kudoCard.idKudoCard)}>Deletar</button>
+              <button classname={styles.btn} onClick={() => deletarKudocard(kudoCard.idKudoCard)}>Deletar</button>
             }
             </li>
           </div>
