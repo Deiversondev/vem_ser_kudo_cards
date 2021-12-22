@@ -4,6 +4,7 @@ import { ListContext } from "../../context/ListContext"
 import { AuthContext } from '../../context/AuthContext'
 import Loading from '../loading/Loading'
 import styles from '../cardKudoCard/CardKudoCardsUsers.module.css'
+import moment from "moment";
 
 
 function CardKudoCardsUsers (){
@@ -32,7 +33,7 @@ function CardKudoCardsUsers (){
             <p>Título: {kudoCard.titulo}</p>
             <p>Para: {kudoCard.para}</p>
             <p>Descrição: {kudoCard.descricao}</p>
-            <p>KudoBox: {kudoCard.kudoBoxDTO.idKudoBox}- {kudoCard.kudoBoxDTO.titulo}- {kudoCard.kudoBoxDTO.dataLeitura}</p>
+            <p>KudoBox: {kudoCard.kudoBoxDTO.idKudoBox}- {kudoCard.kudoBoxDTO.titulo}- {moment(kudoCard.kudoBoxDTO.dataLeitura).format('DD/MM/YYYY')}</p>
             { 
               kudoCard.kudoBoxDTO.statusKudoBoxEntity === 'EM_ANDAMENTO' &&
               <button onClick={() => deletarKudocard(kudoCard.idKudoCard)}>Deletar</button>

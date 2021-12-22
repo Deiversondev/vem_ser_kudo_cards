@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext";
 import styles from './CardKudoCardEcerrado.module.css'
+import moment from "moment";
 
 
 function CardKudoCard (){
@@ -21,7 +22,7 @@ function CardKudoCard (){
           <p><strong>Para: </strong>{kudoCard.para}</p>
           <p><strong>Descrição: </strong> {kudoCard.descricao}</p>
           <p><strong>ID KudoBox: </strong> {kudoCard.kudoBoxDTO.idKudoBox}</p>
-          <p><strong>Data da Leitura: </strong> {kudoCard.kudoBoxDTO.dataLeitura}</p>
+          <p><strong>Data da Leitura: </strong> {moment(kudoCard.kudoBoxDTO.dataLeitura).format('DD/MM/YYYY')}</p>
         
         </div>
         ))}

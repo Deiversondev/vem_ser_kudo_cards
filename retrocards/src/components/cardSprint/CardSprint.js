@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ListContext } from "../../context/ListContext"
 import styles from './CardSprint.module.css'
+import moment from "moment";
 
 
 function CardSprint (){
@@ -22,7 +23,7 @@ function CardSprint (){
               <div className={styles.divData}>
                 <p><strong>ID: </strong> {sprint.idSprint}</p>
                 <p><strong>Título: </strong> {sprint.titulo}</p>
-                <p><strong>Data: </strong>{sprint.dataConclusao}</p>
+                <p><strong>Data: </strong>{moment(sprint.dataConclusao).format('DD/MM/YYYY')}</p>
                 
               </div>
               <div className={styles.divButton}>
